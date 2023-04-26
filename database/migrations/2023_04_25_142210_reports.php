@@ -15,7 +15,18 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('report_message');
+            $table->integer('week_number')->default(0);
+            $table->string('monday_4')->nullable();
+            $table->string('monday_2')->nullable();
+            $table->string('tuesday_4')->nullable();
+            $table->string('tuesday_2')->nullable();
+            $table->string('wednesday_4')->nullable();
+            $table->string('wednesday_2')->nullable();
+            $table->string('thursday_4')->nullable();
+            $table->string('thursday_2')->nullable();
+            $table->string('friday_4')->nullable();
+            $table->string('friday_2')->nullable();
+            $table->string('extra')->nullable();
             $table->timestamps();
         });
     }
