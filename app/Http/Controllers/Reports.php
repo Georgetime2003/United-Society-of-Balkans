@@ -10,7 +10,7 @@ class Reports extends Controller
 {
     public function schedule(){
         //Get users that are volunteers and are active (start_date <= today <= end_date)
-        $users = User::where('role', 'volunteer')->where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->get();
+        $users = User::where('role', 'volunteer')->where('start_date', '<=', date('Y-m-d'))->get();
         $length = count($users);
         try{
             for ($i = 0; $i < $length; $i++) {
@@ -24,5 +24,10 @@ class Reports extends Controller
         } catch (\Exception $e) {
             return dd($e . $users[0]);
         }
+    }
+
+    public function index(){
+        $users = User::where('role', 'volunteer')->where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->get();
+        return view('reportslist')->with('users', $users);
     }
 }
