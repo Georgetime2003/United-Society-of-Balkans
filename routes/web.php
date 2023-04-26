@@ -25,3 +25,5 @@ Route::get('/users', [App\Http\Controllers\Users::class, 'index'])->name('users'
 Route::get('/user/{id}', [App\Http\Controllers\Users::class, 'show'])->name('users.show');
 Route::delete('/user/{id}', [App\Http\Controllers\Users::class, 'delete'])->name('users.delete');
 Route::post('/user', [App\Http\Controllers\Users::class, 'update'])->name('users.update');
+
+Route::get('/reports', [App\Http\Controllers\Reports::class, 'index'])->name('reports');
