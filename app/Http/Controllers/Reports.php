@@ -30,4 +30,81 @@ class Reports extends Controller
         $users = User::where('role', 'volunteer')->where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->get();
         return view('reportslist')->with('users', $users);
     }
+
+    public function listUser($userid){
+        $reports = DBReports::where('user_id', $userid)->get();
+        for ($i = 0; $i < count($reports); $i++) {
+            // With the week number value, get the start and end date of the week
+            $dto = new \DateTime();
+            $dto->setISODate(date('Y'), $reports[$i]->week_number);
+            $reports[$i]->start_date = $dto->format('d-m');
+            $dto->modify('+6 days');
+            $reports[$i]->end_date = $dto->format('d-m');
+            $reports[$i]->filled = 0;
+            $reports[$i]->requiredFilled = true;
+            if ($reports[$i]->monday_4 != '') {
+                $reports[$i]->filled++;
+            } else {
+                $reports[$i]->requiredFilled = false;
+            }
+            if ($reports[$i]->tuesday_4 != '') {
+                $reports[$i]->filled++;
+            } else {
+                $reports[$i]->requiredFilled = false;
+            }
+            if ($reports[$i]->wednesday_4 != '') {
+                $reports[$i]->filled++;
+            } else {
+                $reports[$i]->requiredFilled = false;
+            }
+            if ($reports[$i]->thursday_4 != '') {
+                $reports[$i]->filled++;
+            } else {
+                $reports[$i]->requiredFilled = false;
+            }
+            if ($reports[$i]->friday_4 != '') {
+                $reports[$i]->filled++;
+            } else {
+                $reports[$i]->requiredFilled = false;
+            }
+            if ($reports[$i]->monday_2 != '') {
+                $reports[$i]->filled++;
+            } else {
+                $reports[$i]->requiredFilled = false;
+            }
+            if ($reports[$i]->tuesday_2 != '') {
+                $reports[$i]->filled++;
+            } else {
+                $reports[$i]->requiredFilled = false;
+            }
+            if ($reports[$i]->wednesday_2 != '') {
+                $reports[$i]->filled++;
+            } else {
+                $reports[$i]->requiredFilled = false;
+            }
+            if ($reports[$i]->thursday_2 != '') {
+                $reports[$i]->filled++;
+            } else {
+                $reports[$i]->requiredFilled = false;
+            }
+            if ($reports[$i]->friday_2 != '') {
+                $reports[$i]->filled++;
+            } else {
+                $reports[$i]->requiredFilled = false;
+            }
+            if ($reports[$i]->extra != '') {
+                $reports[$i]->filled++;
+            }
+
+            if ($reports[$i]->filled == 11) {
+                $reports[$i]->onday = true;
+            } else if($reports[$i]->filled >= 10 && $reports[$i]->requiredFilled == true){
+                $reports[$i]->onday = true;
+            } else {
+                $reports[$i]->onday = false;
+            }
+        }
+        $user = User::where('id', $userid)->first();
+        return view('reportsUser')->with('reports', $reports)->with('user', $user);
+    }
 }
