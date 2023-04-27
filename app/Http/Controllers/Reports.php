@@ -37,9 +37,9 @@ class Reports extends Controller
             // With the week number value, get the start and end date of the week
             $dto = new \DateTime();
             $dto->setISODate(date('Y'), $reports[$i]->week_number);
-            $reports[$i]->start_date = $dto->format('d-m');
+            $reports[$i]->start_date = $dto->format('d/m');
             $dto->modify('+6 days');
-            $reports[$i]->end_date = $dto->format('d-m');
+            $reports[$i]->end_date = $dto->format('d/m');
             $reports[$i]->filled = 0;
             $reports[$i]->requiredFilled = true;
             if ($reports[$i]->monday_4 != '') {
@@ -106,5 +106,11 @@ class Reports extends Controller
         }
         $user = User::where('id', $userid)->first();
         return view('reportsUser')->with('reports', $reports)->with('user', $user);
+    }
+
+    public function show($userid, $reportid){
+        $report = DBReports::where('id', $reportid)->first();
+        $user = User::where('id', $userid)->first();
+        return view('report')->with('report', $report)->with('user', $user);
     }
 }

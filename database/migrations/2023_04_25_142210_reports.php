@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table): void {
             $table->id();
-            $table->integer('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('user_id')->constrained('users');
             $table->integer('week_number')->default(0);
             $table->string('monday_4')->nullable();
             $table->string('monday_2')->nullable();
