@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class login extends Controller
 {
@@ -16,6 +17,7 @@ class login extends Controller
         $user = Socialite::driver('google')->user();
         $login = User::where('email', $user->email)->first();
         if($login){
+            Auth::login($login);
             return redirect()->route('users');
         }else{
             return redirect()->route('login')->with('error', 'You are not registered, try another account or contact with USB');

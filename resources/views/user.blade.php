@@ -15,7 +15,7 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-12">
+		<div class="col-12" {{$admin ? '' : 'hidden'}}>
 			<div class="alert alert-warning alert-dismissible fade show" role="alert">
 				<strong>Warning!</strong> The email must be from a Google/Facebook/Microsoft account
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -41,44 +41,44 @@
 					<div class="row">
 						<div class="col-md-6 col-12">
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" required>
+								<input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" required {{$admin ? '' : 'disabled'}}>
 								<label for="name" class="form-label">Name:</label>
 							</div>
 						</div>
 						<div class="col-md-6 col-12">
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="surnames" name="surnames" value="{{$user->surnames}}" required>
+								<input type="text" class="form-control" id="surnames" name="surnames" value="{{$user->surnames}}" required {{$admin ? '' : 'disabled'}}>
 								<label for="surnames" class="form-label">Surname:</label>
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="form-floating mb-3">
-								<input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" required>
+								<input type="email" class="form-control" id="email" name="email" value="{{$user->email}}" required {{$admin ? '' : 'disabled'}}>
 								<label for="email" class="form-label">Email:</label>
 							</div>
 						</div>
 						<div class="col-md-6 col-12 mb-3">
 							<div class="form-floating">
-								<input type="date" class="form-control" id="starting_date" name="starting_date" value="{{$user->start_date}}">
+								<input type="date" class="form-control" id="starting_date" name="starting_date" value="{{$user->start_date}}" {{$admin ? '' : 'disabled'}}>
 								<label for="starting_date" class="form-label">Starting date:</label>
 							</div>
 						</div>
 						<div class="col-md-6 col-12 mb-3">
 							<div class="form-floating">
-								<input type="date" class="form-control" id="ending_date" name="ending_date" value="{{$user->end_date}}">
+								<input type="date" class="form-control" id="ending_date" name="ending_date" value="{{$user->end_date}}" {{$admin ? '' : 'disabled'}}>
 								<label for="ending_date" class="form-label">Ending date:</label>
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="form-floating">
-								<input type="text" class="form-control" id="volunteer_code" name="volunteer_code" value="{{$user->volunteer_code}}">
+								<input type="text" class="form-control" id="volunteer_code" name="volunteer_code" value="{{$user->volunteer_code}}" {{$admin ? '' : 'disabled'}}>
 								<label for="volunteer_code" class="form-label">Project code:</label>
 							</div>
 							<div class="mb-2"></div>
 						</div>
 						<div class="col-12">
 							<div class="form-floating">
-								<select class="form-select" id="role" name="role" aria-label="Floating label select example">
+								<select class="form-select" id="role" name="role" aria-label="Floating label select example" {{$admin ? '' : 'disabled'}}>
 									<option value="1" @if($user->role == "volunteer") selected @endif>Volunteer</option>
 									<option value="2" @if($user->role == "house") selected @endif>House Manager</option>
 									<option value="3" @if($user->role == "organization") selected @endif>Organization</option>
@@ -90,20 +90,20 @@
 						</div>
 						<div class="col-md-6 col-12">
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="hosting" name="hosting" value="{{$user->hosting}}">
+								<input type="text" class="form-control" id="hosting" name="hosting" value="{{$user->hosting}}" {{$admin ? '' : 'disabled'}}>
 								<label for="hosting" class="form-label">Hosting Organization:</label>
 							</div>
 						</div>
 						<div class="col-md-6 col-12">
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="sending" name="sending" value="{{$user->sending}}">
+								<input type="text" class="form-control" id="sending" name="sending" value="{{$user->sending}}" {{$admin ? '' : 'disabled'}}>
 								<label for="sending" class="form-label">Sending Organization:</label>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="card-footer text-muted">
-					<button type="submit" id="save" class="btn btn-primary">Save</button>
+					<button type="submit" id="save" class="btn btn-primary" {{$admin ? '' : 'hidden'}}>Save</button>
 				</div>
 			</div>
 		</div>

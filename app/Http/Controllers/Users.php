@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class Users extends Controller
 {
@@ -27,7 +28,7 @@ class Users extends Controller
         } else if(!$user) {
             return redirect()->route('users');
         }
-        return view('user')->with('user', $user);
+        return view('user')->with('user', $user)->with('admin', true);
     }
 
     public function update(Request $request){
@@ -78,6 +79,15 @@ class Users extends Controller
         }
         $user->delete();
         return redirect()->route('users');
+    }
+
+    public function config(){
+        //Get user logged in
+        $user = Auth::user();
+        if(!$user){
+            return dd(Auth::user());
+        }
+        return view('user')->with('user', $user)->with('admin', false);
     }
 
 }
