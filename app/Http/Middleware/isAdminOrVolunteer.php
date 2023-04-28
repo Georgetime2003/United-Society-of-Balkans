@@ -5,8 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
-class isLogged
+class isAdminOrVolunteer
 {
     /**
      * Handle an incoming request.
@@ -15,10 +16,10 @@ class isLogged
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()) {
+        if (Auth::user()->role == 'volunteer' || Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin') {
             return $next($request);
         } else {
-            return redirect()->route('login');
+            return redirect()->route('home');
         }
     }
 }

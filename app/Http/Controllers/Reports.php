@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reports as DBReports;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class Reports extends Controller
 {
@@ -110,7 +111,54 @@ class Reports extends Controller
 
     public function show($userid, $reportid){
         $report = DBReports::where('id', $reportid)->first();
+        if (Auth::user()->role == 'volunteer' && Auth::user()->id != $report->user_id) {
+            // return dd(Auth::user());
+            return redirect('/home');
+        }
         $user = User::where('id', $userid)->first();
-        return view('report')->with('report', $report)->with('user', $user);
+        if(Auth::user()->role == 'volunteer' && Auth::user()->id == $report->user_id){
+            return view('reportweek')->with('report', $report)->with('user', $user)->with('edit', true);
+        } else {
+            return view('reportweek')->with('report', $report)->with('user', $user)->with('edit', false);
+        }
+        // return dd(Auth::user());
+    }
+
+    public function updateWeekly(Request $request){
+        $user_id = $request->input('userid');
+        if (Auth::user()->role == 'volunteer' && Auth::user()->id != $user_id) {
+            return response()->json(['status' => 'error', 'message' => 'You are not allowed to edit this report']);
+        }
+        $report_id = $request->input('reportid');
+        $report = DBReports::where('id', $report_id)->first();
+        $day = $request->input('day');
+        if ($day == "monday_4") {
+                $report->monday_4 = $request->input('value');
+        } else if ($day == "tuesday_4") {
+                $report->tuesday_4 = $request->input('value');
+        } else if ($day == "wednesday_4") {
+                $report->wednesday_4 = $request->input('value');
+        } else if ($day == "thursday_4") {
+                $report->thursday_4 = $request->input('value');
+        } else if ($day == "friday_4") {
+                $report->friday_4 = $request->input('value');
+        } else if ($day == "monday_2") {
+                $report->monday_2 = $request->input('value');
+        } else if ($day == "tuesday_2") {
+                $report->tuesday_2 = $request->input('value');
+        } else if ($day == "wednesday_2") {
+                $report->wednesday_2 = $request->input('value');
+        } else if ($day == "thursday_2") {
+                $report->thursday_2 = $request->input('value');
+        } else if ($day == "friday_2") {
+                $report->friday_2 = $request->input('value');
+        } else if ($day == "extra") {
+                $report->extra = $request->input('value');
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Invalid day.']);
+        }
+        $report->save();
+        return response()->json(['success' => $report]);
+
     }
 }

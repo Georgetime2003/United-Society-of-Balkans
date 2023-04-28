@@ -23,4 +23,9 @@ class Reports extends Model
         'friday_2',
         'extra'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
