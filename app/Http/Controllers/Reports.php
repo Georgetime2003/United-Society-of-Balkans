@@ -25,6 +25,7 @@ class Reports extends Controller
         } catch (\Exception $e) {
             return dd($e . $users[0]);
         }
+        return redirect()->route('pushWeeklyReport');
     }
 
     public function index(){
