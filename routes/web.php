@@ -23,8 +23,8 @@ Route::get('callback/microsoft', [App\Http\Controllers\login::class, 'MicrosoftC
 
 Route::get('/users', [App\Http\Controllers\Users::class, 'index'])->name('users')->middleware('isAdmin');
 Route::get('/user/config', [App\Http\Controllers\Users::class, 'config'])->name('users.config')->middleware('isVolunteer');
+Route::post('/user/delete/{id}', [App\Http\Controllers\Users::class, 'delete'])->name('users.delete')->middleware('isAdmin');
 Route::get('/user/{id}', [App\Http\Controllers\Users::class, 'show'])->name('users.show')->middleware('isAdmin');
-Route::delete('/user/{id}', [App\Http\Controllers\Users::class, 'delete'])->name('users.delete')->middleware('isAdmin');
 Route::post('/user', [App\Http\Controllers\Users::class, 'update'])->name('users.update')->middleware('isAdmin');
 
 Route::get('/reports', [App\Http\Controllers\Reports::class, 'index'])->name('reports')->middleware('isAdmin');
@@ -36,3 +36,5 @@ Route::post('/weeklyreport/update', [App\Http\Controllers\Reports::class, 'updat
 Route::get('/home', function () {
     return view('home');
 })->name('home')->middleware('auth');
+
+Route::get('/generateReports', [App\Http\Controllers\Reports::class, 'schedule'])->name('reports.schedule');

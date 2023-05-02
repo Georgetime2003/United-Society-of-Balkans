@@ -21,7 +21,6 @@ class Reports extends Controller
                 ]);
             }
             $reports = DBReports::all();
-            return dd($reports);
         } catch (\Exception $e) {
             return dd($e . $users[0]);
         }

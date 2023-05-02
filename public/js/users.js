@@ -10,6 +10,7 @@ window.onload = function() {
 		deleteButton.innerHTML = "<i class='fas fa-trash-alt'></i>";
 		deleteButton.className = "btn btn-outline-danger";
 		deleteButton.addEventListener("click", function() {
+			event.stopPropagation();
 			deleteUser(document.getElementsByTagName("tr")[i].id);
 		});
 		document.getElementsByClassName("actions")[i - 1].appendChild(deleteButton);
@@ -24,8 +25,8 @@ function deleteUser(id) {
 			}
 		});
 		$.ajax({
-			url: "/user/" + id,
-			type: "DELETE",
+			url: "/user/delete/" + id,
+			type: "POST",
 			success: function(result) {
 				//Reload site
 				window.location.reload();

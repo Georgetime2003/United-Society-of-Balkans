@@ -18,7 +18,7 @@ class login extends Controller
         $login = User::where('email', $user->email)->first();
         if($login){
             Auth::login($login);
-            return redirect()->route('users');
+            return redirect()->route('reports');
         }else{
             return redirect()->route('login')->with('error', 'You are not registered, try another account or contact with USB');
         }
@@ -29,7 +29,7 @@ class login extends Controller
         $login = User::where('email', $user->email)->first();
         if($login){
             $users = User::all();
-            return redirect()->route('users');
+            return redirect()->route('reports');
         }else{
             return redirect()->route('login')->with('error', 'You are not registered, try another account or contact with USB');
         }
