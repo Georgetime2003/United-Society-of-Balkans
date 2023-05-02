@@ -3,7 +3,6 @@
 <script src="{{ asset('js/reports.js') }}"></script>
 @endsection
 @section('site_content')
-<div class="mb-2"></div>
 <div class="container">
     <div class="row">
         <div class="col-12">
