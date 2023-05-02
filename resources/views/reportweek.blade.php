@@ -7,7 +7,7 @@
 @section('site_content')
 @csrf
 <div class="mb-2"></div>
-<div class="toast align-items-center text-bg-success border-0 position-absolute my-3 top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast align-items-center text-bg-success border-0 position-absolute my-3 top-0 start-50 translate-middle-x z-index-toast" tabindex="-1" role="alert" aria-live="assertive" aria-atomic="true">
 	<div class="d-flex">
 		<div class="toast-body">
 			The day has been saved successfully!
@@ -15,7 +15,6 @@
 		<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
 	</div>
 </div>
-<div class="mb-5"></div>
 <div class="container">
 	<div class="mb-2"></div>
     <div class="row">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Reports as DBReports;
 
 class Users extends Controller
 {
@@ -76,6 +77,10 @@ class Users extends Controller
         $user = User::find($id);
         if(!$user){
             return redirect()->route('users');
+        }
+        $reports = DBReports::where('user_id', $id)->get();
+        foreach ($reports as $report) {
+            $report->delete();
         }
         $user->delete();
         return redirect()->route('users');

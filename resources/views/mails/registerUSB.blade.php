@@ -13,7 +13,6 @@
     You will start recieving emails from {{ date('d-m-Y', strtotime($start_date)) }} to {{ date('d-m-Y', strtotime($end_date)) }} for the management of your volunteer in United Societies of Balkans.
     <div class="mb-2"></div>
 	<p>Best regards,</p>
-	<!-- Draw a line -->
 	<hr>
 	<div class="mb-2"</div>
 	<img src="https://unoy.org/web/wp-content/uploads/2021/01/Logo100mm1-300x204.png" alt="United Societies of Balkans" width="120" height="88">
