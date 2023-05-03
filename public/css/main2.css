@@ -1,0 +1,8 @@
+body {
+	/* The background are 4 images, 1 for each corner of the page, the top ones have to respect the navbar */
+	background-image: url("/images/background-topleft.png"), url("/images/background-topright.png"), url("/images/background-bottomleft.png"), url("/images/background-bottomright.png");
+	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+	background-position: left top, right top, left bottom, right bottom;
+	background-attachment: fixed, fixed, fixed, fixed;
+	background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+}

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>USB</title>
     <link type="text/css" rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/main2.css') }}">
     <script src="{{ asset ('js/jquery.min.js')}}"></script>
     <script src="{{ asset('js/bootstrap.min.js')}}"></script>
     <link type="text/css" rel="stylesheet" href="{{ asset('fontawesome/css/brands.css')}}" rel="stylesheet">
