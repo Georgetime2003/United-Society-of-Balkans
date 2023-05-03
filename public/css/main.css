@@ -1,15 +1,46 @@
 .background {
-	/* The background are 4 images, 1 for each corner of the page, it has to fill the entire page */
 	background-image: url("/images/border-topleft.png"), url("/images/border-topright.png"), url("/images/border-bottomleft.png"), url("/images/border-bottomright.png");
 	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
 	background-position: top left, top right, bottom left, bottom right;
-	/* The size of the image is different for each type of screen, so it has to be calculated */
 	background-size: calc(100vw / 17), calc(100vw / 17), calc(100vw / 17), calc(100vw / 17);
 	background-color: #fdfdfd;
-	/* The container has to be at least the size of the page, so the background can fill it */
-	/* The size of the container is the size of the page minus the size of the header and footer */
-	height: calc(100% - 65px);
+	height: calc(100vh - 65px);
+}
 
+.background-animated {
+	opacity: 0%;
+	animation: fade-in 0.5s ease-in-out;
+	-webkit-animation: fade-in 0.5s ease-in-out;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
 
+.fade-up {
+	animation: fade-up 0.7s ease-in-out;
+	-webkit-animation: fade-up 0.7s ease-in-out;
+	opacity: 0%;
+	animation-delay: 0.5s;
+	-webkit-animation-delay: 0.5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
 
+@keyframes fade-up {
+	0% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+	
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
