@@ -37,4 +37,5 @@ Route::get('/home', function () {
     return view('home');
 })->name('home')->middleware('auth');
 
-Route::get('/generateReports', [App\Http\Controllers\Reports::class, 'schedule'])->name('reports.schedule');
+Route::get('/pushWeeklyReport', [App\Http\Controllers\PushController::class, 'pushWeeklyReport'])->name('push');
+
