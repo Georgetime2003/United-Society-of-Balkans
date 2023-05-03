@@ -1,13 +1,15 @@
-.bg-image {
-    background-image: url("/images/background.jpg");
-    position: relative;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50%;
-    height: 100vh;
+.background {
+	/* The background are 4 images, 1 for each corner of the page, it has to fill the entire page */
+	background-image: url("/images/border-topleft.png"), url("/images/border-topright.png"), url("/images/border-bottomleft.png"), url("/images/border-bottomright.png");
+	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+	background-position: top left, top right, bottom left, bottom right;
+	/* The size of the image is different for each type of screen, so it has to be calculated */
+	background-size: calc(100vw / 17), calc(100vw / 17), calc(100vw / 17), calc(100vw / 17);
+	background-color: #fdfdfd;
+	/* The container has to be at least the size of the page, so the background can fill it */
+	/* The size of the container is the size of the page minus the size of the header and footer */
+	height: calc(100% - 65px);
+
+
+
 }
-/* Main colors:
-    #F58233 Orange
-    #00B5AD Blue
-    */
