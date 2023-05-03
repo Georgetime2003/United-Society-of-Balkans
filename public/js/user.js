@@ -3,6 +3,7 @@ var toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
 var toast = toastList[0];
 
 window.onload = function() {
+	initSW();
 	document.getElementById("save").addEventListener("click", function() {
 		$.ajaxSetup({
 			headers: {
@@ -35,3 +36,27 @@ window.onload = function() {
 		});
 	});
 };
+
+function initSW() {
+	if (!"serviceWorker" in navigator) {
+		//service worker isn't supported
+		return;
+	}
+  
+	//don't use it here if you use service worker
+	//for other stuff.
+	if (!"PushManager" in window) {
+		//push isn't supported
+		return;
+	}
+  
+	//register the service worker
+	navigator.serviceWorker.register('/js/sw.js')
+		.then(() => {
+			console.log('serviceWorker installed!')
+			initPush();
+		})
+		.catch((err) => {
+			console.log(err)
+		});
+}
