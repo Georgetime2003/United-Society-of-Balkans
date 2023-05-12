@@ -56,4 +56,9 @@ class Forum extends Controller
         }
         return view('forum.view', ['forum' => $forum, 'posts' => $posts]);
     }
+
+    public function createPost_index($idforum){
+        $forum = DBForum::find($idforum);
+        return view('forum.createPost', ['forum' => $forum]);
+    }
 }

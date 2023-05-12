@@ -4,7 +4,11 @@
 	background-position: top left, top right, bottom left, bottom right;
 	background-size: calc(100vw / 17), calc(100vw / 17), calc(100vw / 17), calc(100vw / 17);
 	background-color: #fdfdfd;
-	height: calc(100vh - 65px);
+	/* While scrolling, the bottom images will also move */
+	background-attachment: scroll, scroll, scroll, scroll;
+	/* Set space for the bottom background images */
+	padding: calc(100vw / 60) calc(100vw / 50) calc(100vw / 20) calc(100vw / 35);
+	height: calc(100vh - 65px),
 }
 
 .background-animated {
@@ -53,4 +57,12 @@
 
 strong {
 	font-weight: 600;
+}
+
+-option-button {
+	background-color: #fdfdfd;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px;
 }
