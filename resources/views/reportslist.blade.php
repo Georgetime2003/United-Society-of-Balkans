@@ -3,8 +3,8 @@
 <script src="{{ asset('js/reports.js') }}"></script>
 @endsection
 @section('site_content')
-<div class="background">
-    <div class="container">
+<div class="background background-animated">
+    <div class="container fade-up">
         <div class="row">
             <div class="col-12">
                 <h2 data-header="h1" class="title my-5">Volunteers Reports</h2>

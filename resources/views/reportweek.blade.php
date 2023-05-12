@@ -19,7 +19,7 @@
 	<div class="mb-2"></div>
     <div class="row">
         <div class="col-12">
-            <h2 data-header="h1" class="title my-5">{{$user->name . " " . $user->surnames . "'s "}} weekly report</h2>
+            <h2 data-header="h1" class="title my-5">{{$user->name . " " . $user->surnames . "'s "}} Weekly Report</h2>
             <div class="row">
                 <div class="card border-1 shadow rounded-3">
                     <div class="card-body p-4">

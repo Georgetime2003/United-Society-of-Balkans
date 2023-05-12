@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('forums', function (Blueprint $table) {
+        Schema::create('upvotes', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
-            $table->string('category', 100);
-            $table->boolean('upvotes')->default(false);
-            $table->boolean('hasPinned')->default(false);
+            $table->foreignId('post_id')->constrained('forum_posts');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('forums');
+        Schema::dropIfExists('upvotes');
     }
 };

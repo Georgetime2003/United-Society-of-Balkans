@@ -34,7 +34,7 @@ return new class extends Migration
             'name' => 'Admin',
             'surnames' => 'Admin',
             'role' => 'superadmin',
-            'email' => 'volunteer@usbngo.gr',
+            'email' => 'familiajordiescarra@gmail.com',
         ]);
     }
 

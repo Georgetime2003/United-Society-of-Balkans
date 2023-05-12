@@ -39,3 +39,8 @@ Route::get('/home', function () {
 
 Route::get('/pushWeeklyReport', [App\Http\Controllers\PushController::class, 'pushWeeklyReport'])->name('push');
 
+Route::get('/forum', [App\Http\Controllers\Forum::class, 'index'])->name('forum');
+Route::post('/forum', [App\Http\Controllers\Forum::class, 'create'])->name('forum.create');
+Route::get('/forum/{id}', [App\Http\Controllers\Forum::class, 'viewForum'])->name('forum.viewForum');
+Route::get('/forum/{idforum}/{idpost}', [App\Http\Controllers\Forum::class, 'viewPost'])->name('forum.viewPost');
+

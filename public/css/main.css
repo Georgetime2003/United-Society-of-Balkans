@@ -44,3 +44,13 @@
 		opacity: 1;
 	}
 }
+
+.title-forum {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: rgb(0, 0, 121);
+}
+
+strong {
+	font-weight: 600;
+}
