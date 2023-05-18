@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <h2 data-header="h1" class="title my-5 fade-up">Forums</h2>
-                <div class="row">
+                <div class="row content-animated">
                     <div class="card border-1 shadow rounded-3">
                         <div class="card-body p-4">
                             <div class="row">
@@ -31,7 +31,8 @@
 													<div class="card card-selector border-1 rounded-5">
                                                             <div class="card-body p-4">
 														    	<h5 class="title-forum">📌{{$forum->pinnedPost->title}}</h5>
-														    	<p>{{$forum->pinnedPost->content}}</p>
+														    	
+                                                                <p>{{$forum->pinnedPost->content}}</p>
 														    </div>
 													</div>
                                                 </a>
