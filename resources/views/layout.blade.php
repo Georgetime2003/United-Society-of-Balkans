@@ -6,18 +6,20 @@
 		<img src="/images/logonav.png" alt="Logo" width="40" height="38" class="d-inline-block">
 	  </a>
 	  <div class="d-flex">
-		@if (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
-			<a class="btn btn-outline-light me-2" href="/users">Users</a>
-			<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
-			<a class="btn btn-outline-light me-2" href="/reports">Reports</a>
-			<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
-		@elseif (Auth::user()->role == 'volunteer')
-			<a class="btn btn-outline-light me-2" href="/reports/{{Auth::user()->id}}">Reports</a>
-			<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
-			<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
-		@elseif (Auth::user()->role == 'housemanager')
-			<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
-			<a class="btn btn-outline-light me-2" href="/logout" onclick="logout(event)">Logout</a>
+		@if (Auth::user())
+			@if (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
+				<a class="btn btn-outline-light me-2" href="/users">Users</a>
+				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
+				<a class="btn btn-outline-light me-2" href="/reports">Reports</a>
+				<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
+			@elseif (Auth::user()->role == 'volunteer')
+				<a class="btn btn-outline-light me-2" href="/reports/{{Auth::user()->id}}">Reports</a>
+				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
+				<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
+			@elseif (Auth::user()->role == 'housemanager')
+				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
+				<a class="btn btn-outline-light me-2" href="/logout" onclick="logout(event)">Logout</a>
+			@endif
 		@endif
 	  </div>
 	</div>
