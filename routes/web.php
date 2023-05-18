@@ -20,6 +20,7 @@ Route::get('/auth/{provider}', [App\Http\Controllers\login::class, 'Oauth'])->na
 Route::get('/callback/google', [App\Http\Controllers\login::class, 'GoogleCallback'])->name('google.callback');
 Route::get('/callback/facebook', [App\Http\Controllers\login::class, 'FacebookCallback'])->name('facebook.callback');
 Route::get('callback/microsoft', [App\Http\Controllers\login::class, 'MicrosoftCallback'])->name('microsoft.callback');
+Route::get('/logout', [App\Http\Controllers\login::class, 'logout'])->name('logout');
 
 Route::get('/users', [App\Http\Controllers\Users::class, 'index'])->name('users');
 Route::get('/user/config', [App\Http\Controllers\Users::class, 'config'])->name('users.config');

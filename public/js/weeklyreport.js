@@ -5,6 +5,9 @@ var toastElList = document.querySelectorAll('.toast');
 var toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl));
 var toast = toastList[0];
 
+/**
+ * Function to send the update through ajax
+ */
 window.onload = function() {
 	document.getElementById("monday4").addEventListener("focusout", function() {
 		var value = this.innerText;
@@ -52,6 +55,11 @@ window.onload = function() {
 	});
 };
 
+/**
+ * Function to send the update through ajax
+ * @param {string} day The day of the week that is being updated
+ * @param {string} value The value that is being updated
+ */
 function sendUpdate(day, value){
 	$.ajaxSetup({
 		headers: {

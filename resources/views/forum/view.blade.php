@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <h2 data-header="h1" class="title my-5 fade-up">{{$forum->title}}</h2>
-                <div class="row">
+                <div class="row content-animated">
                     <div class="card border-1 shadow rounded-3">
                         <div class="card-body p-4">
                             <div class="row">
@@ -28,6 +28,7 @@
 										<option value="upvotes">Upvotes</option>
 									</select>
 								</div>
+								<div class="mb-2"></div>
 								@foreach ($posts as $post)
 									<div class="mb-2"></div>
 									<div class="card border-1 shadow rounded-3">

@@ -3,7 +3,7 @@
 <script src="{{ asset('js/reports.js') }}"></script>
 @endsection
 @section('site_content')
-<div class="background background-animated">
+<div class="background-fixed background-animated">
     <div class="container fade-up">
         <div class="row">
             <div class="col-12">

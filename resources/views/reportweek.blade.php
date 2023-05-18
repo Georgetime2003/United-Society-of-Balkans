@@ -15,6 +15,7 @@
 		<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
 	</div>
 </div>
+<div class="background-fixed">
 <div class="container">
 	<div class="mb-2"></div>
     <div class="row">
@@ -79,6 +80,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <input type="integer" id="reportid" value="{{$report->id}}" hidden>
 <input type="integer" id="userid" value="{{$user->id}}" hidden>

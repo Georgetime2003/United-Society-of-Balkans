@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class Reports extends Controller
 {
+    /**
+     * Function for creating the weekly reports for all the volunteers
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector It returns to a function to send the notification (Not implemented yet)
+     */
     public function schedule(){
         //Get users that are volunteers and are active (start_date <= today <= end_date)
         $users = User::where('role', 'volunteer')->where('start_date', '<=', date('Y-m-d'))->get();
@@ -27,11 +31,20 @@ class Reports extends Controller
         return redirect()->route('pushWeeklyReport');
     }
 
+    /**
+     * Function for showing the list of users that are actually active as volunteers
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View It returns the view with the list of users
+     */
     public function index(){
         $users = User::where('role', 'volunteer')->where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->get();
         return view('reportslist')->with('users', $users);
     }
 
+    /**
+     * Function for showing the weekly reports of a user
+     * @param $userid The id of the user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View It returns the view with the list of reports of the user
+     */
     public function listUser($userid){
         $reports = DBReports::where('user_id', $userid)->get();
         for ($i = 0; $i < count($reports); $i++) {
@@ -109,6 +122,12 @@ class Reports extends Controller
         return view('reportsUser')->with('reports', $reports)->with('user', $user);
     }
 
+    /**
+     * Function for showing the weekly report of a user
+     * @param $userid The id of the user
+     * @param $reportid The id of the report
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View It returns the view with the report of the user, if is the admin, it cannot edit the report, if is the volunteer, it can edit the report
+     */
     public function show($userid, $reportid){
         $report = DBReports::where('id', $reportid)->first();
         if (Auth::user()->role == 'volunteer' && Auth::user()->id != $report->user_id) {
@@ -124,6 +143,11 @@ class Reports extends Controller
         // return dd(Auth::user());
     }
 
+    /**
+     * Function for updating the weekly report of a user
+     * @param Request $request The request with the data of the report
+     * @return \Illuminate\Http\JsonResponse It returns a json response with the status of the update if it was successful or not
+     */
     public function updateWeekly(Request $request){
         $user_id = $request->input('userid');
         if (Auth::user()->role == 'volunteer' && Auth::user()->id != $user_id) {

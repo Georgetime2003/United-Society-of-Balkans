@@ -33,16 +33,16 @@ return [
     'google' => [
         'client_id' => env("GOOGLE_CLIENT_ID"),
         'client_secret' => env("GOOGLE_CLIENT_SECRET"),
-        'redirect' => "http://localhost/callback/google"
+        'redirect' => "http://usb.com/callback/google"
     ],
     "facebook"=> [
         'client_id' => env("FACEBOOK_CLIENT_ID"),
         'client_secret' => env("FACEBOOK_CLIENT_SECRET"),
-        'redirect' => "http://localhost/callback/facebook"
+        'redirect' => "http://usb.com/callback/facebook"
     ],
     "microsoft"=> [
         'client_id' => env("MICROSOFT_CLIENT_ID"),
         'client_secret' => env("MICROSOFT_CLIENT_SECRET"),
-        'redirect' => "http://localhost/callback/microsoft"
+        'redirect' => "http://usb.com/callback/microsoft"
     ]
 ];

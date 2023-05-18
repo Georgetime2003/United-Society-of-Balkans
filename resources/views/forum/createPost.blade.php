@@ -3,12 +3,12 @@
 <script defer type="module" src="{{ asset('js/indexforum.js') }}"></script>
 @endsection
 @section('site_content')
-<div class="background background-animated">
+<div class="background-fixed background-animated">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <h2 data-header="h1" class="title my-5 fade-up">Create Post in <strong>{{$forum->title}}'s</strong> Forum</h2>
-                <div class="row">
+                <div class="row content-animated">
                     <div class="card border-1 shadow rounded-3">
                         <div class="card-body p-4">
 							<div class="row">
@@ -22,7 +22,7 @@
 										<div class="mb-3">
 											<label for="content" class="form-label">Content</label>
 											<div class="options">
-												<button id="bold" type="button" class="btn btn-primary">
+							 					<button id="bold" type="button" class="btn btn-primary">
 													<i class="fas fa-bold"></i>
 												</button>
 												<button id="italic" type="button" class="btn btn-primary">

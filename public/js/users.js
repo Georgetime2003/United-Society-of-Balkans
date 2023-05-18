@@ -1,4 +1,5 @@
 window.onload = function() {
+	//Add event listener to the table rows to redirect to the user page
 	for (let i = 1; i < document.getElementsByTagName("tr").length; i++) {
 		document.getElementsByTagName("tr")[i].addEventListener("click", function() {
 			window.location.href = "/user/" + document.getElementsByTagName("tr")[i].id;
@@ -17,6 +18,7 @@ window.onload = function() {
 	}
 }
 
+//Function to delete a user
 function deleteUser(id) {
 	if(confirm("Are you sure you want to delete this user?")) {
 		$.ajaxSetup({

@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class Forum extends Controller
 {
+    /**
+     * Display the list of Fourms avaliable in the site.
+     * @return \Illuminate\Http\Response It will load the main site with the list of forums, and if a post is pinned it will show it with the first 300 characters
+     */
     public function index() {
         $forums = DBForum::all();
         foreach ($forums as $forum){
@@ -29,7 +33,10 @@ class Forum extends Controller
             return view('forum.index', ['forums' => $forums, 'admin' => false]);
         }
     }
-
+    /**
+     * It creates the forum in the database.
+     * @return \Illuminate\Http\Response It will reload the page with the new forum created.
+     */
     public function create(Request $request){
         $request->validate([
             'title' => 'required|max:100',
@@ -44,6 +51,11 @@ class Forum extends Controller
         return redirect()->route('forum');
     }
 
+    /**
+     * It shows the forum.
+     * @param int $id The id of the forum to show.
+     * @return \Illuminate\Http\Response It will load the forum with the posts and comments.
+     */
     public function viewForum($id){
         $forum = DBForum::find($id);
         $posts = DBForum_posts::where('forum_id', $id)->orderBy('isPinned', 'desc')->orderBy('created_at', 'desc')->get();
@@ -57,6 +69,11 @@ class Forum extends Controller
         return view('forum.view', ['forum' => $forum, 'posts' => $posts]);
     }
 
+    /**
+     * It shows the view for creating a new post.
+     * @param int $idforum The id of the forum to create the post.
+     * @return \Illuminate\Http\Response It will load the view for creating a new post.
+     */
     public function createPost_index($idforum){
         $forum = DBForum::find($idforum);
         return view('forum.createPost', ['forum' => $forum]);
