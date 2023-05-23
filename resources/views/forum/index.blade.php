@@ -74,7 +74,6 @@
                         <!-- Set a button inside input for emogi keyboard -->
                         <input type="text" class="form-control" id="forumTitle" name="title" placeholder="Forum Title" required>
                         <label for="title" class="form-label">Forum Title</label>
-                        <button type="button" class="btn btn-outline-secondary" id="emogiKeyboard">😁</button>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="category" name="category" placeholder="Forum Category" required>
@@ -95,7 +94,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" type="submit">Create Forum</button>
+                    <button class="btn btn-success" id="create" type="submit">Create Forum</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </form>

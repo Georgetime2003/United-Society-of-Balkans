@@ -19,36 +19,9 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <link rel="icon" sizes="960x960" href="{{ asset('images/logo.png') }}">
     <link rel="icon" type="image/png" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">
-<script>
-        if (navigator.userAgent.match(/Android/i)) {
-            window.scrollTo(0,0); // reset in case prev not scrolled  
-            var nPageH = $(document).height();
-            var nViewH = window.outerHeight;
-            if (nViewH > nPageH) {
-              nViewH -= 250;
-              $('BODY').css('height',nViewH + 'px');
-            }
-            window.scrollTo(0,1);
-        } else if (navigator.userAgent.match(/iPhone/i)) {
-            window.scrollTo(0,0); // reset in case prev not scrolled  
-            var nPageH = $(document).height();
-            var nViewH = window.outerHeight;
-            if (nViewH > nPageH) {
-              nViewH -= 250;
-              $('BODY').css('height',nViewH + 'px');
-            }
-            window.scrollTo(0,1);
-        } else if (navigator.userAgent.match(/iPad/i)) {
-            window.scrollTo(0,0); // reset in case prev not scrolled  
-            var nPageH = $(document).height();
-            var nViewH = window.outerHeight;
-            if (nViewH > nPageH) {
-              nViewH -= 250;
-              $('BODY').css('height',nViewH + 'px');
-            }
-            window.scrollTo(0,1);
-        }
-    </script>
+
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
     @yield('header')
 </head>
 <body>

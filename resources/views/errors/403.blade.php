@@ -8,7 +8,11 @@
         <div class="row">
             <div class="col-12">
                 <h2 data-header="h1" class="title my-5">You're not supposed to be here</h2>
-				<p>Go back to <a href="/forum">home</a> <small>please :)</small></p>
+				<div class="text-center">
+					<img src="{{ asset('images/error.gif') }}" alt="You're not supposed to be here" class="img-fluid">
+				</div>
+				<br/>
+				<p>Go back to <a href="/forum" class="btn btn-outline-dark">Main site</a> <small>please 😇</small></p>
             </div>
 			<footer class="footer mt-auto py-3 bg-light">
 				<div class="container">

@@ -13,9 +13,9 @@
                         <div class="card-body p-4">
                             <div class="row">
 								<div class="col-4">
-									<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCreatePost">
+									<a class="btn btn-success" href="/forum/{{$forum->id}}/new" data-bs-toggle="modal" data-bs-target="#modalCreatePost">
 										<i class="fas fa-plus"></i>  Create Post
-									</button>
+									</a>
 								</div>
 								<div class="col-1 offset-3">
 									<label for="orderby" class="form-label">Order By:</label>

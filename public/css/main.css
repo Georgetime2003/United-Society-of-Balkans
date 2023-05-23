@@ -1,9 +1,12 @@
+body {
+	background-color: #edfdff;
+}
+
 .background {
 	background-image: url("/images/border-topleft.png"), url("/images/border-topright.png"), url("/images/border-bottomleft.png"), url("/images/border-bottomright.png");
 	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
 	background-position: top left, top right, bottom left, bottom right;
 	background-size: calc(100vw / 17), calc(100vw / 17), calc(100vw / 17), calc(100vw / 17);
-	background-color: #fdfdfd;
 	/* While scrolling, the bottom images will also move */
 	background-attachment: scroll, scroll, scroll, scroll;
 	/* Set space for the bottom background images */
@@ -17,7 +20,6 @@
 	background-position: top left, top right, bottom left, bottom right;
 	/* The size of the image is different for each type of screen, so it has to be calculated */
 	background-size: calc(100vw / 17), calc(100vw / 17), calc(100vw / 17), calc(100vw / 17);
-	background-color: #fdfdfd;
 	/* The container has to be at least the size of the page, so the background can fill it */
 	/* The size of the container is the size of the page minus the size of the header and footer */
 	height: calc(100% - 65px);

@@ -45,7 +45,7 @@ class Forum extends Controller
         $forum = new DBForum;
         $forum->title = $request->title;
         $forum->category = $request->category;
-        $forum->upvotes = $request->upvote;
+        $forum->upvotes = $request->upvote == null ? 0 : 1;
         $forum->user_id = DBUser::where('id', $request->admin)->first()->id;
         $forum->save();
         return redirect()->route('forum');
