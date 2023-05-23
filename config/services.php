@@ -30,10 +30,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-    'google' => [
+    'google' => [ 
         'client_id' => env("GOOGLE_CLIENT_ID"),
         'client_secret' => env("GOOGLE_CLIENT_SECRET"),
-        'redirect' => "http://usb.com/callback/google"
+        'redirect' => "http://ec2-16-170-133-52.eu-north-1.compute.amazonaws.com/callback/google"
     ],
     "facebook"=> [
         'client_id' => env("FACEBOOK_CLIENT_ID"),
