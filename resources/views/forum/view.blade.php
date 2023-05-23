@@ -79,12 +79,11 @@
 												<h5>Comments</h5>
 												@if($post->comments)
 												@foreach ($post->comments as $comment)
-														<div class="card border-1 shadow rounded-3">
-															<div class="card-body p-4">
-																<p>{{$comment->content}}</p>
-																<p>Posted by <strong>{{$comment->user->name}} {{$comment->user->surnames}}</strong> on <strong>{{$comment->created_at}}</strong></p>
-															</div>
-														</div>
+													<div>
+														<img src="{{ asset('/images/default-avatar.png') }}" alt="User Image" width="35" height="35"> <strong>{{$comment->user->name}} {{$comment->user->surnames}}</strong>
+														<p>{{$comment->content}}</p>
+														<p>Posted at <strong>{{$comment->created_at}}</strong></p>
+													</div>
 												@endforeach
 												@else
 													<p>No comments yet</p>

@@ -1,6 +1,6 @@
 @extends('layout')
 @section('header')
-<script defer type="module" src="{{ asset('js/indexforum.js') }}"></script>
+<script defer type="module" src="{{ asset('js/viewPost.js') }}"></script>
 @endsection
 @section('site_content')
 <div class="background background-animated">
@@ -52,10 +52,10 @@
 												<h5>Comments</h5>
 												@if($post->comments)
 												@foreach ($post->comments as $comment)
-														<div class="card border-1 shadow rounded-3">
-															<div class="card-body p-4">
+															<div>
+																<img src="{{ asset('/images/default-avatar.png') }}" alt="User Image" width="35" height="35"> <strong>{{$comment->user->name}} {{$comment->user->surnames}}</strong>
 																<p>{{$comment->content}}</p>
-																<p>Posted by <strong>{{$comment->user->name}} {{$comment->user->surnames}}</strong> on <strong>{{$comment->created_at}}</strong></p>
+																<p>Posted at <strong>{{$comment->created_at}}</strong></p>
 															</div>
 														</div>
 												@endforeach
@@ -65,9 +65,10 @@
 												<div class="col-12">
 													@csrf
 													<h5>Write a Comment!</h5>
-													<label for="comment">Write a Comment</label>
-													<input type="text" id="comment" name="comment" class="">
-													<button type="submit" class="btn btn-outline-success">Comment</button>
+													<textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+													<div class="col-12">
+														<button type="button" id="submit" class="btn btn-primary">Submit</button>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -79,4 +80,7 @@
 			</div>
 		</div>
 	</div>
+	<input type="hidden" id="post_id" value="{{$post->id}}">
+	<input type="hidden" id="user_id" value="{{Auth::user()->id}}">
+	<input type="hidden" id="forum_id" value="{{$post->forum_id}}">
 @endsection

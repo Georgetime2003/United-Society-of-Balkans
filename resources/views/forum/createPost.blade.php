@@ -1,6 +1,14 @@
 @extends('layout')
 @section('header')
-<script defer type="module" src="{{ asset('js/indexforum.js') }}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script defer type="module" src="{{ asset('js/post.js') }}"></script>
+<!--Fonts Arial, Arial Black, Comic Sans MS, Courier New, Georgia, Impact, Lucida Sans Unicode, Tahoma, Times New Roman, Trebuchet MS, Verdana-->
+<style>
+	.ql-editor {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	}
+</style>
 @endsection
 @section('site_content')
 <div class="background-fixed background-animated">
@@ -13,43 +21,18 @@
                         <div class="card-body p-4">
 							<div class="row">
 								<div class="col-12">
-									<form action="/forum/{{$forum->id}}/createPost" method="POST">
+									<form action="/forum/{{$forum->id}}/post" method="POST">
 										@csrf
 										<div class="mb-3">
 											<label for="title" class="form-label">Title</label>
 											<input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
 										</div>
-										<div class="mb-3">
-											<label for="content" class="form-label">Content</label>
-											<div class="options">
-							 					<button id="bold" type="button" class="btn btn-primary">
-													<i class="fas fa-bold"></i>
-												</button>
-												<button id="italic" type="button" class="btn btn-primary">
-													<i class="fas fa-italic"></i>
-												</button>
-												<button id="underline" type="button" class="btn btn-primary">
-													<i class="fas fa-underline"></i>
-												</button>
-												<button id="strikethrough" type="button" class="btn btn-primary">
-													<i class="fas fa-strikethrough"></i>
-												</button>
-												<button id="link" type="button" class="btn btn-primary">
-													<i class="fas fa-link"></i>
-												</button>
-												<button id="image" type="button" class="btn btn-primary">
-													<i class="fas fa-image"></i>
-												</button>
-												<button id="superscript" class="option-button script">
-													<i class="fas fa-superscript"></i>
-												</button>
-												<button id="subscript" class="option-button script">
-													<i class="fas fa-subscript"></i>
-												</button>
-											<textarea class="form-control" id="content" name="content" rows="3" placeholder="Content" required></textarea>
-										</div>
-										<button type="submit" class="btn btn-primary">Create Post</button>
+										<div class="mb-2"></div>
+											<div id="toolbar"></div>
+											<div id="editor"></div>
+										<button id="submit" class="btn btn-primary">Create Post</button>
 									</form>
+									<!-- Add white space to the end of the page -->
 								</div>
 							</div>
 						</div>

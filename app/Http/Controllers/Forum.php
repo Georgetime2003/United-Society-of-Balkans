@@ -79,10 +79,48 @@ class Forum extends Controller
         return view('forum.createPost', ['forum' => $forum]);
     }
 
+    public function createPost(Request $request){
+        $request->validate([
+            'title' => 'required|max:100',
+        ]);
+        $post = new DBForum_posts;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->forum_id = $request->forum_id;
+        $post->user_id = Auth::id();
+        $post->save();
+        return redirect()->route('forum.view', ['id' => $request->forum_id]);
+    }
+
     public function viewPost($idpost) {
         $post = DBForum_posts::where('id', $idpost)->first();
         $post->user = DBUser::find($post->user_id);
         $post->comments = DBForum_comments::where('post_id', $idpost)->orderBy('created_at', 'desc')->get();
+        foreach ($post->comments as $comment){
+            $comment->user = DBUser::find($comment->user_id);
+        }
         return view('forum.viewPost', ['post' => $post]);
+    }
+
+    public function createComment(Request $request){
+        $request->validate([
+            'content' => 'required|max:1000',
+        ]);
+        $post = DBForum_posts::where('id', $request->post_id)->first();
+        if ($post){
+            try{
+            $comment = new DBForum_comments;
+            $comment->content = $request->content;
+            $comment->post_id = $request->post_id;
+            $comment->user_id = Auth::id();
+            $comment->forum_id = $post->forum_id;
+            $comment->save();
+            return response()->json(['success' => 'Comment created successfully.']);
+            } catch (\Exception $e){
+                return response()->json(['error' => 'Error creating comment.' . $e->getMessage()]);
+            }
+        } else {
+            return response()->json(['error' => 'Post not found.']);
+        }
     }
 }
