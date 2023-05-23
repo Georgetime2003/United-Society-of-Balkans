@@ -32,7 +32,7 @@
                                                             <div class="card-body p-4">
 														    	<h5 class="title-forum">📌{{$forum->pinnedPost->title}}</h5>
 														    	
-                                                                <p>{{$forum->pinnedPost->content}}</p>
+                                                                {{$forum->pinnedPost->content}}
 														    </div>
 													</div>
                                                 </a>
@@ -40,7 +40,7 @@
                                                     <div class="card border-1 shadow rounded-3">
                                                         <div class="card-body p-4">
                                                             <a href="/forum/{{$forum->id}}/{{$forum->lastPost->id}}"><h5>{{$forum->lastPost->title}}</h5></a>
-                                                            <p>{{$forum->lastPost->content}}</p>
+                                                            {{$forum->lastPost->content}}
                                                             <a href="{{ route('forum.post', ['id' => $forum->lastPost->id]) }}" class="btn btn-primary">View Post</a>
                                                         </div>
                                                     </div>

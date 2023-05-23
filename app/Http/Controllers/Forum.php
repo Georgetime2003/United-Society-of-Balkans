@@ -90,7 +90,7 @@ class Forum extends Controller
         $post->forum_id = $request->forum_id;
         $post->user_id = Auth::id();
         $post->save();
-        return response()->json(['success' => 'Post created successfully.']
+        return response()->json(['success' => 'Post created successfully.']);
         } catch (\Exception $e){
             return response()->json(['error' => 'Error creating post.' . $e->getMessage()]);
         }

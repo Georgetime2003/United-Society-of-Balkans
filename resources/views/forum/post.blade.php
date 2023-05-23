@@ -71,7 +71,7 @@
 													<img src="{{ asset('storage/images/'.$post->image) }}" alt="Post Image" width="100%" height="auto">
 												</div>
 											@endif
-											<p>{{$post->content}}</p>
+											{!! $post->content !!}
 											<div class="col-8">
 												<p>Posted by <strong>{{$post->user->name}} {{$post->user->surnames}}</strong> on <strong>{{date('d-m-Y', strtotime($post->created_at))}}</strong> at <strong>{{date('H:i', strtotime($post->created_at))}}</strong></p>
 											</div>
@@ -81,7 +81,7 @@
 												@foreach ($post->comments as $comment)
 														<div class="card border-1 shadow rounded-3">
 															<div class="card-body p-4">
-																<p>{{$comment->content}}</p>
+																{{$comment->content}}
 																<p>Posted by <strong>{{$comment->user->name}} {{$comment->user->surnames}}</strong> on <strong>{{$comment->created_at}}</strong></p>
 															</div>
 														</div>
