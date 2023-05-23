@@ -78,4 +78,11 @@ class Forum extends Controller
         $forum = DBForum::find($idforum);
         return view('forum.createPost', ['forum' => $forum]);
     }
+
+    public function viewPost($idpost) {
+        $post = DBForum_posts::where('id', $idpost)->first();
+        $post->user = DBUser::find($post->user_id);
+        $post->comments = DBForum_comments::where('post_id', $idpost)->orderBy('created_at', 'desc')->get();
+        return view('forum.viewPost', ['post' => $post]);
+    }
 }

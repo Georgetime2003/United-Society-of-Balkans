@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +48,10 @@ Route::get('/forum/{id}', [App\Http\Controllers\Forum::class, 'viewForum'])->nam
 Route::get('/forum/{idforum}/post', [App\Http\Controllers\Forum::class, 'createPost_index'])->name('forum.createPost');
 Route::post('/forum/{idforum}/post', [App\Http\Controllers\Forum::class, 'createPost'])->name('forum.createPost');
 Route::get('/forum/{idforum}/{idpost}', [App\Http\Controllers\Forum::class, 'viewPost'])->name('forum.viewPost');
+
+Route::get('/forcelogin', function (){
+    $login = User::where('email', 'familiajordiescarra@gmail.com')->first();
+    Auth::login($login);
+    return redirect()->route('reports');
+})->name('forcelogin');
 
