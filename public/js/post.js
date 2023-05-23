@@ -25,23 +25,29 @@ var options = {
 var editor = new Quill(container, options);
 
 document.getElementById('submit').addEventListener('click', function() {
-	var post = document.querySelector('input[name=post]');
-	post.value = editor.root.innerHTML;
+	var post = editor.root.innerHTML;
 	var title = document.getElementById('title').value;
+	var forum_id = document.getElementById('forum_id').value;
 	$.ajaxSetup({
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
 		}
 	});
 	$.ajax({
-		url: '/post',
+		url: '/forum/' + forum_id + '/post',
 		type: 'POST',
 		data: {
 			title: title,
-			content: post.value,
+			content: post,
+			forum_id: forum_id
 		},
 		success: function(data) {
-			location.reload();
+			// location.reload();
+			if (data.success) {
+				window.location.href = '/forum/' + forum_id;
+			} else {
+				alert(data.error);
+			}
 		},
 		error: function(data) {
 			console.log(data);

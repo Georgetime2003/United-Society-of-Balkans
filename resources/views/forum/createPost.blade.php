@@ -30,7 +30,7 @@
 										<div class="mb-2"></div>
 											<div id="toolbar"></div>
 											<div id="editor"></div>
-										<button id="submit" class="btn btn-primary">Create Post</button>
+										<a id="submit" class="btn btn-primary">Create Post</a>
 									</form>
 									<!-- Add white space to the end of the page -->
 								</div>
@@ -41,4 +41,5 @@
 			</div>
 		</div>
 	</div>
+	<input type="hidden" id="forum_id" value="{{$forum->id}}">
 @endsection

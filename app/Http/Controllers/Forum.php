@@ -83,13 +83,17 @@ class Forum extends Controller
         $request->validate([
             'title' => 'required|max:100',
         ]);
+        try{
         $post = new DBForum_posts;
         $post->title = $request->title;
         $post->content = $request->content;
         $post->forum_id = $request->forum_id;
         $post->user_id = Auth::id();
         $post->save();
-        return redirect()->route('forum.view', ['id' => $request->forum_id]);
+        return response()->json(['success' => 'Post created successfully.']
+        } catch (\Exception $e){
+            return response()->json(['error' => 'Error creating post.' . $e->getMessage()]);
+        }
     }
 
     public function viewPost($idpost) {
