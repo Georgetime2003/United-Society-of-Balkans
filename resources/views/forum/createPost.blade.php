@@ -20,20 +20,22 @@
                     <div class="card border-1 shadow rounded-3">
                         <div class="card-body p-4">
 							<div class="row">
+								<form action="/forum/{{$forum->id}}/post" method="POST">
 								<div class="col-12">
-									<form action="/forum/{{$forum->id}}/post" method="POST">
 										@csrf
 										<div class="mb-3">
 											<label for="title" class="form-label">Title</label>
 											<input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
 										</div>
-										<div class="mb-2"></div>
+										<div class="mb-2 mx-auto" style="width: 80%; height: 400px">
 											<div id="toolbar"></div>
 											<div id="editor"></div>
+										</div>
+									</div>
+									<div class="col-1 offset-11">
 										<a id="submit" class="btn btn-primary">Create Post</a>
-									</form>
-									<!-- Add white space to the end of the page -->
-								</div>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>

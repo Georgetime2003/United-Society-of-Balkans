@@ -13,7 +13,7 @@
                         <div class="card-body p-4">
                             <div class="row">
 								<div class="col-4">
-									<a class="btn btn-success" href="/forum/{{$forum->id}}/new" data-bs-toggle="modal" data-bs-target="#modalCreatePost">
+									<a class="btn btn-success" href="/forum/{{$forum->id}}/post">
 										<i class="fas fa-plus"></i>  Create Post
 									</a>
 								</div>
