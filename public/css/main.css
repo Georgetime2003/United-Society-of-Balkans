@@ -146,7 +146,6 @@ body {
 	}
 }
 
-<<<<<<< HEAD
 @keyframes fade-left {
 	0% {
 		opacity: 0;
@@ -158,8 +157,6 @@ body {
 	}
 }
 
-=======
->>>>>>> 9be8f213cef44ffc7d80e5b2233de3c416b5ed44
 @keyframes fade-down {
 	0% {
 		opacity: 0%;
