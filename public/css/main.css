@@ -1,0 +1,192 @@
+body {
+	background-color: #fdfdfd;
+}
+
+.background {
+	background-image: url("/images/border-topleft.png"), url("/images/border-topright.png"), url("/images/border-bottomleft.png"), url("/images/border-bottomright.png");
+	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+	background-position: top left, top right, bottom left, bottom right;
+	background-size: calc(100vw / 17), calc(100vw / 17), calc(100vw / 17), calc(100vw / 17);
+	/* While scrolling, the bottom images will also move */
+	background-attachment: scroll, scroll, scroll, scroll;
+	/* Set space for the bottom background images */
+	padding: calc(100vw / 60) calc(100vw / 50) calc(100vw / 20) calc(100vw / 35);
+	height: calc(100vh - 65px),
+}
+
+.background-fixed {
+	background-image: url("/images/border-topleft.png"), url("/images/border-topright.png"), url("/images/border-bottomleft.png"), url("/images/border-bottomright.png");
+	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+	background-position: top left, top right, bottom left, bottom right;
+	/* The size of the image is different for each type of screen, so it has to be calculated */
+	background-size: calc(100vw / 17), calc(100vw / 17), calc(100vw / 17), calc(100vw / 17);
+	/* The container has to be at least the size of the page, so the background can fill it */
+	/* The size of the container is the size of the page minus the size of the header and footer */
+	height: calc(100% - 65px);
+}
+
+.background-animated {
+	opacity: 0%;
+	animation: fade-in 0.5s ease-in-out;
+	-webkit-animation: fade-in 0.5s ease-in-out;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.start-icons {
+	vertical-align: middle;
+	margin-right: 5px;
+  }
+
+  
+.linkmenu:link{
+	color: rgb(150, 0, 0);
+	text-decoration: none;
+	/* Bold text */
+	font-weight: bold;
+}
+/* Animated hover */
+.linkmenu:hover{
+	color: rgb(197, 0, 0);
+	text-decoration: none;
+	/* Bold text */
+	font-weight: bold;
+	/* Animate the text color */
+	transition: color 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in-out;
+	-moz-transition: color 0.2s ease-in-out;
+	-o-transition: color 0.2s ease-in-out;
+}
+
+
+.content-animated {
+	opacity: 0%;
+	animation: fade-up 0.5s ease-in-out;
+	-webkit-animation: fade-up 0.5s ease-in-out;
+	animation-delay: 0.75s;
+	-webkit-animation-delay: 0.75s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.fade-up {
+	animation: fade-up 0.7s ease-in-out;
+	-webkit-animation: fade-up 0.7s ease-in-out;
+	opacity: 0%;
+	animation-delay: 0.5s;
+	-webkit-animation-delay: 0.5s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.fade-down-users {
+	animation: fade-down 0.7s ease-in-out;
+	-webkit-animation: fade-down 0.7s ease-in-out;
+	opacity: 0%;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.fade-up-users {
+	animation: fade-up-users 0.7s ease-in-out;
+	-webkit-animation: fade-up-users 0.7s ease-in-out;
+	opacity: 100%;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+.fade-left {
+	animation: fade-left 0.7s ease-in-out;
+	-webkit-animation: fade-left 0.7s ease-in-out;
+	opacity: 0%;
+	animation-delay: 1s;
+	-webkit-animation-delay: 1s;
+	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
+}
+
+@keyframes fade-up {
+	0% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes fade-up-users {
+	0% {
+		opacity: 1;
+		transform: translateY(0px);
+		-webkit-transform: translateY(0px);
+		-moz-transform: translateY(0px);
+		-ms-transform: translateY(0px);
+		-o-transform: translateY(0px);
+}
+	100% {
+		opacity: 0;
+		transform: translateY(-50px);
+		-webkit-transform: translateY(-50px);
+		-moz-transform: translateY(-50px);
+		-ms-transform: translateY(-50px);
+		-o-transform: translateY(-50px);
+}
+}
+	
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fade-left {
+	0% {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes fade-down {
+	0% {
+		opacity: 0%;
+		transform: translateY(-50px);
+		-webkit-transform: translateY(-50px);
+		-moz-transform: translateY(-50px);
+		-ms-transform: translateY(-50px);
+		-o-transform: translateY(-50px);
+}
+	100% {
+		opacity: 100%;
+		transform: translateY(0px);
+		-webkit-transform: translateY(0px);
+		-moz-transform: translateY(0px);
+		-ms-transform: translateY(0px);
+		-o-transform: translateY(0px);
+}
+}
+
+.title-forum {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: rgb(0, 0, 121);
+}
+
+strong {
+	font-weight: 600;
+}
+
+-option-button {
+	background-color: #fdfdfd;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px;
+}
