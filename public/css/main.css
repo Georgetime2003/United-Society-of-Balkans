@@ -33,6 +33,7 @@ body {
 	-webkit-animation-fill-mode: forwards;
 }
 
+<<<<<<< HEAD
 .start-icons {
 	vertical-align: middle;
 	margin-right: 5px;
@@ -59,6 +60,8 @@ body {
 }
 
 
+=======
+>>>>>>> 9be8f213cef44ffc7d80e5b2233de3c416b5ed44
 .content-animated {
 	opacity: 0%;
 	animation: fade-up 0.5s ease-in-out;
@@ -143,6 +146,7 @@ body {
 	}
 }
 
+<<<<<<< HEAD
 @keyframes fade-left {
 	0% {
 		opacity: 0;
@@ -154,6 +158,8 @@ body {
 	}
 }
 
+=======
+>>>>>>> 9be8f213cef44ffc7d80e5b2233de3c416b5ed44
 @keyframes fade-down {
 	0% {
 		opacity: 0%;
