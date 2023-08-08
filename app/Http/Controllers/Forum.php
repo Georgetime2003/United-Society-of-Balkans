@@ -7,6 +7,7 @@ use App\Models\Forum as DBForum;
 use App\Models\Forum_comments as DBForum_comments;
 use App\Models\Forum_posts as DBForum_posts;
 use App\Models\User as DBUser;
+use App\Models\Upvotes as DBUpvotes;
 use Illuminate\Support\Facades\Auth;
 
 class Forum extends Controller
@@ -58,13 +59,24 @@ class Forum extends Controller
      */
     public function viewForum($id){
         $forum = DBForum::find($id);
+        if (!$forum){
+            abort(404);
+        }
         $posts = DBForum_posts::where('forum_id', $id)->orderBy('isPinned', 'desc')->orderBy('created_at', 'desc')->get();
         foreach ($posts as $post){
             $post->user = DBUser::find($post->user_id);
             $post->comments = DBForum_comments::where('post_id', $post->id)->orderBy('created_at', 'desc')->get();
+            if ($post->comments->count() > 0){
+                $post->lastComment = $post->comments->first();
+                $post->lastComment->user = DBUser::find($post->lastComment->user_id);
+            } else {
+                $post->nocoments = true;
+            }
             foreach ($post->comments as $comment){
                 $comment->user = DBUser::find($comment->user_id);
             }
+            $post->upvotes = DBUpvotes::where('post_id', $post->id)->count();
+            $post->upvoted = DBUpvotes::where('post_id', $post->id)->where('user_id', Auth::id())->count() > 0;
         }
         return view('forum.view', ['forum' => $forum, 'posts' => $posts]);
     }
@@ -84,26 +96,49 @@ class Forum extends Controller
             'title' => 'required|max:100',
         ]);
         try{
-        $post = new DBForum_posts;
-        $post->title = $request->title;
-        $post->content = $request->content;
-        $post->forum_id = $request->forum_id;
-        $post->user_id = Auth::id();
-        $post->save();
-        return response()->json(['success' => 'Post created successfully.']);
+            $post = new DBForum_posts;
+            $post->title = $request->title;
+            $post->content = $request->content;
+            $post->forum_id = $request->forum_id;
+            $post->user_id = Auth::id();
+            $post->save();
+            return response()->json(['success' => 'Post created successfully.']);
         } catch (\Exception $e){
             return response()->json(['error' => 'Error creating post.' . $e->getMessage()]);
         }
     }
 
-    public function viewPost($idpost) {
-        $post = DBForum_posts::where('id', $idpost)->first();
+    public function viewPost($idforum, $idpost) {
+        $post = DBForum_posts::where('id', $idpost)->where('forum_id', $idforum)->first();
+        if (!$post){
+            abort(404);
+        }
         $post->user = DBUser::find($post->user_id);
         $post->comments = DBForum_comments::where('post_id', $idpost)->orderBy('created_at', 'desc')->get();
         foreach ($post->comments as $comment){
             $comment->user = DBUser::find($comment->user_id);
         }
+        $post->upvotes = DBUpvotes::where('post_id', $idpost)->count();
+        $post->upvoted = DBUpvotes::where('post_id', $idpost)->where('user_id', Auth::id())->count() > 0;
         return view('forum.viewPost', ['post' => $post]);
+    }
+
+    public function deletePost(Request $request){
+        $post = DBForum_posts::where('id', $request->post_id)->first();
+        if ($post){
+            $comments = DBForum_comments::where('post_id', $request->post_id)->get();
+            foreach ($comments as $comment){
+                $comment->delete();
+            }
+            try{
+                $post->delete();
+                return response()->json(['success' => 'Post deleted successfully.']);
+            } catch (\Exception $e){
+                return response()->json(['error' => 'Error deleting post.' . $e->getMessage()]);
+            }
+        } else {
+            return response()->json(['error' => 'Post not found.']);
+        }
     }
 
     public function createComment(Request $request){
@@ -113,18 +148,34 @@ class Forum extends Controller
         $post = DBForum_posts::where('id', $request->post_id)->first();
         if ($post){
             try{
-            $comment = new DBForum_comments;
-            $comment->content = $request->content;
-            $comment->post_id = $request->post_id;
-            $comment->user_id = Auth::id();
-            $comment->forum_id = $post->forum_id;
-            $comment->save();
-            return response()->json(['success' => 'Comment created successfully.']);
+                $comment = new DBForum_comments;
+                $comment->content = $request->content;
+                $comment->post_id = $request->post_id;
+                $comment->user_id = Auth::id();
+                $comment->forum_id = $post->forum_id;
+                $comment->save();
+                return response()->json(['success' => 'Comment created successfully.']);
             } catch (\Exception $e){
                 return response()->json(['error' => 'Error creating comment.' . $e->getMessage()]);
             }
         } else {
             return response()->json(['error' => 'Post not found.']);
         }
+    }
+
+    public function upvote (Request $request){
+        $upvote = new DBUpvotes;
+        $upvote->post_id = $request->post_id;
+        $upvote->user_id = Auth::id();
+        $upvote->save();
+        return response()->json(['success' => 'Upvote created successfully.']);
+    }
+
+    public function deleteUpvote (Request $request){
+        $upvote = DBUpvotes::where('post_id', $request->post_id)->where('user_id', Auth::id())->first();
+        if ($upvote){
+            $upvote->delete();
+        }
+        return response()->json(['success' => 'Upvote deleted successfully.']);
     }
 }

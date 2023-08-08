@@ -2,13 +2,10 @@
 @section('header')
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<script defer type="module" src="{{ asset('js/post.js') }}"></script>
+<script defer src="{{ asset('js/post.js') }}"></script>
 <!--Fonts Arial, Arial Black, Comic Sans MS, Courier New, Georgia, Impact, Lucida Sans Unicode, Tahoma, Times New Roman, Trebuchet MS, Verdana-->
-<style>
-	.ql-editor {
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	}
-</style>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 @endsection
 @section('site_content')
 <div class="background-fixed background-animated">

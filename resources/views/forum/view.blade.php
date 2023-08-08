@@ -1,6 +1,6 @@
 @extends('layout')
 @section('header')
-<script defer type="module" src="{{ asset('js/indexforum.js') }}"></script>
+<script defer src="{{ asset('js/viewForum.js') }}"></script>
 @endsection
 @section('site_content')
 <div class="background background-animated">
@@ -29,6 +29,7 @@
 									</select>
 								</div>
 								<div class="mb-2"></div>
+								@php $i = 0; @endphp
 								@foreach ($posts as $post)
 									<div class="mb-2"></div>
 									<div class="card border-1 shadow rounded-3">
@@ -39,11 +40,14 @@
 												</div>
 												<div class="col-1 offset-lg-2 offset-md-1">
 													<div class="btn-group" role="group">
+														<span id="upvotes{{$i}}">{{$post->upvotes}}</span>
 														@if ($forum->upvotes)
 														@if($post->upvoted)
-															<button type="button" class="btn" onclick="upvote({{$post->id}})"><img src="{{ asset('images/upvoted.svg') }}" alt="Upvote" width="20" height="20"></button>
+															<button type="button" class="btn" id="noupvote{{$i}}" onclick="delupvote({{$post->id}}, {{Auth::id()}}, {{$i}})" style="display: block"><img src="{{ asset('images/upvoted.svg') }}" alt="Upvote" width="20" height="20"></button>
+															<button type="button" class="btn" id="yesupvote{{$i}}" onclick="upvote({{$post->id}}, {{Auth::id()}}, {{$i}})" style="display: none"><img src="{{ asset('images/upvote.svg') }}" alt="Upvote" width="20" height="20"></button>
 														@else
-															<button type="button" class="btn" onclick="upvote({{$post->id}})"><img src="{{ asset('images/upvote.svg') }}" alt="Upvote" width="20" height="20"></button>
+															<button type="button" class="btn" id="noupvote{{$i}}" onclick="delupvote({{$post->id}}, {{Auth::id()}}, {{$i}})" style="display: none"><img src="{{ asset('images/upvoted.svg') }}" alt="Upvote" width="20" height="20"></button>
+															<button type="button" class="btn" id="yesupvote{{$i}}" onclick="upvote({{$post->id}}, {{Auth::id()}}, {{$i}})" style="display: block"><img src="{{ asset('images/upvote.svg') }}" alt="Upvote" width="20" height="20"></button>
 														@endif
 														@endif
 														@if($post->user_id == Auth::user()->id || Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
@@ -54,8 +58,6 @@
 															</a>
 															<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 																<a class="dropdown-item" href="/forum/{{$forum->id}}/delete">Delete</a>
-																<a class="dropdown-item" href="#">Another action</a>
-																<a class="dropdown-item" href="#">Something else here</a>
 															</div>
 														</div>
 														</div>
@@ -77,20 +79,19 @@
 											</div>
 											<div class="col-12">
 												<h5>Comments</h5>
-												@if($post->comments)
-												@foreach ($post->comments as $comment)
-													<div>
-														<img src="{{ asset('/images/default-avatar.png') }}" alt="User Image" width="35" height="35"> <strong>{{$comment->user->name}} {{$comment->user->surnames}}</strong>
-														<p>{{$comment->content}}</p>
-														<p>Posted at <strong>{{$comment->created_at}}</strong></p>
-													</div>
-												@endforeach
-												@else
-													<p>No comments yet</p>
-												@endif
+												<div>
+													@if ($post->nocoments)
+														<p style="text-align: center;text-font: italic;">No comments yet</p>
+													@else 
+														<img src="{{ asset('/images/default-avatar.png') }}" alt="User Image" width="35" height="35"> <strong>{{$post->lastComment->user->name}} {{$post->lastComment->user->surnames}}</strong>
+														<p>{{$post->lastComment->content}}</p>
+														<p>Posted at <strong>{{$post->lastComment->created_at}}</strong></p>
+													@endif
+												</div>
 											</div>
 										</div>
 									</div>
+									@php $i++; @endphp
 								@endforeach
 							</div>
 						</div>

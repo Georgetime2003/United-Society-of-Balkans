@@ -14,10 +14,13 @@
 											<div class="row">
 												<div class="col-1 offset-10">
 													<div class="btn-group" role="group">
+														<span id="upvotes">{{$post->upvotes}}</span>
 														@if($post->upvoted)
-															<button type="button" class="btn" onclick="upvote({{$post->id}})"><img src="{{ asset('images/upvoted.svg') }}" alt="Upvote" width="20" height="20"></button>
+															<button type="button" class="btn" id="noupvote" style="display: block"><img src="{{ asset('images/upvoted.svg') }}" alt="Upvote" width="20" height="20"></button>
+															<button type="button" class="btn" id="yesupvote" style="display: none"><img src="{{ asset('images/upvote.svg') }}" alt="Upvote" width="20" height="20"></button>
 														@else
-															<button type="button" class="btn" onclick="upvote({{$post->id}})"><img src="{{ asset('images/upvote.svg') }}" alt="Upvote" width="20" height="20"></button>
+															<button type="button" class="btn" id="noupvote" style="display: none"><img src="{{ asset('images/upvoted.svg') }}" alt="Upvote" width="20" height="20"></button>
+															<button type="button" class="btn" id="yesupvote" style="display: block"><img src="{{ asset('images/upvote.svg') }}" alt="Upvote" width="20" height="20"></button>
 														@endif
 														@if($post->user_id == Auth::user()->id || Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
 														<div class="btn-group" role="group">
@@ -26,9 +29,7 @@
 																<i class="fas fa-ellipsis-v" style="height: 20px; width: 20px; align-items: center;"></i>
 															</a>
 															<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-																<a class="dropdown-item" href="/forum/{{$post->forum_id}}/delete">Delete</a>
-																<a class="dropdown-item" href="#">Another action</a>
-																<a class="dropdown-item" href="#">Something else here</a>
+																<a class="dropdown-item" id="delete" href="#">Delete</a>
 															</div>
 														</div>
 														</div>
@@ -44,10 +45,15 @@
 													<img src="{{ asset('storage/images/'.$post->image) }}" alt="Post Image" width="100%" height="auto">
 												</div>
 											@endif
-											<p>{{$post->content}}</p>
+											<p>{!! $post->content !!}</p>
 											<div class="col-8">
 												<p>Posted by <strong>{{$post->user->name}} {{$post->user->surnames}}</strong> on <strong>{{date('d-m-Y', strtotime($post->created_at))}}</strong> at <strong>{{date('H:i', strtotime($post->created_at))}}</strong></p>
 											</div>
+										</div>
+									</div>
+									<div class="mb-2"></div>
+										<div class="card border-1 shadow rounded-3">
+											<div class="card-body p-4">
 											<div class="col-12">
 												<h5>Comments</h5>
 												@if($post->comments)
@@ -57,7 +63,6 @@
 																<p>{{$comment->content}}</p>
 																<p>Posted at <strong>{{$comment->created_at}}</strong></p>
 															</div>
-														</div>
 												@endforeach
 												@else
 													<p>No comments yet</p>
@@ -66,6 +71,7 @@
 													@csrf
 													<h5>Write a Comment!</h5>
 													<textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+													<div class="mb-2"></div>
 													<div class="col-12">
 														<button type="button" id="submit" class="btn btn-primary">Submit</button>
 													</div>

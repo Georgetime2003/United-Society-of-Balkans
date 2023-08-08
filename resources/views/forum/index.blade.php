@@ -3,7 +3,7 @@
 <script defer type="module" src="{{ asset('js/indexforum.js') }}"></script>
 @endsection
 @section('site_content')
-<div class="background background-animated">
+<div class="background-fixed background-animated">
     <div class="container">
         <div class="row">
             <div class="col-12">

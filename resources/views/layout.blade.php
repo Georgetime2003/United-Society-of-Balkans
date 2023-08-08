@@ -11,16 +11,14 @@
 				<a class="btn btn-outline-light me-2" href="/users">Users</a>
 				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
 				<a class="btn btn-outline-light me-2" href="/reports">Reports</a>
-				<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
 			@elseif (Auth::user()->role == 'volunteer')
 				<a class="btn btn-outline-light me-2" href="/reports/{{Auth::user()->id}}">Reports</a>
 				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
 				<a class="btn btn-outline-light me-2" href="/user/config">Account</a>
-				<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
 			@elseif (Auth::user()->role == 'housemanager')
 				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
-				<a class="btn btn-outline-light me-2" href="/logout" onclick="logout(event)">Logout</a>
 			@endif
+			<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
 		@endif
 	  </div>
 	</div>

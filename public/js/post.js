@@ -1,28 +1,48 @@
-var fonts = ['Arial'];
-var Font = Quill.import('formats/font');
-Font.whitelist = fonts;
-var editor = Quill.register(Font, true);
+var fonts = ['Arial', 'Courier', 'Garamond', 'Tahoma', 'Times New Roman', 'Verdana', 'Impact', 'Comic Sans MS'];
+function getFontName(font) {
+	return font.toLowerCase().replace(/\s/g, '-');
+}
+var fontNames = fonts.map(font => getFontName(font));
+var fontStyles = "";
+fonts.forEach(function(font) {
+	var fontName = getFontName(font);
+	fontStyles += ".ql-snow .ql-picker.ql-font .ql-picker-label[data-value=" + fontName + "]::before, .ql-snow .ql-picker.ql-font .ql-picker-item[data-value=" + fontName + "]::before {" +
+	"content: '" + font + "';" +
+	"font-family: '" + font + "', sans-serif;" +
+	"}" +
+	".ql-font-" + fontName + "{" +
+	" font-family: '" + font + "', sans-serif;" +
+	"}";
+});
+var node = document.createElement('style');
+node.innerHTML = fontStyles;
+document.body.appendChild(node);
 
 var container = document.getElementById('editor');
 var options = {
 	bounds: '#full-container .editor',
 	modules: {
-	  'syntax': true,
-	  'toolbar': [
-		[{ 'font': fonts }, { 'size': [] }],
-		[ 'bold', 'italic', 'underline', 'strike' ],
-		[{ 'color': [] }, { 'background': [] }],
-		[{ 'script': 'super' }, { 'script': 'sub' }],
-		[{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
-		[{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
-		[ {'direction': 'rtl'}, { 'align': [] }],
-		[ 'link', 'image', 'video', 'formula' ],
-		[ 'clean' ]
-	  ],
+		'syntax': true,
+		'toolbar': [
+			[{ 'font': fontNames }, { 'size': [] }],
+			[ 'bold', 'italic', 'underline', 'strike' ],
+			[{ 'color': [] }, { 'background': [] }],
+			[{ 'script': 'super' }, { 'script': 'sub' }],
+			[{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
+			[{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+			[ {'direction': 'rtl'}, { 'align': [] }],
+			[ 'link', 'image', 'video', 'formula' ],
+			[ 'clean' ]
+		],
 	},
 	theme: 'snow'
-  };
+};
 var editor = new Quill(container, options);
+
+var Font = Quill.import('formats/font');
+// We do not add Sans Serif since it is the default
+Font.whitelist = fontNames;
+Quill.register(Font, true);
 
 document.getElementById('submit').addEventListener('click', function() {
 	var post = editor.root.innerHTML;

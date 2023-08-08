@@ -33,7 +33,6 @@ body {
 	-webkit-animation-fill-mode: forwards;
 }
 
-<<<<<<< HEAD
 .start-icons {
 	vertical-align: middle;
 	margin-right: 5px;
@@ -59,9 +58,16 @@ body {
 	-o-transition: color 0.2s ease-in-out;
 }
 
+#upvotes {
+	display: flex;
+	margin-top: 2px;
+}
 
-=======
->>>>>>> 9be8f213cef44ffc7d80e5b2233de3c416b5ed44
+.contador {
+	animation: scaleUp 0.5s ease-in-out;
+}
+
+
 .content-animated {
 	opacity: 0%;
 	animation: fade-up 0.5s ease-in-out;
@@ -165,7 +171,7 @@ body {
 		-moz-transform: translateY(-50px);
 		-ms-transform: translateY(-50px);
 		-o-transform: translateY(-50px);
-}
+	}
 	100% {
 		opacity: 100%;
 		transform: translateY(0px);
@@ -173,7 +179,59 @@ body {
 		-moz-transform: translateY(0px);
 		-ms-transform: translateY(0px);
 		-o-transform: translateY(0px);
+	}
 }
+
+@keyframes scaleUp {
+	0% {
+		transform: scale(1);
+		-webkit-transform: scale(1);
+		-moz-transform: scale(1);
+		-ms-transform: scale(1);
+		-o-transform: scale(1);
+	}
+	50% {
+		transform: scale(1.2);
+		-webkit-transform: scale(1.2);
+		-moz-transform: scale(1.2);
+		-ms-transform: scale(1.2);
+		-o-transform: scale(1.2);
+	}
+	100% {
+		transform: scale(1);
+		-webkit-transform: scale(1);
+		-moz-transform: scale(1);
+		-ms-transform: scale(1);
+		-o-transform: scale(1);
+	}
+}
+
+.ql-font-comic-sans-ms {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.ql-font-courier {
+	font-family: "Courier New", Courier, monospace;
+}
+
+.ql-font-tahoma {
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+.ql-font-times-new-roman {
+	font-family: "Times New Roman", Times, serif;
+}
+
+.ql-font-verdana {
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.ql-font-impact {
+	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.ql-font-garamond {
+	font-family: Garamond, serif;
 }
 
 .title-forum {
