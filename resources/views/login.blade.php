@@ -15,6 +15,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @laravelPWA
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <link rel="icon" sizes="960x960" href="{{ asset('images/logo.png') }}">
     <link rel="icon" type="image/png" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">

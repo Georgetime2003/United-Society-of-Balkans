@@ -19,7 +19,7 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <link rel="icon" sizes="960x960" href="{{ asset('images/logo.png') }}">
     <link rel="icon" type="image/png" sizes="180x180" href="{{ asset('images/apple-touch-icon.png') }}">
-
+    @laravelPWA
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
     @yield('header')

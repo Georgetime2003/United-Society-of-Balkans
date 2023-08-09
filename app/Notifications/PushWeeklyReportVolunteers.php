@@ -22,8 +22,10 @@ class PushWeeklyReportVolunteers extends Notification
     {
         return (new WebPushMessage)
             ->title('Weekly Report')
+            ->icon('/notification-icon.png')
             ->body('The weekly report is ready to be filled.')
-            ->action('View App', 'notification_action');
+            ->action('View App', 'notification_action')
+            ->options(['TTL' => 1000]);
     }
     
 }
