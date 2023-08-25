@@ -18,7 +18,7 @@
 			@elseif (Auth::user()->role == 'housemanager')
 				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
 			@endif
-			<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
+		<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
 		@endif
 	  </div>
 	</div>

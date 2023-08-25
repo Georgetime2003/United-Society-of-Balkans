@@ -68,19 +68,27 @@
                                     {{session('error')}}
                                 </div>
                             @endif
-                                <h4 class="text-center">Log in with:</h4>
                                 <div class="d.grid gap-2 d-md-flex justify-content-center">
                                 </div>
                                 <form action="{{route('login')}}" method="POST" class="form-signin">
                                     @csrf
+                                    <div class="form-floating mb-3">
+                                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                        <label for="floatingInput">Email</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                        <label for="floatingPassword">Password</label>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button class="btn btn-lg btn-usb btn-login text-uppercase fw-bold mb-2" type="submit">Sign in</button>
+                                    </div>
+                                    <hr class="my-4">
                                     <div class="d-grid text-center">
                                         <a href="{{route('auth', ['provider' => 'google'])}}" class="btn btn-lg btn-danger btn-login text-uppercase fw-bold mb-2"><i class="fab fa-google"></i> Google</a>
                                     </div>
                                     <div class="d-grid text-center">
                                         <a href="{{route('auth', ['provider' => 'facebook'])}}" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2"><i class="fab fa-facebook-f"></i> Facebook</a>
-                                    </div>
-                                    <div class="d-grid text-center">
-                                        <a href="{{route('auth', ['provider' => 'Microsoft'])}}" class="btn btn-lg btn-info btn-login text-uppercase fw-bold mb-2"><i class="fab fa-microsoft"></i> Microsoft</a>
                                     </div>
                                 </form>
                         </div>

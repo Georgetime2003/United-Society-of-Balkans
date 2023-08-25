@@ -22,6 +22,47 @@
     @laravelPWA
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js"></script>
+
+    <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyA4HXAh025iWSPFHwFrbI-6CrVzHgcfuvU",
+          authDomain: "usob-387217.firebaseapp.com",
+          projectId: "usob-387217",
+          storageBucket: "usob-387217.appspot.com",
+          messagingSenderId: "567094647866",
+          appId: "1:567094647866:web:6943ea3d04f54af238a903"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
+
+        function initFirebaseMessagingRegistration() {
+            messaging.requestPermission().then(function () {
+            return messaging.getToken()
+        }).then(function(token) {
+        
+        axios.post("{{ route('fcmToken') }}",{
+            _method:"PATCH",
+            token
+        }).then(({data})=>{
+            console.log(data)
+        }).catch(({response:{data}})=>{
+            console.error(data)
+        })
+
+    }).catch(function (err) {
+        console.log(`Token Error :: ${err}`);
+    });
+}
+
+initFirebaseMessagingRegistration();
+
+messaging.onMessage(function({data:{body,title}}){
+    new Notification(title, {body});
+});
+    </script>
     @yield('header')
 </head>
 <body>

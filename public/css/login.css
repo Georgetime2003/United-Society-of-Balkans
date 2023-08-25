@@ -1,12 +1,33 @@
 .bg-image {
     background-image: url("/images/background.jpg");
-    position: relative;
+    position: sticky;
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
     height: 100vh;
 }
+
+.btn-usb {
+	background-color: #00B5AD;
+	color: #fff;
+}
+
+.btn-usb:hover {
+    background-color: #F58233;
+    color: #fff;
+}
+
+.btn-usb:focus {
+    background-color: #F58233;
+    color: #fff;
+}
+
+.btn-usb:active {
+    background-color: #cc6e2f !important;
+    color: #fff !important;
+}
+
 /* Main colors:
     #F58233 Orange
     #00B5AD Blue

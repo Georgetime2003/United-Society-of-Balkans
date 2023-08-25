@@ -34,6 +34,7 @@ class registerUSB extends Mailable
             ->with([
                 'name' => $this->data['name'],
                 'surnames' => $this->data['surnames'],
+                'password' => $this->data['password'],
                 'email' => $this->data['email'],
                 'start_date' => $this->data['start_date'],
                 'end_date' => $this->data['end_date'],

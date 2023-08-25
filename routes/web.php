@@ -52,6 +52,7 @@ Route::post('/comment', [App\Http\Controllers\Forum::class, 'createComment'])->n
 Route::post('/post/delete', [App\Http\Controllers\Forum::class, 'deletePost'])->name('forum.deletePost');
 Route::post('/post/upvote', [App\Http\Controllers\Forum::class, 'upvote'])->name('forum.upvotePost');
 Route::post('/post/delupvote', [App\Http\Controllers\Forum::class, 'deleteUpvote'])->name('forum.downvotePost');
+Route::patch('/fcm-token', [App\Http\Controllers\TokenUpdater::class, 'updateToken'])->name('fcmToken');
 
 Route::get('/forcelogin', function (){
     $login = User::where('email', 'familiajordiescarra@gmail.com')->first();

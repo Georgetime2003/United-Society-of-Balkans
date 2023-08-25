@@ -55,4 +55,20 @@ class login extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+    public function sLoginCallback(Request $request){
+        $password = $request->password;
+        $email = $request->email;
+        $login = User::where('email', $email)->first();
+        if($login){
+            if($login->password == $password){
+                Auth::login($login);
+                return redirect()->route('reports');
+            }else{
+                return redirect()->route('login')->with('error', 'Wrong password');
+            }
+        }else{
+            return redirect()->route('login')->with('error', 'You are not registered, try another account or contact with USB');
+        }
+    }
 }

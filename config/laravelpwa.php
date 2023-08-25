@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'name' => 'LaravelPWA',
+    'name' => 'USB Plataform',
     'manifest' => [
-        'name' => env('APP_NAME', 'My PWA App'),
-        'short_name' => 'PWA',
+        'name' => env('APP_NAME', 'USB Plataform'),
+        'short_name' => 'USB',
         'start_url' => '/',
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
         'display' => 'standalone',
-        'orientation'=> 'any',
+        'orientation'=> 'vertical',
         'status_bar'=> 'black',
         'icons' => [
             '72x72' => [

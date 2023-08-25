@@ -53,6 +53,7 @@ class Users extends Controller
         $user->name = $request->name;
         $user->surnames = $request->surnames;
         $user->email = $request->email;
+        $password = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
         //Depends of the role selected, it will fill the data which is needed in any case, and will empty the data which is not needed
         switch ($request->role) {
             case '1':
@@ -82,11 +83,12 @@ class Users extends Controller
         }
         //If the user is new, it will send an email to the user with the data, checking if its volunteer or organization because there's a different email for each one
         if ($request->start_date != null || $request->end_date != null || $request->volunteer_code != null || $request->hosting != null || $request->sending != null && $user->newUser == true){
+            $user->password = $password;
             $mailStatus = mailNewUser($user);
             if ($mailStatus == 'Email sent'){
                 $user->newUser = false;
             } else {
-                return response()->json(['error' => $mailStatus]);
+                return abort(500, $user);
             }
             $user->newUser = false;
         } else if ($request->organization != null && $user->newUser == '1'){
@@ -148,6 +150,7 @@ function mailNewUser($user){
     $data = [
         'name' => $user->name,
         'surnames' => $user->surnames,
+        'password' => $user->password,
         'email' => $user->email,
         'start_date' => $user->start_date,
         'end_date' => $user->end_date,
@@ -181,6 +184,6 @@ function mailNewOrganization($user) {
         Mail::to($user->email)->send(new \App\Mail\registerOrganization($data));
         return 'Email sent';
     } catch (\Exception $e) {
-        return $e->getMessage();
+        return $user;
     }
 }

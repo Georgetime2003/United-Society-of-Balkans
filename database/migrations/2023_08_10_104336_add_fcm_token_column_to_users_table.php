@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('organizationReports', function(Blueprint $table){
-            $table->id();
-            $table->integer('organization_id');
-            $table->foreign('volunteer')->references('id')->on('users');
-            $table->string('title');
-            $table->string('description');
+        Schema::table('users', function (Blueprint $table) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->string('fcm_token')->nullable();
+            });
         });
     }
 
@@ -25,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('organizationReports');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('fcm_token');
+        });
     }
 };

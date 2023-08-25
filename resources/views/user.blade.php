@@ -65,6 +65,20 @@
 								<label for="email" class="form-label">Email:</label>
 							</div>
 						</div>
+						@if (Auth::user()->id == $user->id)
+						<div class="col-md-6 col-12">
+							<div class="form-floating mb-3">
+								<input type="password" class="form-control" id="password" name="password" {{$admin ? '' : 'disabled'}}>
+								<label for="password" class="form-label">Password:</label>
+							</div>
+						</div>
+						<div class="col-md-6 col-12">
+							<div class="form-floating mb-3">
+								<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" {{$admin ? '' : 'disabled'}}>
+								<label for="password_confirmation" class="form-label">Confirm password:</label>
+							</div>
+						</div>
+						@endif
 						<div class="col-12">
 							<div class="form-floating">
 								<select class="form-select" id="role" name="role" aria-label="Floating label select example" {{$admin ? '' : 'disabled'}}>

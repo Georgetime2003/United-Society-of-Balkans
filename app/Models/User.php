@@ -22,6 +22,8 @@ class User extends Authenticatable
         'id',
         'name',
         'surnames',
+        'password',
+        'fcm_token',
         'email',
         'start_date',
         'end_date',
