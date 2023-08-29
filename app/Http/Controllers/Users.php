@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reports as DBReports;
+use Illuminate\Support\Facades\Hash;
 
 class Users extends Controller
 {
@@ -87,6 +88,7 @@ class Users extends Controller
             $mailStatus = mailNewUser($user);
             if ($mailStatus == 'Email sent'){
                 $user->newUser = false;
+                $user->password = Hash::make($password);
             } else {
                 return abort(500, $user);
             }

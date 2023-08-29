@@ -33,7 +33,7 @@ return new class extends Migration
         });
 
         User::create([
-            'name' => 'Admin',
+            'name' => 'United Societies of Balkans\' ',
             'surnames' => 'Admin',
             'role' => 'superadmin',
             'email' => 'familiajordiescarra@gmail.com',

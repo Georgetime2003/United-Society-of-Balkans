@@ -19,7 +19,7 @@
 		<div class="mb-2"></div>
 		<div class="row">
 			<div class="col-12">
-				<p>Welcome to the USB Platform, where you'll be able to access when you project starts in {{$start_date}}. You will be able to see the information of your volunteering, access to a forum with all the news of the NGO and House communication.</p>
+				<p>Welcome to the USB Platform, where you'll be able to access when you project starts in {{ date('jS \\of F, Y', strtotime($start_date)) }}. You will be able to see the information of your volunteering, access to a forum with all the news of the NGO and House communication.</p>
 			</div>
 		</div>
 		<br>
@@ -44,8 +44,10 @@
 					width: 40%;
 					text-align: center;
 					color: black;
-					text-decoration: bold;" 
-					href="http://localhost">USB Platform</a>
+					font-weight: bold;
+					border: 2px solid rgb(244, 251, 145);
+					text-align: center; 
+					"href="http://localhost">USB Platform</a>
 			</div>
 		</div>
 		<br>
