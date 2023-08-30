@@ -59,6 +59,7 @@
 											<div class="card-body p-4">
 											<div class="col-12">
 												<h5>Comments</h5>
+												<br>
 												@if($post->comments)
 												@foreach ($post->comments as $comment)
 															<div>
