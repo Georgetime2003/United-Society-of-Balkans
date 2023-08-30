@@ -75,7 +75,7 @@
 											@endif
 											{!! $post->content !!}
 											<div class="col-8">
-												<p>Posted by <strong>{{$post->user->name}} {{$post->user->surnames}}</strong> on <strong>{{date('d-m-Y', strtotime($post->created_at))}}</strong> at <strong>{{date('H:i', strtotime($post->created_at))}}</strong></p>
+												<p><img src="{{$post->user->avatar}}" class="avatar"> Posted by <strong> {{$post->user->name}} {{$post->user->surnames}}</strong> on <strong>{{date('d-m-Y', strtotime($post->created_at))}}</strong> at <strong>{{date('H:i', strtotime($post->created_at))}}</strong></p>
 											</div>
 											<div class="col-12">
 												<h5>Comments</h5>
@@ -83,9 +83,10 @@
 													@if ($post->nocoments)
 														<p style="text-align: center;text-font: italic;">No comments yet</p>
 													@else 
-														<img src="{{ asset('/images/default-avatar.png') }}" alt="User Image" width="35" height="35"> <strong>{{$post->lastComment->user->name}} {{$post->lastComment->user->surnames}}</strong>
-														<p>{{$post->lastComment->content}}</p>
-														<p>Posted at <strong>{{$post->lastComment->created_at}}</strong></p>
+														<p><img src="{{$post->lastComment->user->avatar}}" alt="User's Image" class="avatar"> <strong>{{$post->lastComment->user->name}} {{$post->lastComment->user->surnames}}</strong></p>
+														<a style="margin-left: 4%;">{{$post->lastComment->content}}</a>
+														<br>
+														<small style="margin-left: 4%">Posted on <strong>{{date('d-m-Y', strtotime($post->lastComment->created_at))}}</strong> at <strong>{{date('H:i', strtotime($post->lastComment->created_at))}}</strong></small>
 													@endif
 												</div>
 											</div>

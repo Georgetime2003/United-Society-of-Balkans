@@ -7,12 +7,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 data-header="h1" class="title my-5 fade-up">{{$post->title}}</h2>
+                <h4 class="title my-3 fade-up">Post</h4>
                 <div class="row content-animated">
                     <div class="card border-1 shadow rounded-3">
 										<div class="card-body p-4">
 											<div class="row">
-												<div class="col-1 offset-10">
+												<div class="col-9">
+													<a class="text-decoration-none title-forum"><h5>@if($post->isPinned)📌@endif @if($post->isLocked)🔒@endif {{$post->title}}</h5></a>
+												</div>
+												<div class="col-1 offset-lg-2 offset-md-1">
 													<div class="btn-group" role="group">
 														<span id="upvotes">{{$post->upvotes}}</span>
 														@if($post->upvoted)
@@ -47,7 +50,7 @@
 											@endif
 											<p>{!! $post->content !!}</p>
 											<div class="col-8">
-												<p>Posted by <strong><img src="{{$post->user->avatar}}" class="avatar"> {{$post->user->name}} {{$post->user->surnames}}</strong> on <strong>{{date('d-m-Y', strtotime($post->created_at))}}</strong> at <strong>{{date('H:i', strtotime($post->created_at))}}</strong></p>
+												<p><img src="{{$post->user->avatar}}" class="avatar"> Posted by <strong> {{$post->user->name}} {{$post->user->surnames}}</strong> on <strong>{{date('d-m-Y', strtotime($post->created_at))}}</strong> at <strong>{{date('H:i', strtotime($post->created_at))}}</strong></p>
 											</div>
 										</div>
 									</div>
