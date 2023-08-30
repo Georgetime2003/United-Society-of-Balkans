@@ -64,6 +64,18 @@ body {
 	margin-top: 2px;
 }
 
+.avatar{
+	border-radius: 50%;
+	width: 40px;
+	height: auto;
+}
+
+.mainAvatar{
+	border-radius: 50%;
+	width: 200px;
+	height: auto;
+}
+
 
 
 .contador {

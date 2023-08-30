@@ -29,6 +29,7 @@ Route::get('/user/config', [App\Http\Controllers\Users::class, 'config'])->name(
 Route::post('/user/delete/{id}', [App\Http\Controllers\Users::class, 'delete'])->name('users.delete');
 Route::get('/user/{id}', [App\Http\Controllers\Users::class, 'show'])->name('users.show');
 Route::post('/user', [App\Http\Controllers\Users::class, 'update'])->name('users.update');
+Route::put('/user/updateAvatar', [App\Http\Controllers\Users::class, 'saveAvatar'])->name('users.updateAvatar');
 
 Route::get('/reports', [App\Http\Controllers\Reports::class, 'index'])->name('reports');
 Route::get('/reports/{userid}', [App\Http\Controllers\Reports::class, 'listUser'])->name('reports.userList');

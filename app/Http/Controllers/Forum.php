@@ -99,6 +99,13 @@ class Forum extends Controller
             $post = new DBForum_posts;
             $post->title = $request->title;
             $post->content = $request->content;
+            //Check if inside the content there's a data:image/png;base64, or data:image/jpeg;base64, and if it is, save the image in the database
+                $post->content = preg_replace_callback('/data:image\/(png|jpeg);base64,([^\"]+)/', function ($matches) {
+                    $image = base64_decode($matches[2]);
+                    $imageName = time() . '.png';
+                    file_put_contents(public_path('images/') . $imageName, $image);
+                    return 'images/' . $imageName;
+                }, $post->content);
             $post->forum_id = $request->forum_id;
             $post->user_id = Auth::id();
             $post->save();
@@ -114,7 +121,7 @@ class Forum extends Controller
             abort(404);
         }
         $post->user = DBUser::find($post->user_id);
-        $post->comments = DBForum_comments::where('post_id', $idpost)->orderBy('created_at', 'desc')->get();
+        $post->comments = DBForum_comments::where('post_id', $idpost)->orderBy('created_at', 'asc')->get();
         foreach ($post->comments as $comment){
             $comment->user = DBUser::find($comment->user_id);
         }

@@ -23,23 +23,19 @@
 <div class="background-fixed">
 	<div class="container">
 	<div class="row">
-		<div class="col-12" {{$admin ? '' : 'hidden'}}>
-			<div class="alert alert-warning alert-dismissible fade show" role="alert">
-				<strong>Warning!</strong> The email must be from a Google/Facebook/Microsoft account
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-		</div>
 		<div class="mb-3"></div>
 		<div class="col-12">
 			<h2>{{$user->name}} {{$user->surnames}}</h2>
 		</div>
 		<div class="mb-2"></div>
 		<div class="col-md-4 col-12">
-			<img src="{{$user->avatar}}" alt="Avatar" width="200" height="200" class="d-inline-block">
+			<img src="{{$user->avatar}}" alt="Avatar" width="auto" height="200" class="d-inline-block mainAvatar">
 			<div class="mb-2"></div>
+			@if(!$admin)
 			<button type="button" class="btn btn-primary justify-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
 				Change Avatar
 			</button>
+			@endif
 			<div class="mb-2"></div>
 		</div>
 		<div class="col-md-8 col-12">
@@ -148,7 +144,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form id="form" method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
+				<form id="form" method="POST" action="{{ route('users.updateAvatar', $user->id) }}" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
 					<div class="mb-3">
@@ -156,9 +152,9 @@
 							The image is recommended to be 200x200 pixels
 						</div>
 						<label for="avatar" class="form-label">Avatar</label>
-						<input type="file" class="form-control" id="avatar" name="avatar">
+						<input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" required>
 					</div>
-					<button type="button" id="submit" class="btn btn-primary">Save</button>
+					<button type="submit" id="submit" class="btn btn-primary">Save</button>
 				</form>
 			</div>
 		</div>

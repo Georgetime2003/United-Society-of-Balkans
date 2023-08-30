@@ -47,7 +47,7 @@
 											@endif
 											<p>{!! $post->content !!}</p>
 											<div class="col-8">
-												<p>Posted by <strong>{{$post->user->name}} {{$post->user->surnames}}</strong> on <strong>{{date('d-m-Y', strtotime($post->created_at))}}</strong> at <strong>{{date('H:i', strtotime($post->created_at))}}</strong></p>
+												<p>Posted by <strong><img src="{{$post->user->avatar}}" class="avatar"> {{$post->user->name}} {{$post->user->surnames}}</strong> on <strong>{{date('d-m-Y', strtotime($post->created_at))}}</strong> at <strong>{{date('H:i', strtotime($post->created_at))}}</strong></p>
 											</div>
 										</div>
 									</div>
@@ -59,9 +59,9 @@
 												@if($post->comments)
 												@foreach ($post->comments as $comment)
 															<div>
-																<img src="{{ asset('/images/default-avatar.png') }}" alt="User Image" width="35" height="35"> <strong>{{$comment->user->name}} {{$comment->user->surnames}}</strong>
+																<img src="{{ $comment->user->avatar }}" class="avatar" alt="User Image"> <strong>{{$comment->user->name}} {{$comment->user->surnames}}</strong>
 																<p>{{$comment->content}}</p>
-																<p>Posted at <strong>{{$comment->created_at}}</strong></p>
+																<p>Posted in <strong>{{date('d-m-Y', strtotime($comment->created_at))}}</strong> at <strong>{{date('H:i', strtotime($comment->created_at))}}</strong></p>
 															</div>
 												@endforeach
 												@else

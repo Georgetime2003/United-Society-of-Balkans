@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('surnames')->nullable();
             $table->string('password')->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('organization')->nullable();
+            $table->integer('organization_id')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->string('volunteer_code')->nullable();

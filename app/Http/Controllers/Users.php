@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reports as DBReports;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class Users extends Controller
 {
@@ -59,7 +60,7 @@ class Users extends Controller
         switch ($request->role) {
             case '1':
                 $user->role = 'volunteer';
-                $user->organization = null;
+                $user->organization_id = null;
                 $user->start_date = $request->start_date;
                 $user->end_date = $request->end_date;
                 $user->volunteer_code = $request->volunteer_code;
@@ -71,7 +72,7 @@ class Users extends Controller
                 break;
             case '3':
                 $user->role = 'organization';
-                $user->organization = $request->organization;
+                $user->organization_id = $request->organization;
                 $user->start_date = null;
                 $user->end_date = null;
                 $user->volunteer_code = null;
@@ -137,6 +138,23 @@ class Users extends Controller
             return dd(Auth::user());
         }
         return view('user')->with('user', $user)->with('admin', false);
+    }
+
+    public function saveAvatar(Request $request){
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg|max:4096',
+        ]);
+        $user = Auth::user();
+        $imageName = $user->id.'.'.$request->avatar->extension();
+        //crop the image to a square of 200x200 cutting the image if it's bigger
+        $img = \Image::make($request->avatar->path());
+        $img->fit(200, 200, function ($constraint) {
+            $constraint->upsize();
+        });
+        $img->save(public_path('images/avatars/'.$imageName));
+        $user->avatar = '/images/avatars/'.$imageName;
+        $user->save();
+        return redirect()->route('users.config');
     }
 
     
