@@ -76,7 +76,10 @@ body {
 	height: auto;
 }
 
-
+.img-fluid {
+	max-width: 70%;
+	height: auto;
+}
 
 .contador {
 	animation: scaleUp 0.5s ease-in-out;
