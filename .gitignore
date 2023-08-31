@@ -5,7 +5,7 @@
 /public/storage
 /storage/*.key
 /public/images/forum/*
-!/public/images/avatars/*
+/public/images/avatars/*
 /vendor
 .env
 .env.backup
