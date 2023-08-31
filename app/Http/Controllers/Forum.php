@@ -104,7 +104,7 @@ class Forum extends Controller
                     $image = base64_decode($matches[2]);
                     $imageName = time() . '.png';
                     file_put_contents(public_path('images/') . $imageName, $image);
-                    return 'images/' . $imageName;
+                    return '/images/' . $imageName;
                 }, $post->content);
             $post->forum_id = $request->forum_id;
             $post->user_id = Auth::id();

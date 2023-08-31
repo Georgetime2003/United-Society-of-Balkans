@@ -4,6 +4,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+/public/images/forum/*
 /vendor
 .env
 .env.backup
