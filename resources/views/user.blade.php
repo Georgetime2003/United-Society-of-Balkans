@@ -64,13 +64,13 @@
 						@if (Auth::user()->id == $user->id)
 						<div class="col-md-6 col-12">
 							<div class="form-floating mb-3">
-								<input type="password" class="form-control" id="password" name="password" {{Auth::user()->role == "superadmin" || Auth::user()->role == "admin" ? 'disabled' : ''}}>
+								<input type="password" class="form-control" id="password" name="password" {{$admin ? '' : 'disabled'}}>
 								<label for="password" class="form-label">Password:</label>
 							</div>
 						</div>
 						<div class="col-md-6 col-12">
 							<div class="form-floating mb-3">
-								<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" {{Auth::user()->role == "superadmin" || Auth::user()->role == "admin" ? 'disabled' : ''}}>
+								<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" {{$admin ? '' : 'disabled'}}>
 								<label for="password_confirmation" class="form-label">Confirm password:</label>
 							</div>
 						</div>
