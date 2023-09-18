@@ -29,4 +29,9 @@ class OrganizationReports extends Controller
             }
         }
     }
+
+    public function index() {
+        $organizations = DBUser::where('role', 'organization')->get();
+        
+    }
 }

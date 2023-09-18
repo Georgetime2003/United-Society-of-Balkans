@@ -58,6 +58,8 @@ Route::get('/reports/{userid}', [App\Http\Controllers\Reports::class, 'listUser'
 Route::get('/reports/{userid}/{reportid}', [App\Http\Controllers\Reports::class, 'show'])->name('reports.show')->middleware('isAdminorVolunteer');
 Route::post('/weeklyreport/update', [App\Http\Controllers\Reports::class, 'updateweekly'])->name('reports.updateweekly')->middleware('isVolunteer');
 
+Route::get('/organizations', [App\Http\Controllers\OrganizationReports::class, 'index'])->name('organizations')->middleware('isAdmin');
+
 
 Route::get('/home', function () {
     return view('home');
