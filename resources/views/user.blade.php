@@ -121,7 +121,7 @@
 						</div>
 						<div id="organization" class="col-12" style="display: none">
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="organization_name" name="organization_name" value="{{$user->organization}}" {{$admin ? '' : 'disabled'}}>
+								<input type="text" class="form-control" id="organization_name" name="organization_name" value="{{$user->organization_name}}" {{$admin ? '' : 'disabled'}}>
 								<label for="organization_name" class="form-label">Organization name:</label>
 							</div>
 						</div>

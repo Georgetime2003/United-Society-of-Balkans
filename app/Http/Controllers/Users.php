@@ -72,7 +72,8 @@ class Users extends Controller
                 break;
             case '3':
                 $user->role = 'organization';
-                $user->organization_id = $request->organization;
+                $user->organization_name = $request->organization;
+                $user->organization_id = $user->id;
                 $user->start_date = null;
                 $user->end_date = null;
                 $user->volunteer_code = null;

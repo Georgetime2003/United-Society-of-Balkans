@@ -1,22 +1,23 @@
 @extends('layout')
 @section('header')
-    {{-- <script src="{{ asset('js/home.js') }}"></script> --}}
+    <script src="{{ asset('js/organizationIndex.js') }}"></script>
 @endsection
-@section('site-content')
+@section('content')
+<div class="background-fixed background-animated">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Organization List</h1>
+                <h2 data-header="h1" class="title my-5">Organization List</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <div class="card shadow rouded-3">
-                    <div class="card-body top-3">
+                <div class="card border-1 shadow rouded-3">
+                    <div class="card-body p-4">
                         <div class="row">
                             <div class="col-12">
-                                <table class="table-info table-hover table-striped table-bordered">
-                                    <thead>
+                                <table id="organizationTable" class="table table-fixed rounded-3">
+                                    <thead class="bg-pink text-light">
                                         <tr>
                                             <th>Organization</th>
                                             <th>Pendent Reports</th>
@@ -24,11 +25,9 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($organizations as $organization)
-                                            <tr>
-                                                <a href="{{ route('reports.show', $organization->id) }}">
-                                                    <td>{{ $organization->name }}</td>
-                                                    <td>{{ $organization->reports->count() }}</td>
-                                                </a>
+                                            <tr id={{ $organization->id }}>
+                                                <td>{{ $organization->name }}</td>
+                                                <td>{{ $organization->reports }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -38,4 +37,6 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
+@endsection

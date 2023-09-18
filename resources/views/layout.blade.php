@@ -8,9 +8,10 @@
 	  <div class="d-flex">
 		@if (Auth::user())
 			@if (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
-				<a class="btn btn-outline-light me-2" href="/users">Users</a>
-				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
-				<a class="btn btn-outline-light me-2" href="/reports">Reports</a>
+			<a class="btn btn-outline-light me-2" href="/users">Users</a>
+			<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
+			<a class="btn btn-outline-light me-2" href="/reports">Reports</a>
+			<a class="btn btn-outline-light me-2" href="/organizations">Organizations</a>
 			@elseif (Auth::user()->role == 'volunteer')
 				<a class="btn btn-outline-light me-2" href="/reports/{{Auth::user()->id}}">Reports</a>
 				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>

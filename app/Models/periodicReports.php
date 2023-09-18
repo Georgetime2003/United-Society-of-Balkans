@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class periodicReports extends Model
+class PeriodicReports extends Model
 {
     use HasFactory;
 
@@ -19,6 +19,7 @@ class periodicReports extends Model
         'answer4',
         'answer5',
         'comment',
+        'status'
     ];
 
     public function user()

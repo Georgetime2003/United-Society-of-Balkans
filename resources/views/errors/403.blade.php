@@ -1,6 +1,6 @@
 @extends('layout')
 @section('header')
-<script src="{{ asset('js/reports.js') }}"></script>
+	{{-- <script src="{{ asset('js/reports.js') }}"></script> --}}
 @endsection
 @section('site_content')
 <div class="background-fixed background-animated">

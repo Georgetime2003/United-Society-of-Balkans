@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User as DBUser;
-use App\Models\Organization_reports as DBOrganization_reports;
+use App\Models\PeriodicReports as DBOrganization_reports;
 use DateTime;
 
 class OrganizationReports extends Controller
@@ -32,6 +32,10 @@ class OrganizationReports extends Controller
 
     public function index() {
         $organizations = DBUser::where('role', 'organization')->get();
-        
+        foreach ($organizations as $organization){
+            $organization->pending = DBOrganization_reports::where('organization_id', $organization->id)->where('status', 'pending')->get();
+            $organization->reports = DBOrganization_reports::where('organization_id', $organization->id)->where('status', '!=', 'pending')->count();
+        }
+        return view('reports.index')->with('organizations', $organizations);
     }
 }
