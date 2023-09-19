@@ -119,6 +119,17 @@
 								<label for="sending" class="form-label">Sending Organization:</label>
 							</div>
 						</div>
+						<div id="volunteer6" class="col-12" style="display: none">
+							<div class="form-floating mb-3">
+								<select class="form-select" id="organization_id" name="organization_id" aria-label="Floating label select example" {{$admin ? '' : 'disabled'}}>
+									<option value="0">Select an option</option>
+									@foreach ($organizations as $organization)
+									<option value="{{$organization->id}}" @if($user->organization_id == $organization->id) selected @endif>{{$organization->organization_name}}</option>
+									@endforeach
+								</select>
+								<label for="organization_id" class="form-label">Organization:</label>
+							</div>
+						</div>
 						<div id="organization" class="col-12" style="display: none">
 							<div class="form-floating mb-3">
 								<input type="text" class="form-control" id="organization_name" name="organization_name" value="{{$user->organization_name}}" {{$admin ? '' : 'disabled'}}>

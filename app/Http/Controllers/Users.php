@@ -39,7 +39,8 @@ class Users extends Controller
         } else if(!$user) {
             return redirect()->route('users');
         }
-        return view('user')->with('user', $user)->with('admin', true);
+        $organizations = User::where('role', 'organization')->get();
+        return view('user')->with('user', $user)->with('admin', true)->with('organizations', $organizations);
     }
 
     /**
@@ -66,6 +67,7 @@ class Users extends Controller
                 $user->volunteer_code = $request->volunteer_code;
                 $user->hosting = $request->hosting;
                 $user->sending = $request->sending;
+                $user->organization_id = $request->organization_id == 0 ? null : $request->organization_id;
                 break;
             case '2':
                 $user->role = 'house';
@@ -73,7 +75,7 @@ class Users extends Controller
             case '3':
                 $user->role = 'organization';
                 $user->organization_name = $request->organization;
-                $user->organization_id = $user->id;
+                $user->organization_id = null;
                 $user->start_date = null;
                 $user->end_date = null;
                 $user->volunteer_code = null;

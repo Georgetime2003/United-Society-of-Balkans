@@ -9,6 +9,7 @@ var volunteer2 = document.getElementById("volunteer2");
 var volunteer3 = document.getElementById("volunteer3");
 var volunteer4 = document.getElementById("volunteer4");
 var volunteer5 = document.getElementById("volunteer5");
+var volunteer6 = document.getElementById("volunteer6");
 
 var organization = document.getElementById("organization");
 
@@ -18,6 +19,7 @@ var fadeDownVolunteers = function() {
 	volunteer3.classList.remove("fade-up-users");
 	volunteer4.classList.remove("fade-up-users");
 	volunteer5.classList.remove("fade-up-users");
+	volunteer6.classList.remove("fade-up-users");
 }
 
 var fadeDownOrganization = organization.classList.remove("fade-up-users");
@@ -50,6 +52,7 @@ window.onload = function() {
 				role: $("#role").val(),
 				hosting: $("#hosting").val(),
 				sending: $("#sending").val(),
+				organization_id: $("#organization_id").find(":selected").val(),
 				organization: $("#organization_name").val()
 			},
 			success: function(result) {
@@ -77,6 +80,9 @@ window.onload = function() {
 		volunteer4.classList.toggle("fade-down-users");
 		volunteer5.style.display = "block";
 		volunteer5.classList.toggle("fade-down-users");
+		volunteer6.style.display = "block";
+		volunteer6.classList.toggle("fade-down-users");
+
 	} 
 	//If the user is an organization, show the organization div
 	else if ($("#role").val() == 3) {
@@ -110,6 +116,9 @@ window.onload = function() {
 					volunteer5.classList.remove("fade-up-users");
 					volunteer5.style.display = "block";
 					volunteer5.classList.add("fade-down-users");
+					volunteer6.classList.remove("fade-up-users");
+					volunteer6.style.display = "block";
+					volunteer6.classList.add("fade-down-users");
 					organization.style.display = "none";
 				});
 			} else {
@@ -128,6 +137,9 @@ window.onload = function() {
 				volunteer5.classList.remove("fade-up-users");
 				volunteer5.style.display = "block";
 				volunteer5.classList.add("fade-down-users");
+				volunteer6.classList.remove("fade-up-users");
+				volunteer6.style.display = "block";
+				volunteer6.classList.add("fade-down-users");
 				organization.style.display = "none";
 			}
 		} else if($("#role").val() == 3) {
@@ -138,6 +150,7 @@ window.onload = function() {
 					volunteer3.classList.add("fade-up-users");
 					volunteer4.classList.add("fade-up-users");
 					volunteer5.classList.add("fade-up-users");
+					volunteer6.classList.add("fade-up-users");
 					setTimeout(() => resolve(), 700);
 					return;
 				});
@@ -147,11 +160,13 @@ window.onload = function() {
 					volunteer3.style.display = "none";
 					volunteer4.style.display = "none";
 					volunteer5.style.display = "none";
+					volunteer6.style.display = "none";
 					volunteer1.classList.remove("fade-down-users");
 					volunteer2.classList.remove("fade-down-users");
 					volunteer3.classList.remove("fade-down-users");
 					volunteer4.classList.remove("fade-down-users");
 					volunteer5.classList.remove("fade-down-users");
+					volunteer6.classList.remove("fade-down-users");
 					organization.classList.remove("fade-up-users");
 					organization.style.display = "block";
 					organization.classList.add("fade-down-users");
@@ -169,6 +184,7 @@ window.onload = function() {
 					volunteer3.classList.add("fade-up-users");
 					volunteer4.classList.add("fade-up-users");
 					volunteer5.classList.add("fade-up-users");
+					volunteer6.classList.add("fade-up-users");
 					setTimeout(() => resolve(), 700);
 					return;
 				});
@@ -183,6 +199,8 @@ window.onload = function() {
 					volunteer4.style.display = "none";
 					volunteer5.classList.remove("fade-down-users");
 					volunteer5.style.display = "none";
+					volunteer6.classList.remove("fade-down-users");
+					volunteer6.style.display = "none";
 				});
 			} else if (organization.style.display == "block") {
 				let promiseTimeOutOrganization = new Promise((resolve, reject) => {

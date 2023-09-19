@@ -59,7 +59,7 @@ Route::get('/reports/{userid}/{reportid}', [App\Http\Controllers\Reports::class,
 Route::post('/weeklyreport/update', [App\Http\Controllers\Reports::class, 'updateweekly'])->name('reports.updateweekly')->middleware('isVolunteer');
 
 Route::get('/organizations', [App\Http\Controllers\OrganizationReports::class, 'index'])->name('organizations')->middleware('isAdmin');
-Route::get('/organizations/schedule', [App\Http\Controllers\OrganizationReports::class, 'shedule'])->name('organization.show')->middleware('isAdmin');
+Route::get('/organization/{id}', [App\Http\Controllers\OrganizationReports::class, 'showVolunteers'])->name('organization.volunteers')->middleware('isAdmin');
 
 
 Route::get('/home', function () {
