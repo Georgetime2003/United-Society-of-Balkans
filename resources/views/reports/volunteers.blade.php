@@ -1,13 +1,13 @@
 @extends('layout')
 @section('header')
-    <script src="{{ asset('js/organizationShow.js') }}"></script>
+    <script src="{{ asset('js/organizationVolunteers.js') }}"></script>
 @endsection
 @section('content')
 <div class="background-fixed background-animated">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 data-header="h1" class="title my-5">{{$organization->name}}'s Volunteers</h2>
+                <h2 data-header="h1" class="title my-5">{{$organization->organization_name}}'s Volunteers</h2>
             </div>
         </div>
         <div class="row">
@@ -28,7 +28,7 @@
                                         @foreach ($volunteers as $volunteer)
                                             <tr id={{ $volunteer->id }}>
                                                 <td>{{ $volunteer->name }}</td>
-                                                <td>{{ $volunteer->reports }}</td>
+                                                <td>{{ $volunteer->reports }}/2</td>
                                                 <td>{{ $volunteer->pending }}</td>
                                             </tr>
                                         @endforeach
@@ -43,3 +43,4 @@
     </div>
 </div>
 @endsection
+<p hidden id="organizationId">{{ $organization->id }}</p>

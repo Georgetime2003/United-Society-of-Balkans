@@ -44,10 +44,12 @@ class OrganizationReports extends Controller
         $organization = DBUser::where('id', $id)->first();
         if ($organization == null){
             abort(404);
+        } else if ($organization->role != 'organization'){
+            abort(403);
         }
         $volunteers = DBUser::where('organization_id', $organization->id)->get();
         foreach ($volunteers as $volunteer){
-            $volunteer->reports = DBOrganization_reports::where('user_id', $volunteer->id)->where('organization_id', $organization->id)->get();
+            $volunteer->reports = DBOrganization_reports::where('user_id', $volunteer->id)->where('organization_id', $organization->id)->count();
             $volunteer->pending = DBOrganization_reports::where('user_id', $volunteer->id)->where('organization_id', $organization->id)->where('status', 'pending')->first();
         }
         return view('reports.volunteers')->with('volunteers', $volunteers)->with('organization', $organization);

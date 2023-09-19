@@ -6,6 +6,7 @@
 		<img src="/images/logonav.png" alt="Logo" width="40" height="38" class="d-inline-block">
 	  </a>
 	  <div class="d-flex">
+		<a class="btn btn-outline-light me-2" href="/home"><i class="fas fa-home" style="width: 20px; margin-top: 20%"></i></a>
 		@if (Auth::user())
 			@if (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
 			<a class="btn btn-outline-light me-2" href="/users">Users</a>
@@ -19,8 +20,8 @@
 			@elseif (Auth::user()->role == 'housemanager')
 				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
 			@endif
-		<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
-		@endif
+			@endif
+			<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>
 	  </div>
 	</div>
 </nav>
