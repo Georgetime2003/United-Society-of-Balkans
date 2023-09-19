@@ -19,6 +19,8 @@
 				<a class="btn btn-outline-light me-2" href="/user/config">Account</a>
 			@elseif (Auth::user()->role == 'housemanager')
 				<a class="btn btn-outline-light me-2" href="/forum">Forum</a>
+			@elseif (Auth::user()->role == 'organization')
+				<a class="btn btn-outline-light me-2" href="/organization/{{Auth::user()->id}}">Reports</a>
 			@endif
 			@endif
 			<a class="btn btn-danger me-2" href="/logout" onclick="logout(event)">Logout</a>

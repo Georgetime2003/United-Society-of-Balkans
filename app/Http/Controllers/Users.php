@@ -140,7 +140,8 @@ class Users extends Controller
         if(!$user){
             return dd(Auth::user());
         }
-        return view('user')->with('user', $user)->with('admin', false);
+        $organizations = User::where('role', 'organization')->get();
+        return view('user')->with('user', $user)->with('admin', false)->with('organizations', $organizations);
     }
 
     public function saveAvatar(Request $request){

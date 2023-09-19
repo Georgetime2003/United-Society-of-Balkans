@@ -24,7 +24,7 @@
 	<div class="container">
 	<div class="row">
 		<div class="mb-3"></div>
-		<div class="col-12">
+		<div class="col-12 my-3">
 			<h2>{{$user->name}} {{$user->surnames}}</h2>
 		</div>
 		<div class="mb-2"></div>
