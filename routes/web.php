@@ -60,6 +60,8 @@ Route::post('/weeklyreport/update', [App\Http\Controllers\Reports::class, 'updat
 
 Route::get('/organizations', [App\Http\Controllers\OrganizationReports::class, 'index'])->name('organizations')->middleware('isAdmin');
 Route::get('/organization/{id}', [App\Http\Controllers\OrganizationReports::class, 'showVolunteers'])->name('organization.volunteers')->middleware('isAdmin');
+Route::get('/organization/{organizationId}/{volunteerId}', [App\Http\Controllers\OrganizationReports::class, 'show'])->name('organization.show')->middleware('isAdmin');
+Route::get('/organization/{volunteerId}/{organizationId}/{type}', [App\Http\Controllers\OrganizationReports::class, 'create'])->name('organization.create')->middleware('isAdmin');
 
 
 Route::get('/home', function () {

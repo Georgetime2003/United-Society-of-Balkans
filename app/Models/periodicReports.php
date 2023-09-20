@@ -12,6 +12,7 @@ class PeriodicReports extends Model
 
     protected $fillable = [
         'user_id',
+        'organization_id',
         'type',
         'answer1',
         'answer2',

@@ -27,7 +27,7 @@ class login extends Controller
         $login = User::where('email', $user->email)->first();
         if($login){
             Auth::login($login);
-            return redirect()->route('reports');
+            return redirect()->route('home');
         }else{
             return redirect()->route('login')->with('error', 'You are not registered, try another account or contact with USB');
         }
@@ -42,7 +42,7 @@ class login extends Controller
         $login = User::where('email', $user->email)->first();
         if($login){
             $users = User::all();
-            return redirect()->route('reports');
+            return redirect()->route('home');
         }else{
             return redirect()->route('login')->with('error', 'You are not registered, try another account or contact with USB');
         }
@@ -63,7 +63,7 @@ class login extends Controller
         if($login){
             if($login->password == $password){
                 Auth::login($login);
-                return redirect()->route('reports');
+                return redirect()->route('home');
             }else{
                 return redirect()->route('login')->with('error', 'Wrong password');
             }

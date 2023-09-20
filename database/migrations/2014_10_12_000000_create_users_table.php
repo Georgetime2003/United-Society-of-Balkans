@@ -38,6 +38,7 @@ return new class extends Migration
             'surnames' => 'Admin',
             'role' => 'superadmin',
             'email' => 'familiajordiescarra@gmail.com',
+            'avatar' => '/images/avatars/1.png',
         ]);
     }
 

@@ -26,8 +26,59 @@ body {
 	height: calc(100% - 65px);
 }
 
+.reports-nonscroll {
+	height: calc(100vh - 450px);
+}
+
+.reports-scroll {
+	overflow-y: scroll;
+	height: calc(100vh - 450px);
+}
+
+.reports-scroll::-webkit-scrollbar {
+	width: 7px;
+	color: #CB416B;
+	overflow-y: scroll;
+}
+
+.reports-scroll::-webkit-scrollbar-track {
+	background: #fdfdfd;
+	border-radius: 10px;
+	box-shadow: inset 0px 0px 5px rgb(210, 210, 210);
+	margin-bottom: 5px;
+}
+
+.reports-scroll::-webkit-scrollbar-thumb {
+	background: #CB416B;
+	border-radius: 10px;
+}
+
+.reports-scroll::-webkit-scrollbar-thumb:hover {
+	background: #E68FAC;
+	
+}
+
+.reports-scroll::-webkit-scrollbar-thumb:active {
+	background: #E68FAC;
+}
+
 .bg-pink {
 	background-color: #CB416B;
+}
+
+.btn-pink {
+	background-color: #CB416B;
+	border-color: #CB416B;
+}
+
+.btn-pink:hover {
+	background-color: #E68FAC;
+	border-color: #E68FAC;
+}
+
+.btn-pink:active {
+	background-color: #E68FAC !important;
+	border-color: #E68FAC !important;
 }
 
 

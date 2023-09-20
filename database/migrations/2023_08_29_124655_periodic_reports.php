@@ -16,13 +16,13 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->notNullable();
             $table->foreignId('organization_id')->constrained('users')->notNullable();
             $table->boolean('type')->unique()->comment('0: mid-term, 1: final')->notNullable();
-            $table->string('answer1')->notNullable();
-            $table->string('answer2')->notNullable();
-            $table->string('answer3')->notNullable();
-            $table->string('answer4')->notNullable();
-            $table->string('answer5')->notNullable();
+            $table->string('answer1')->nullable();
+            $table->string('answer2')->nullable();
+            $table->string('answer3')->nullable();
+            $table->string('answer4')->nullable();
+            $table->string('answer5')->nullable();
             $table->string('status')->default('pending');
-            $table->string('comment')->Nullable();
+            $table->string('comment')->nullable();
         });
     }
 
