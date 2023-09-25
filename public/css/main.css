@@ -81,6 +81,16 @@ body {
 	border-color: #E68FAC !important;
 }
 
+.btn-menubar {
+	background-color: #00B5AD;
+	border-color: #FDFDFD;
+}
+
+.btn-menubar:hover {
+	background-color: #00B5AD;
+	border-color: #FDFDFD;
+}
+
 
 .background-animated {
 	opacity: 0%;
@@ -97,22 +107,65 @@ body {
 
   
 .linkmenu:link{
-	color: #00B5AD;
+	  color: #00B5AD;
+	  text-decoration: none;
+	  /* Bold text */
+	  font-weight: bold;
+	}
+	/* Animated hover */
+.linkmenu:hover{
+		color: #F58233;
+		text-decoration: none;
+		/* Bold text */
+		font-weight: bold;
+		/* Animate the text color */
+		transition: color 0.2s ease-in-out;
+		-webkit-transition: color 0.2s ease-in-out;
+		-moz-transition: color 0.2s ease-in-out;
+		-o-transition: color 0.2s ease-in-out;
+}
+
+.linkmenubar{
+		color: #000000;
+		/* Box shadow like 3d effect */
+		box-shadow: 0px 0px 5px #00918a;
+		text-decoration: none;
+		/* Bold text */
+		font-weight: bold;
+}
+
+.linkmenubar:hover{
+	color: #01635e;
+	box-shadow: 0px 0px 10px #01847d;
+	text-decoration: none;
+	/* Bold text */
+	font-weight: bold;
+	/* Animate the text color */
+	transition: color 0.6s ease-in-out-menu;
+	-webkit-transition: color 0.6s ease-in-out-menu;
+	-moz-transition: color 0.6s ease-in-out-menu;
+	-o-transition: color 0.6s ease-in-out-menu;
+}
+	
+.linkmenulogout{
+	color: #a40000;
+	box-shadow: 0px 0px 5px #00918a;
 	text-decoration: none;
 	/* Bold text */
 	font-weight: bold;
 }
 /* Animated hover */
-.linkmenu:hover{
-	color: #F58233;
+.linkmenulogout:hover{
+	color: #ee0000;
+	box-shadow: 0px 0px 10px #01847d;
 	text-decoration: none;
 	/* Bold text */
 	font-weight: bold;
 	/* Animate the text color */
-	transition: color 0.2s ease-in-out;
-	-webkit-transition: color 0.2s ease-in-out;
-	-moz-transition: color 0.2s ease-in-out;
-	-o-transition: color 0.2s ease-in-out;
+	transition: color 0.6s easy-in-out-logout;
+	-webkit-transition: color 0.6s easy-in-out-logout;
+	-moz-transition: color 0.6s easy-in-out-logout;
+	-o-transition: color 0.6s easy-in-out-logout;
 }
 
 #upvotes {
@@ -198,6 +251,28 @@ body {
 	-webkit-animation-fill-mode: forwards;
 }
 
+
+@keyframes easy-in-out-menu {
+	0% {
+		color: #000000;
+		box-shadow: 0px 0px 5px rgb(0, 0, 0);
+	}
+	100% {
+		color: #F58233;
+		box-shadow: 0px 0px 6px rgb(0, 0, 0);
+	}
+}
+
+@keyframes easy-in-out-logout {
+	0% {
+		color: #a40000;
+		box-shadow: 0px 0px 5px rgb(0, 0, 0);
+	}
+	100% {
+		color: #ff0000;
+		box-shadow: 0px 0px 6px rgb(0, 0, 0);
+	}
+}
 
 @keyframes fade-up {
 	0% {
