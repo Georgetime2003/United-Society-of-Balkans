@@ -17,7 +17,7 @@
                         <h3>Mid-Term Report</h3>
                     </div>
                     <div class="card-body py-0 @if($midTerm)reports-scroll @else reports-nonscroll @endif">
-                        @if($midTerm)
+                        @if($midTerm && $midTerm->status != 'pending')
                             <div class="row">
                                 <div class="col-12">
                                     <p class="card-text">
@@ -40,7 +40,7 @@
                                         {{$midTerm->answer4}}
                                     </p>
                                     <p class="card-text">
-                                        <strong>5)</strong> Impact and benefit on the organization<br/>
+                                        <strong>5)</strong> Impact and benefit on the organization: <br/>
                                         {{$midTerm->answer5}}
                                     </p>
                                     <p class="card-text">
@@ -57,7 +57,7 @@
                     <div class="card-footer p-4">
                         <a href="{{--{{route('pdf.report', $midTerm->id)}}--}}" class="btn btn-pink text-light">Download Report's PDF</a>
                     </div>
-                        @else
+                        @elseif(!$midTerm)
                             <div class="row">
                                 <div class="col-12">
                                     <p class="card-text">No report Generated.<br/>
@@ -69,9 +69,30 @@
                             </div> 
                     </div>
                     <div class="card-footer p-4">
+                        @if(Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
                         <a href="{{route('organization.create', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'type' => 'midterm'])}}" class="btn btn-pink text-light">Create Report</a>
-                    </div>
                         @endif
+                    </div>
+                        @elseif($midTerm->status == 'pending' && $midTerm->organization_id == Auth::user()->id)
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="card-text">The report is ready to be filled.</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="card-footer p-4">
+                        @if(Auth::user()->role == 'organization')
+                        <a href="{{route('organization.fill', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'reportId' => $midTerm->id])}}" class="btn btn-pink text-light">Edit Report</a>
+                        @endif
+                    </div>
+                        @else
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="card-text">The report is pending to be filled.</p>
+                                </div>
+                            </div>
+                    </div>
+                    @endif
                 </div>
             </div>
             <div class="col-md-6 col-12">
@@ -79,8 +100,8 @@
                     <div class="card-title bg-pink text-light p-4">
                         <h3>Final Term Report</h3>
                     </div>
-                    <div class="card-body p-4 @if($finalTerm)reports-scroll @else reports-nonscroll @endif">
-                        @if($finalTerm)
+                    <div class="card-body py-0 @if($finalTerm)reports-scroll @else reports-nonscroll @endif">
+                        @if($finalTerm && $finalTerm->status != 'pending')
                             <div class="row">
                                 <div class="col-12">
                                     <p class="card-text">
@@ -118,9 +139,13 @@
                             </div>
                     </div>
                     <div class="card-footer p-4">
+                        @if(Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
                         <a href="{{--{{route('pdf.report', $finalterm->id)}}--}}" class="btn btn-pink text-light">Download Report's PDF</a>
+                        @elseif(Auth::user()->role == 'organization')
+                        <a href="{{route('organization.edit', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'type' => 'finalterm'])}}" class="btn btn-pink text-light">Edit Report</a>
+                        @endif
                     </div>
-                        @else
+                        @elseif (!$finalTerm)
                             <div class="row">
                                 <p class="card-text">No report Generated.<br/>
                                     @if($volunteer->activateFinalTermReport) <strong>Is recommended to send the report because it pass half of the period.</strong>
@@ -129,10 +154,31 @@
                                 </p>
                             </div> 
                     </div>
+                    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
                     <div class="card-footer text-light p-4">
                         <a href="{{route('organization.create', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'type' => 'finalterm'])}}" class="btn btn-pink text-light">Create Report</a>
                     </div>
+                    @endif
+                        @elseif($finalTerm->status == 'pending' && $finalTerm->organization_id == Auth::user()->id)
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="card-text">The report is ready to be filled.</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="card-footer p-4">
+                        @if(Auth::user()->role == 'organization')
+                        <a href="{{route('organization.fill', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'reportId' => $finalTerm->id])}}" class="btn btn-pink text-light">Edit Report</a>
                         @endif
+                    </div>
+                        @else
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="card-text">The report is pending to be filled.</p>
+                                </div>
+                            </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

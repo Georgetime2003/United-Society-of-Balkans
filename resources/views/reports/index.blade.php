@@ -20,14 +20,14 @@
                                     <thead class="bg-pink text-light">
                                         <tr>
                                             <th>Organization</th>
-                                            <th>Pendent Reports</th>
+                                            <th>Filled/Reports</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($organizations as $organization)
                                             <tr id={{ $organization->id }}>
                                                 <td>{{ $organization->organization_name }}</td>
-                                                <td>{{ $organization->reports }}</td>
+                                                <td>{{ $organization->filled }}/{{ $organization->reports }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

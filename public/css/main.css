@@ -192,8 +192,8 @@ body {
 	animation: fade-up 1s ease-in-out;
 	-webkit-animation: fade-up 1s ease-in-out;
 	opacity: 0%;
-	animation-delay: 0s;
-	-webkit-animation-delay: 0s;
+	animation-delay: 0.5s;
+	-webkit-animation-delay: 0.5s;
 	animation-fill-mode: forwards;
 	-webkit-animation-fill-mode: forwards;
 }

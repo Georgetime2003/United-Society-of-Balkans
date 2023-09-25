@@ -1,7 +1,4 @@
 @extends('layout')
-@section('header')
-    <script src="{{ asset('js/home.js') }}"></script>
-@endsection
 @section('site_content')
 <div class="background-fixed">
     <div class="container">
@@ -48,6 +45,16 @@
                                             </a>
                                         </div>
                                     </div>
+                                    <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 2%">
+                                        <div class="card card-selector border-1 shadow rouded-3">
+                                            <a href="{{ route('forum') }}" class="linkmenu">
+                                                <div class="card-body">
+                                                    <i class="fas fa-comments start-icons fa-2x"></i> <span
+                                                        class="offset-1">Forum</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 @elseif(Auth::user()->role == 'user')
                                     <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 2%">
                                         <div class="card card-selector border-1 shadow rouded-3">
@@ -59,21 +66,31 @@
                                             </a>
                                         </div>
                                     </div>
-                                @elseif(Auth::user()->role != 'organization')
-                                <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 2%">
-                                    <div class="card card-selector border-1 shadow rouded-3">
-                                        <a href="{{ route('forum') }}" class="linkmenu">
-                                            <div class="card-body">
-                                                <i class="fas fa-comments start-icons fa-2x"></i> <span
-                                                    class="offset-1">Forum</span>
-                                            </div>
-                                        </a>
+                                    <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 2%">
+                                        <div class="card card-selector border-1 shadow rouded-3">
+                                            <a href="{{ route('forum') }}" class="linkmenu">
+                                                <div class="card-body">
+                                                    <i class="fas fa-comments start-icons fa-2x"></i> <span
+                                                        class="offset-1">Forum</span>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
+                                @elseif(Auth::user()->role != 'organization')
+                                    <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 2%">
+                                        <div class="card card-selector border-1 shadow rouded-3">
+                                            <a href="{{ route('forum') }}" class="linkmenu">
+                                                <div class="card-body">
+                                                    <i class="fas fa-comments start-icons fa-2x"></i> <span
+                                                        class="offset-1">Forum</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 @elseif(Auth::user()->role == 'organization')
                                 <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 2%">
                                     <div class="card card-selector border-1 shadow rouded-3">
-                                        <a href="/organization" class="linkmenu">
+                                        <a href="/organization/{{Auth::user()->id}}" class="linkmenu">
                                             <div class="card-body">
                                                 <i class="fas fa-building start-icons fa-2x"></i> <span
                                                     class="offset-1">Volunteers' Reports</span>

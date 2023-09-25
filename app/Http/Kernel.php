@@ -67,5 +67,7 @@ class Kernel extends HttpKernel
         'isAdminorVolunteer' => \App\Http\Middleware\isAdminOrVolunteer::class,
         'isVolunteer' => \App\Http\Middleware\isVolunteer::class,
         'isHouseManager' => \App\Http\Middleware\isHouseManager::class,
+        'isOrganization' => \App\Http\Middleware\isOrganization::class,
+        'isAdminorOrganization' => \App\Http\Middleware\isAdminorOrganization::class,
     ];
 }

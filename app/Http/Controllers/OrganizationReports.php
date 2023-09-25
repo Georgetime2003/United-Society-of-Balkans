@@ -33,9 +33,8 @@ class OrganizationReports extends Controller
     public function index() {
         $organizations = DBUser::where('role', 'organization')->get();
         foreach ($organizations as $organization){
-            $organization->pending = DBOrganization_reports::where('organization_id', $organization->id)->where('status', 'pending')->count();
-            if ($organization->pending == 0) $organization->pending = "🆗";
-            $organization->reports = DBOrganization_reports::where('organization_id', $organization->id)->where('status', '!=', 'pending')->count();
+            $organization->filled = DBOrganization_reports::where('organization_id', $organization->id)->where('status', '!=' ,'pending')->count();
+            $organization->reports = DBOrganization_reports::where('organization_id', $organization->id)->count();
         }
         return view('reports.index')->with('organizations', $organizations);
     }
@@ -97,5 +96,27 @@ class OrganizationReports extends Controller
             'status' => 'pending'
         ]);
         return redirect()->route('organization.show', ['volunteerId' => $volunteerId, 'organizationId' => $organizationId]);
+    }
+
+    public function fill($volunteerId, $organizationId, $reportId){
+        $volunteer = DBUser::where('id', $volunteerId)->first();
+        if ($volunteer == null){
+            abort(404);
+        } else if ($volunteer->role != 'volunteer'){
+            abort(403);
+        }
+        $organization = DBUser::where('id', $organizationId)->first();
+        if ($organization == null){
+            abort(404);
+        } else if ($organization->role != 'organization'){
+            abort(403);
+        }
+        $report = DBOrganization_reports::where('report_id', $reportId)->first();
+        if ($report == null){
+            abort(404);
+        } else if($report->user_id != $volunteerId || $report->organization_id != $organizationId){
+            abort(403);
+        }
+        return view('organization.fill')->with('report', $report)->with('volunteer', $volunteer)->with('organization', $organization);
     }
 }

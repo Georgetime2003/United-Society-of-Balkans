@@ -35,6 +35,7 @@ class registerOrganization extends Mailable
                 'name' => $this->data['name'],
                 'surnames' => $this->data['surnames'],
                 'email' => $this->data['email'],
+                'password' => $this->data['password'],
                 'organization' => $this->data['organization'],
                 'role' => $this->data['role'],
                 'subject' => 'USB - New Organization Registration'

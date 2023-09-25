@@ -59,9 +59,10 @@ Route::get('/reports/{userid}/{reportid}', [App\Http\Controllers\Reports::class,
 Route::post('/weeklyreport/update', [App\Http\Controllers\Reports::class, 'updateweekly'])->name('reports.updateweekly')->middleware('isVolunteer');
 
 Route::get('/organizations', [App\Http\Controllers\OrganizationReports::class, 'index'])->name('organizations')->middleware('isAdmin');
-Route::get('/organization/{id}', [App\Http\Controllers\OrganizationReports::class, 'showVolunteers'])->name('organization.volunteers')->middleware('isAdmin');
-Route::get('/organization/{organizationId}/{volunteerId}', [App\Http\Controllers\OrganizationReports::class, 'show'])->name('organization.show')->middleware('isAdmin');
-Route::get('/organization/{volunteerId}/{organizationId}/{type}', [App\Http\Controllers\OrganizationReports::class, 'create'])->name('organization.create')->middleware('isAdmin');
+Route::get('/organization/{id}', [App\Http\Controllers\OrganizationReports::class, 'showVolunteers'])->name('organization.volunteers')->middleware('isAdminorOrganization');
+Route::get('/organization/{organizationId}/{volunteerId}', [App\Http\Controllers\OrganizationReports::class, 'show'])->name('organization.show')->middleware('isAdminorOrganization');
+Route::get('/organization/{volunteerId}/{organizationId}/generate/{type}', [App\Http\Controllers\OrganizationReports::class, 'create'])->name('organization.create')->middleware('isAdminorOrganization');
+Route::get('/organization/{volunteerId}/{organizationId}/{reportId}', [App\Http\Controllers\OrganizationReports::class, 'fill'])->name('organization.fill')->middleware('isOrganization');
 
 
 Route::get('/home', function () {
