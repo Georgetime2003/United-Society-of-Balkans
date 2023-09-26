@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Auth;
  * @return view login
  */
 Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('home');
+    }
     return view('login');
 })->name('login');
 

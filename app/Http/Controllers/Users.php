@@ -151,9 +151,10 @@ class Users extends Controller
             'avatar' => 'required|image|mimes:jpeg,png,jpg|max:4096',
         ]);
         $user = Auth::user();
-        $imageName = $user->id.'.'.$request->avatar->extension();
         //crop the image to a square of 200x200 cutting the image if it's bigger
-        $img = \Image::make($request->avatar->path());
+        $img = \Image::make($request->avatar->path())->encode('jpg',80);
+        //If it's png it will convert it to jpg
+        $imageName = $user->id.'.jpg';
         $img->fit(200, 200, function ($constraint) {
             $constraint->upsize();
         });
