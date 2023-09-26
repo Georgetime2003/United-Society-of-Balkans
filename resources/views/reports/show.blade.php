@@ -23,40 +23,46 @@
                                     <p class="card-text">
                                         <strong>1)</strong> Activities joined or organized by the volunteers (in chronological order, please be
                                         as much detailed as possible):<br/>
-                                        {{$midTerm->answer1}}
+                                        <u>{{$midTerm->answer1}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>2)</strong> Any kind of task-related preparation was offered to the participants: <br/>
-                                        {{$midTerm->answer2}}
+                                        <u>{{$midTerm->answer2}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>3)</strong> Describe any problem(s) or difficulty encountered during the period and the
                                             solution(s) applied:<br/>
-                                        {{$midTerm->answer3}}
+                                        <u>{{$midTerm->answer3}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>4)</strong> Competences (i.e. knowledge, skills and attitudes/behaviours) acquired/improved
                                             by participants in the last period and impact on their present and future: <br/>
-                                        {{$midTerm->answer4}}
+                                        <u>{{$midTerm->answer4}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>5)</strong> Impact and benefit on the organization: <br/>
-                                        {{$midTerm->answer5}}
+                                        <u>{{$midTerm->answer5}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>6)</strong> Dissemination material (link to articles – videos - social media posts): <br/>
-                                        {{$midTerm->answer6}}
+                                        <u>{{$midTerm->answer6}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>Comments: </strong><br/>
-                                        {{$midTerm->comments}}
+                                        <u>{{$midTerm->comment}}</u>
                                     </p>
                                 </div>
                             </div>
                     </div>
+                    @if (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
                     <div class="card-footer p-4">
                         <a href="{{--{{route('pdf.report', $midTerm->id)}}--}}" class="btn btn-pink text-light">Download Report's PDF</a>
                     </div>
+                    @else
+                    <div class="card-footer p-4">
+                        <a href="{{route('organization.fill', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'reportId' => $midTerm->id])}}" class="btn btn-pink text-light">Edit Report</a>
+                    </div>
+                    @endif
                         @elseif(!$midTerm)
                             <div class="row">
                                 <div class="col-12">
@@ -107,33 +113,33 @@
                                     <p class="card-text">
                                         <strong>1)</strong> Activities joined or organized by the volunteers (in chronological order, please be
                                         as much detailed as possible):<br/>
-                                        {{$finalTerm->answer1}}
+                                        <u>{{$finalTerm->answer1}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>2)</strong> Any kind of task-related preparation was offered to the participants: <br/>
-                                        {{$finalTerm->answer2}}
+                                        <u>{{$finalTerm->answer2}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>3)</strong> Describe any problem(s) or difficulty encountered during the period and the
                                             solution(s) applied:<br/>
-                                        {{$finalTerm->answer3}}
+                                        <u>{{$finalTerm->answer3}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>4)</strong> Competences (i.e. knowledge, skills and attitudes/behaviours) acquired/improved
                                             by participants in the last period and impact on their present and future: <br/>
-                                        {{$finalTerm->answer4}}
+                                        <u>{{$finalTerm->answer4}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>5)</strong> Impact and benefit on the organization<br/>
-                                        {{$finalTerm->answer5}}
+                                        <u>{{$finalTerm->answer5}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>6)</strong> Dissemination material (link to articles – videos - social media posts): <br/>
-                                        {{$finalTerm->answer6}}
+                                        <u>{{$finalTerm->answer6}}</u>
                                     </p>
                                     <p class="card-text">
                                         <strong>Comments: </strong><br/>
-                                        {{$finalTerm->comments}}
+                                        <u>{{$finalTerm->comment}}</u>
                                     </p>
                                 </div>
                             </div>
@@ -142,7 +148,7 @@
                         @if(Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
                         <a href="{{--{{route('pdf.report', $finalterm->id)}}--}}" class="btn btn-pink text-light">Download Report's PDF</a>
                         @elseif(Auth::user()->role == 'organization')
-                        <a href="{{route('organization.edit', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'type' => 'finalterm'])}}" class="btn btn-pink text-light">Edit Report</a>
+                            <a href="{{route('organization.fill', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'reportId' => $finalTerm->id])}}" class="btn btn-pink text-light">Edit Report</a>
                         @endif
                     </div>
                         @elseif (!$finalTerm)
@@ -168,7 +174,7 @@
                     </div>
                     <div class="card-footer p-4">
                         @if(Auth::user()->role == 'organization')
-                        <a href="{{route('organization.fill', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'reportId' => $finalTerm->id])}}" class="btn btn-pink text-light">Edit Report</a>
+                            <a href="{{route('organization.fill', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'reportId' => $finalTerm->id])}}" class="btn btn-pink text-light">Edit Report</a>
                         @endif
                     </div>
                         @else

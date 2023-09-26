@@ -152,7 +152,7 @@ class Users extends Controller
         ]);
         $user = Auth::user();
         //crop the image to a square of 200x200 cutting the image if it's bigger
-        $img = \Image::make($request->avatar->path())->encode('jpg',80);
+        $img = \Image::make($request->avatar->path())->encode('jpg',100);
         //If it's png it will convert it to jpg
         $imageName = $user->id.'.jpg';
         $img->fit(200, 200, function ($constraint) {

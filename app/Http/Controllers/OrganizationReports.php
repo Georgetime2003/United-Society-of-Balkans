@@ -111,12 +111,29 @@ class OrganizationReports extends Controller
         } else if ($organization->role != 'organization'){
             abort(403);
         }
-        $report = DBOrganization_reports::where('report_id', $reportId)->first();
+        $report = DBOrganization_reports::where('id', $reportId)->first();
         if ($report == null){
             abort(404);
         } else if($report->user_id != $volunteerId || $report->organization_id != $organizationId){
             abort(403);
         }
-        return view('organization.fill')->with('report', $report)->with('volunteer', $volunteer)->with('organization', $organization);
+        return view('reports.form')->with('report', $report)->with('volunteer', $volunteer)->with('organization', $organization);
+    }
+
+    public function save(Request $request, $reportId){
+        $report = DBOrganization_reports::where('id', $reportId)->first();
+        if ($report == null){
+            abort(404);
+        }
+        $report->answer1 = $request->answer1;
+        $report->answer2 = $request->answer2;
+        $report->answer3 = $request->answer3;
+        $report->answer4 = $request->answer4;
+        $report->answer5 = $request->answer5;
+        $report->answer6 = $request->answer6;
+        $report->comment = $request->comments;
+        $report->status = 'filled';
+        $report->save();
+        return redirect()->route('organization.show', ['volunteerId' => $report->user_id, 'organizationId' => $report->organization_id]);
     }
 }

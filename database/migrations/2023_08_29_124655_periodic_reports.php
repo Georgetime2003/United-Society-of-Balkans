@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('answer3')->nullable();
             $table->string('answer4')->nullable();
             $table->string('answer5')->nullable();
+            $table->string('answer6')->nullable();
             $table->string('status')->default('pending');
             $table->string('comment')->nullable();
         });
