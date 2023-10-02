@@ -164,6 +164,25 @@ class Users extends Controller
         return redirect()->route('users.config');
     }
 
+    public function regeneratePassword($userId){
+        $user = User::find($userId);
+        if (!$user){
+            return abort(404);
+        }
+        $password = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
+        $user->password = $password;
+        $mailStatus = mailNewUser($user);
+        if ($mailStatus == 'Email sent'){
+            $user->newUser = false;
+            $user->password = Hash::make($password);
+            return route('users.show')->with($userId);
+        } else {
+            return abort(500, $user);
+        }
+    
+    }
+    
+
     
 
 }
@@ -214,3 +233,4 @@ function mailNewOrganization($user) {
         return $user;
     }
 }
+

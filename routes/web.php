@@ -64,6 +64,7 @@ Route::post('/user/delete/{id}', [App\Http\Controllers\Users::class, 'delete'])-
 Route::get('/user/{id}', [App\Http\Controllers\Users::class, 'show'])->name('users.show')->middleware('auth')->middleware('isAdmin');
 Route::post('/user', [App\Http\Controllers\Users::class, 'update'])->name('users.update')->middleware('auth')->middleware('isAdmin');
 Route::put('/user/updateAvatar', [App\Http\Controllers\Users::class, 'saveAvatar'])->name('users.updateAvatar');
+Route::get('/user/reGeneratePassword/{userId}', [App\Http\Controllers\Users::class, 'regeneratePassword'])->name('user.regenerate')->middleware('isAdmin');
 
 Route::get('/reports', [App\Http\Controllers\Reports::class, 'index'])->name('reports')->middleware('auth')->middleware('isAdmin');
 Route::get('/reports/{userid}', [App\Http\Controllers\Reports::class, 'listUser'])->name('reports.userList')->middleware('auth')->middleware('isAdminorVolunteer');
