@@ -56,7 +56,7 @@
                     </div>
                     @if (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
                     <div class="card-footer p-4">
-                        <a href="{{--{{route('pdf.report', $midTerm->id)}}--}}" class="btn btn-pink text-light">Download Report's PDF</a>
+                        <a href="{{route('organization.downloadPDF', $midTerm->id)}}" class="btn btn-pink text-light">Download Report's PDF</a>
                     </div>
                     @else
                     <div class="card-footer p-4">
@@ -146,7 +146,7 @@
                     </div>
                     <div class="card-footer p-4">
                         @if(Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
-                        <a href="{{--{{route('pdf.report', $finalterm->id)}}--}}" class="btn btn-pink text-light">Download Report's PDF</a>
+                            <a href="{{route('organization.downloadPDF', ['reportId' => $finalTerm->id])}}" class="btn btn-pink text-light">Download Report's PDF</a>
                         @elseif(Auth::user()->role == 'organization')
                             <a href="{{route('organization.fill', ['volunteerId' => $volunteer->id, 'organizationId' => $organization->id , 'reportId' => $finalTerm->id])}}" class="btn btn-pink text-light">Edit Report</a>
                         @endif

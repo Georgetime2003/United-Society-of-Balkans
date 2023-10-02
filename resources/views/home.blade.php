@@ -55,7 +55,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                @elseif(Auth::user()->role == 'user')
+                                @elseif(Auth::user()->role == 'volunteer')
                                     <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 2%">
                                         <div class="card card-selector border-1 shadow rouded-3">
                                             <a href="/reports/{{ Auth::user()->id }}" class="linkmenu">

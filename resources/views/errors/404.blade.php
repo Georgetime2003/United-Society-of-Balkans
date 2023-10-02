@@ -12,7 +12,7 @@
 					<img src="{{ asset('images/error.gif') }}" alt="You're not supposed to be here" class="img-fluid">
 				</div>
 				<br/>
-				<p>Go back to <a href="/forum" class="btn btn-outline-dark">Main site</a> <small>please 😇</small></p>
+				<p>Go back to <a href="/home" class="btn btn-outline-dark">Main site</a> <small>please 😇</small></p>
             </div>
 			<footer class="footer mt-auto py-3 bg-light">
 				<div class="container">

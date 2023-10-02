@@ -140,6 +140,7 @@
 				</div>
 				<div class="card-footer text-muted">
 					<button type="submit" id="save" class="btn btn-primary" {{$admin ? '' : 'hidden'}}>Save</button>
+					<a type="submit" href="{{route('user.regenerate'), $user->id}}" class="btn btn-primary" {{Auth::user()->role == 'superadmin' ? '' : 'hidden'}}>Regenerate User's Password</a>
 				</div>
 			</div>
 		</div>
@@ -160,7 +161,7 @@
 					@method('PUT')
 					<div class="mb-3">
 						<div class="alert alert-info" id="error">
-							The image is recommended to be 200x200 pixels
+							The image is recommended to be 200x200 pixels. <br>This photo will be crop to a square, it's recommended to upload a square image or crop it before uploading.
 						</div>
 						<label for="avatar" class="form-label">Avatar</label>
 						<input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" required>

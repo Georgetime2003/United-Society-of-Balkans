@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User as DBUser;
 use App\Models\PeriodicReports as DBOrganization_reports;
 use DateTime;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrganizationReports extends Controller
 {
@@ -119,6 +120,23 @@ class OrganizationReports extends Controller
         }
         return view('reports.form')->with('report', $report)->with('volunteer', $volunteer)->with('organization', $organization);
     }
+    
+    public function downloadPDF($reportId){
+        $report = DBOrganization_reports::where('id', $reportId)->first();
+        if ($report == null){
+            abort(404);
+        }
+        $volunteer = DBUser::where('id', $report->user_id)->first();
+        if ($volunteer == null){
+            abort(404);
+        }
+        $organization = DBUser::where('id', $report->organization_id)->first();
+        if ($organization == null){
+            abort(404);
+        }
+        $title = $report->type == 0 ? 'Midterm Report' : 'Final Report';
+        return Pdf::loadView('pdf.report', ['report' => $report, 'volunteer' => $volunteer, 'organization' => $organization, 'title' => $title])->download($volunteer->name. " " . $volunteer->surnames . "'s " . $title . '.pdf');
+    }
 
     public function save(Request $request, $reportId){
         $report = DBOrganization_reports::where('id', $reportId)->first();
@@ -136,4 +154,5 @@ class OrganizationReports extends Controller
         $report->save();
         return redirect()->route('organization.show', ['volunteerId' => $report->user_id, 'organizationId' => $report->organization_id]);
     }
+
 }
