@@ -63,6 +63,8 @@ class login extends Controller
         if($login){
             if($login->password == $password){
                 Auth::login($login);
+                //@TODO: Make if the volunteer didnt start the project in Thessaloniki they cannot get access to the Website
+                //@TODO: Make a Terms and conditions for not having Legal issues with the European Solidarity Corps.
                 return redirect()->route('home');
             }else{
                 return redirect()->route('login')->with('error', 'Wrong password');

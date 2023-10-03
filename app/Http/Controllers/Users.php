@@ -114,6 +114,25 @@ class Users extends Controller
         return response()->json($success);
     }
 
+    public function regeneratePassword($userId){
+        $user = User::find($userId);
+        if (!$user){
+            return abort(404);
+        }
+        $password = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
+        $user->password = $password;
+        $mailStatus = PasswordEmail($user);
+        if ($mailStatus == 'Email sent'){
+            $user->newUser = false;
+            $user->password = Hash::make($password);
+            $user->save();
+            return redirect()->route('users.show', ['id' => $user->id]);
+        } else {
+            return response()->json($mailStatus);
+        }
+    
+    }
+
     /**
      * Delete the user.
      * @param $id The id of the user
@@ -164,23 +183,7 @@ class Users extends Controller
         return redirect()->route('users.config');
     }
 
-    public function regeneratePassword($userId){
-        $user = User::find($userId);
-        if (!$user){
-            return abort(404);
-        }
-        $password = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
-        $user->password = $password;
-        $mailStatus = mailNewUser($user);
-        if ($mailStatus == 'Email sent'){
-            $user->newUser = false;
-            $user->password = Hash::make($password);
-            return route('users.show')->with($userId);
-        } else {
-            return abort(500, $user);
-        }
-    
-    }
+
     
 
     
@@ -231,6 +234,22 @@ function mailNewOrganization($user) {
         return 'Email sent';
     } catch (\Exception $e) {
         return $user;
+    }
+}
+
+function PasswordEmail($user){
+    $data = [
+        'name' => $user->name,
+        'surnames' => $user->surnames,
+        'password' => $user->password,
+        'email' => $user->email,
+        'role' => $user->role,
+    ];
+    try{
+        Mail::to($user->email)->send(new \App\Mail\PasswordEmail($data));
+        return 'Email sent';
+    } catch (\Exception $e) {
+        return $e->getMessage();
     }
 }
 
