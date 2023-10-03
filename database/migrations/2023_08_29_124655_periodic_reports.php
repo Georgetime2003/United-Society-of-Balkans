@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->notNullable();
             $table->foreignId('organization_id')->constrained('users')->notNullable();
-            $table->boolean('type')->unique()->comment('0: mid-term, 1: final')->notNullable();
+            $table->boolean('type')->comment('0: mid-term, 1: final')->notNullable();
             $table->string('answer1')->nullable();
             $table->string('answer2')->nullable();
             $table->string('answer3')->nullable();
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('answer6')->nullable();
             $table->string('status')->default('pending');
             $table->string('comment')->nullable();
+            $table->timestamps();
         });
     }
 

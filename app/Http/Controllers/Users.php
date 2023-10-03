@@ -226,6 +226,7 @@ function mailNewOrganization($user) {
         'name' => $user->name,
         'surnames' => $user->surnames,
         'email' => $user->email,
+        'password' => $user->password,
         'organization' => $user->organization,
         'role' => $user->role
     ];
@@ -233,7 +234,7 @@ function mailNewOrganization($user) {
         Mail::to($user->email)->send(new \App\Mail\registerOrganization($data));
         return 'Email sent';
     } catch (\Exception $e) {
-        return $user;
+        return $e->getMessage();
     }
 }
 
