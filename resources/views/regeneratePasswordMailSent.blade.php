@@ -59,7 +59,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
-                    <div class="card border-0 shadow rounded-3 my-3">
+                    <div class="card border-0 shadow rounded-3 my-5">
                         <div class="card-body p-4 p-sm-5">
                             <img src="{{asset('logo.png')}}" alt="logo" class="rounded mx-auto d-block" style="width: 75%; height: auto;">
                             <div class="mb-2"></div>
@@ -70,30 +70,13 @@
                             @endif
                                 <div class="d.grid gap-2 d-md-flex justify-content-center">
                                 </div>
-                                <form action="{{route('login')}}" method="POST" class="form-signin">
-                                    @csrf
-                                    <div class="form-floating mb-3">
-                                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                        <label for="floatingInput">Email</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                        <label for="floatingPassword">Password</label>
+                                <div class="mb-4"></div>
+                                    <div class="alert alert-primary mb-3">
+                                        <p> If the mail was correct, We've should sent to you a mail with the new password. If not, try it again or contact with the admin.</p>
                                     </div>
                                     <div class="d-grid">
-                                        <button class="btn btn-lg btn-usb btn-login text-uppercase fw-bold mb-2" type="submit">Sign in</button>
+                                        <a href="/" class="btn btn-lg btn-usb btn-login text-uppercase fw-bold mb-2">Log-in</a>
                                     </div>
-                                    <div class="d-grid">
-                                        <a href="{{route('passwordEmailUser')}}" class="btn btn-sm btn-usb btn-login text-uppercase fw-bold">Forgot Password</a>
-                                    </div>
-                                    <hr class="my-3">
-                                    <div class="d-grid text-center">
-                                        <div class="btn-group-vertical">
-                                            <a href="{{route('auth', ['provider' => 'google'])}}" class="btn btn-danger btn-login text-uppercase fw-bold"><i class="fab fa-google"></i> Google</a>
-                                            <a href="{{route('auth', ['provider' => 'facebook'])}}" class="btn btn-primary btn-login text-uppercase fw-bold"><i class="fab fa-facebook-f"></i> Facebook</a>
-                                        </div>
-                                    </div>
-                                </form>
                         </div>
                     </div>
                 </div>

@@ -59,7 +59,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
-                    <div class="card border-0 shadow rounded-3 my-3">
+                    <div class="card border-0 shadow rounded-3 my-5">
                         <div class="card-body p-4 p-sm-5">
                             <img src="{{asset('logo.png')}}" alt="logo" class="rounded mx-auto d-block" style="width: 75%; height: auto;">
                             <div class="mb-2"></div>
@@ -70,6 +70,7 @@
                             @endif
                                 <div class="d.grid gap-2 d-md-flex justify-content-center">
                                 </div>
+                                <div class="mb-4"></div>
                                 <form action="{{route('passwordEmailUser')}}" method="POST" class="form-signin">
                                     @csrf
                                     <div class="form-floating mb-3">

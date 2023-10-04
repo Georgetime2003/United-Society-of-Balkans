@@ -183,10 +183,26 @@ class Users extends Controller
         return redirect()->route('users.config');
     }
 
-
-    
-
-    
+    public function sendPasswordEmail(Request $request){
+        $user = User::where('email', $request->email)->first();
+        if (!$user){
+            sleep(6);
+            return view('regeneratePasswordMailSent');
+        } else{
+            $password = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
+            $user->password = $password;
+            $mailStatus = PasswordEmail($user, "1");
+            if ($mailStatus == 'Email sent'){
+                $user->newUser = false;
+                $user->password = Hash::make($password);
+                $user->save();
+                return view('regeneratePasswordMailSent');
+            } else {
+                sleep(6);
+                return view('regeneratePasswordMailSent');
+            }
+        }
+    }    
 
 }
 

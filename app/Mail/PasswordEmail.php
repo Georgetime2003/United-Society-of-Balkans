@@ -18,9 +18,10 @@ class PasswordEmail extends Mailable
      */
 
      private $data = [];
-     public function __construct($data)
+     public function __construct($data, $type)
      {
          $this->data = $data;
+         $this->type = $type;
      }
      
     public function build()
@@ -34,6 +35,7 @@ class PasswordEmail extends Mailable
                 'password' => $this->data['password'],
                 'email' => $this->data['email'],
                 'role' => $this->data['role'],
+                'type' => $this->type,
                 'subject' => 'USB - Regenerate Password'
             ]);
     }

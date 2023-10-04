@@ -58,13 +58,18 @@ Route::get('callback/microsoft', [App\Http\Controllers\login::class, 'MicrosoftC
  */
 Route::get('/logout', [App\Http\Controllers\login::class, 'logout'])->name('logout');
 
+Route::get('/passwordEmailUser', function(){
+    return view('regeneratePasswordMail');
+})->name('passwordEmailUser');
+Route::post('/passwordEmailUser', [App\Http\Controllers\Users::class, 'sendPasswordEmail'])->name('passwordEmailUser');
+
 Route::get('/users', [App\Http\Controllers\Users::class, 'index'])->name('users')->middleware('auth')->middleware('isAdmin');
 Route::get('/user/config', [App\Http\Controllers\Users::class, 'config'])->name('users.config')->middleware('auth');
 Route::post('/user/delete/{id}', [App\Http\Controllers\Users::class, 'delete'])->name('users.delete')->middleware('auth')->middleware('isAdmin');
 Route::get('/user/{id}', [App\Http\Controllers\Users::class, 'show'])->name('users.show')->middleware('auth')->middleware('isAdmin');
 Route::post('/user', [App\Http\Controllers\Users::class, 'update'])->name('users.update')->middleware('auth')->middleware('isAdmin');
 Route::put('/user/updateAvatar', [App\Http\Controllers\Users::class, 'saveAvatar'])->name('users.updateAvatar');
-Route::get('/user/reGeneratePassword/{userId}', [App\Http\Controllers\Users::class, 'regeneratePassword'])->name('user.regenerate')->middleware('isAdmin');
+Route::get('/user/regeneratePassword/{userId}', [App\Http\Controllers\Users::class, 'regeneratePassword'])->name('user.regenerate')->middleware('isAdmin');
 
 Route::get('/reports', [App\Http\Controllers\Reports::class, 'index'])->name('reports')->middleware('auth')->middleware('isAdmin');
 Route::get('/reports/{userid}', [App\Http\Controllers\Reports::class, 'listUser'])->name('reports.userList')->middleware('auth')->middleware('isAdminorVolunteer');
