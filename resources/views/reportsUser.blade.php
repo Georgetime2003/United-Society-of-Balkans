@@ -17,9 +17,10 @@
                                 <table id="taula" class="table table-fixed">
                                     <thead class="bg-warning text-light">
                                         <tr>
-                                            <th id="name">Week</th>
-                                            <th id="surname">Filled</th>
-                                            <th id="mail">On Day</th>
+                                            <th id="week">Week</th>
+                                            <th id="year">Year</th>
+                                            <th id="filled">Filled</th>
+                                            <th id="onDay">On Day</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody">
@@ -27,6 +28,7 @@
                                             <tr id="{{$report->id}}">
 												<!--With the week number, we can get the first and last day of the week in format dd/mm-->
 												<td>{{$report->start_date . " - " . $report->end_date}}</td>
+                                                <td>{{$report->year}}</td>
                                                 <td>{{$report->filled}}/11</td>
                                                 <td>
                                                     @if ($report->onday)
