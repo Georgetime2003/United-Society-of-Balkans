@@ -39,6 +39,7 @@ return new class extends Migration
             'role' => 'superadmin',
             'email' => 'familiajordiescarra@gmail.com',
             'avatar' => '/images/avatars/1.png',
+            'password' => Hash::make('12345678'),
         ]);
     }
 

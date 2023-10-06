@@ -11,6 +11,7 @@ class Reports extends Model
         'user_id',
         'report_message',
         'week_number',
+        'year',
         'monday_4',
         'monday_2',
         'tuesday_4',

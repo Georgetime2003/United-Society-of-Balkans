@@ -61,13 +61,13 @@ class login extends Controller
         $email = $request->email;
         $login = User::where('email', $email)->first();
         if($login){
-            if($login->password == $password){
+            if(password_verify($password, $login->password)){
                 Auth::login($login);
                 //@TODO: Make if the volunteer didnt start the project in Thessaloniki they cannot get access to the Website
                 //@TODO: Make a Terms and conditions for not having Legal issues with the European Solidarity Corps.
                 return redirect()->route('home');
             }else{
-                return redirect()->route('login')->with('error', 'Wrong password');
+                return redirect()->route('login')->with('error', 'Wrong Credentials');
             }
         }else{
             return redirect()->route('login')->with('error', 'You are not registered, try another account or contact with USB');

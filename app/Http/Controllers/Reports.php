@@ -22,6 +22,7 @@ class Reports extends Controller
                 DBReports::create([
                     'user_id' => $users[$i]->id,
                     'week_number' => date('W'),
+                    'year' => date('Y'),
                 ]);
             }
             $reports = DBReports::all();
@@ -50,7 +51,7 @@ class Reports extends Controller
         for ($i = 0; $i < count($reports); $i++) {
             // With the week number value, get the start and end date of the week
             $dto = new \DateTime();
-            $dto->setISODate(date('Y'), $reports[$i]->week_number);
+            $dto->setISODate($reports[$i], $reports[$i]->week_number);
             $reports[$i]->start_date = $dto->format('d/m');
             $dto->modify('+6 days');
             $reports[$i]->end_date = $dto->format('d/m');
