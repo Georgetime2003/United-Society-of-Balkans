@@ -86,7 +86,7 @@ class Users extends Controller
                 break;
         }
         //If the user is new, it will send an email to the user with the data, checking if its volunteer or organization because there's a different email for each one
-        if ($request->start_date != null || $request->end_date != null || $request->volunteer_code != null || $request->hosting != null || $request->sending != null && $user->newUser == true){
+        if (($request->start_date != null || $request->end_date != null || $request->volunteer_code != null || $request->hosting != null || $request->sending != null) && $user->newUser == '1'){
             $password = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
             $user->password = $password;
             $mailStatus = mailNewUser($user);
@@ -103,6 +103,7 @@ class Users extends Controller
             $mailStatus = mailNewOrganization($user);
             if ($mailStatus == 'Email sent'){
                 $user->newUser = false;
+                $user->password = Hash::make($password);
             } else {
                 return response()->json(['error' => $mailStatus]);
             }
