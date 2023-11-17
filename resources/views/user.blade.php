@@ -27,21 +27,21 @@
 		<div class="col-12 my-3">
 			<h2>{{$user->name}} {{$user->surnames}}</h2>
 		</div>
-		<div class="mb-2"></div>
 		<div class="col-md-4 col-12">
-			<img src="{{$user->avatar}}" alt="Avatar" width="auto" height="200" class="d-inline-block mainAvatar">
+			<img src="{{$user->avatar}}" alt="Avatar"  class="d-inline-block mainAvatar">
 			<div class="mb-2"></div>
 			@if(!$admin)
 			<button type="button" class="btn btn-primary justify-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
 				Change Avatar
 			</button>
 			@endif
-			<div class="mb-2"></div>
 		</div>
 		<div class="col-md-8 col-12">
 			<div class="card" style="width: 100%;">
-				<div class="card-body">
+				<div class="card-header">
 					<h3 class="card-title">Volunteer data</h3>
+				</div>
+				<div class="card-body user-scroll">
 					<div class="row">
 						<div class="col-md-6 col-12">
 							<div class="form-floating mb-3">

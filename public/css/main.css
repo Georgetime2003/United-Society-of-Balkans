@@ -35,6 +35,71 @@ body {
 	height: calc(100vh - 450px);
 }
 
+.user-scroll {
+	overflow-y: scroll;
+	height: calc(100vh - 350px);
+}
+
+.mainAvatar{
+	border-radius: 50%;
+	width: 200px;
+	height: auto;
+}
+
+
+@media (max-width: 768px) and (orientation: portrait) {
+	.mainAvatar{
+		border-radius: 50%;
+		width: 70px;
+		height: auto;
+	}
+
+	.user-scroll {
+		overflow-y: scroll;
+		height: calc(100vh - 400px);
+	}
+}
+
+@media (max-height: 768px) and (orientation: landscape) {
+	.mainAvatar{
+		border-radius: 50%;
+		width: 200px;
+		height: auto;
+	}
+
+	.user-scroll {
+		overflow-y: scroll;
+		height: calc(100vh - 320px);
+	}
+}
+
+.user-scroll::-webkit-scrollbar {
+	width: 7px;
+	color: #0dcaf0;
+	overflow-y: scroll;
+}
+
+.user-scroll::-webkit-scrollbar-track {
+	background: #fdfdfd;
+	border-radius: 10px;
+	box-shadow: inset 0px 0px 5px rgb(210, 210, 210);
+}
+
+.user-scroll::-webkit-scrollbar-thumb {
+	background: #0dcaf0;
+	border-radius: 10px;
+}
+
+.user-scroll::-webkit-scrollbar-thumb:hover {
+	background: #0fd7ff;
+	
+}
+
+.user-scroll::-webkit-scrollbar-thumb:active {
+	background: #0fd7ff;
+}
+
+
 .reports-scroll::-webkit-scrollbar {
 	width: 7px;
 	color: #CB416B;
@@ -179,11 +244,6 @@ body {
 	height: auto;
 }
 
-.mainAvatar{
-	border-radius: 50%;
-	width: 200px;
-	height: auto;
-}
 
 .img-fluid {
 	max-width: 70%;
