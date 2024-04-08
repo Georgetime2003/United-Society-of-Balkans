@@ -25,7 +25,9 @@
 									<select class="form-select" aria-label="Default select example" onchange="orderBy(this.value)">
 										<option value="newest">Newest</option>
 										<option value="oldest">Oldest</option>
-										<option value="upvotes">Upvotes</option>
+										@if ($forum->upvotes)
+											<option value="upvotes">Upvotes</option>
+										@endif
 									</select>
 								</div>
 								<div class="mb-2"></div>
@@ -40,8 +42,8 @@
 												</div>
 												<div class="col-1 offset-lg-2 offset-md-1">
 													<div class="btn-group" role="group">
-														<span id="upvotes{{$i}}">{{$post->upvotes}}</span>
 														@if ($forum->upvotes)
+														<span id="upvotes{{$i}}">{{$post->upvotes}}</span>
 														@if($post->upvoted)
 															<button type="button" class="btn" id="noupvote{{$i}}" onclick="delupvote({{$post->id}}, {{Auth::id()}}, {{$i}})" style="display: block"><img src="{{ asset('images/upvoted.svg') }}" alt="Upvote" width="20" height="20"></button>
 															<button type="button" class="btn" id="yesupvote{{$i}}" onclick="upvote({{$post->id}}, {{Auth::id()}}, {{$i}})" style="display: none"><img src="{{ asset('images/upvote.svg') }}" alt="Upvote" width="20" height="20"></button>
@@ -53,12 +55,12 @@
 														@if($post->user_id == Auth::user()->id || Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
 														<div class="btn-group" role="group">
 														<div class="dropdown show">
-															<a class="btn" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+															<button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 																<i class="fas fa-ellipsis-v" style="height: 20px; width: 20px; align-items: center;"></i>
-															</a>
-															<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-																<a class="dropdown-item" href="/forum/{{$forum->id}}/delete">Delete</a>
-															</div>
+															</button>
+															<ul class="dropdown-menu">
+																<li><a class="dropdown-item" href="/forum/{{$forum->id}}/delete">Delete</a></li>
+															</ul>
 														</div>
 														</div>
 														@endif
