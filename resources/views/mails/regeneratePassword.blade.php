@@ -19,7 +19,7 @@
 		<div class="mb-2"></div>
 		<div class="row">
 			<div class="col-12">
-				@if ($role == "superadmin")
+				@if ($role !== "superadmin")
 					<p>As you ask to the admin, here you gave your new password:</p>
 				@else 
 					<p>Here's your new password as you ask:</p>
@@ -33,7 +33,7 @@
 			</div>
 		</div>
 		<div>
-			@if ($role == "superadmin")
+			@if ($role !== "superadmin")
 				<p>With this new password you should get access to the USB platform. We also recommend when you access change your password for one that you'll remember</p>
 			@else
 				<p>If you didn't ask for it, please be sure to change your mail account password for not having your account hacked.</p>
