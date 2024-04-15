@@ -84,7 +84,7 @@
                                         <button class="btn btn-lg btn-usb btn-login text-uppercase fw-bold mb-2" type="submit">Sign in</button>
                                     </div>
                                     <div class="d-grid">
-                                        <a href="{{route('passwordEmailUser')}}" class="btn btn-sm btn-usb btn-login text-uppercase fw-bold">Forgot Password</a>
+                                        <a href="{{route('passwordEmailUser')}}" class="btn btn-sm btn-usb btn-login text-uppercase fw-bold">Forgot Password?</a>
                                     </div>
                                     <hr class="my-3">
                                     <div class="d-grid text-center">
