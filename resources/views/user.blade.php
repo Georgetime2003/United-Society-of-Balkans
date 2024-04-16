@@ -140,7 +140,7 @@
 				</div>
 				<div class="card-footer text-muted">
 					<button type="submit" id="save" class="btn btn-primary" {{$admin ? '' : 'hidden'}}>Save</button>
-					<a href="{{route('user.regenerate', ['userId' => $user->id])}}" class="btn btn-primary" {{Auth::user()->role == 'superadmin' ? '' : 'hidden'}}>Regenerate User's Password</a>
+					<a href="{{route('user.regenerate', ['userId' => $user->id])}}" class="btn btn-primary"{{$user->email == "" ? 'hidden' : ''}} {{Auth::user()->role == 'superadmin' ? '' : 'hidden'}}>Regenerate User's Password</a>
 				</div>
 			</div>
 		</div>
