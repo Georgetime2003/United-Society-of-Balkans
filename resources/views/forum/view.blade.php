@@ -3,14 +3,15 @@
 <script defer src="{{ asset('js/viewForum.js') }}"></script>
 @endsection
 @section('site_content')
-<div class="background background-animated">
+<div class="background-fixed background-animated">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 data-header="h1" class="title my-5 fade-up">{{$forum->title}}</h2>
+				<br/>
+                <h2 data-header="h1" class="title my-4 fade-up">{{$forum->title}}</h3>
                 <div class="row content-animated">
-                    <div class="card border-1 shadow rounded-3">
-                        <div class="card-body p-4">
+                    <div class="card border-1 forum-scroll shadow rounded-3">
+                        <div class="card-body p-3">
                             <div class="row">
 								<div class="col-4">
 									<a class="btn btn-success" href="/forum/{{$forum->id}}/post">
