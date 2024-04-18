@@ -76,7 +76,7 @@ Route::get('/reports/{userid}', [App\Http\Controllers\Reports::class, 'listUser'
 Route::get('/reports/{userid}/{reportid}', [App\Http\Controllers\Reports::class, 'show'])->name('reports.show')->middleware('auth')->middleware('isAdminorVolunteer');
 Route::post('/weeklyreport/update', [App\Http\Controllers\Reports::class, 'updateweekly'])->name('reports.updateweekly')->middleware('auth')->middleware('isVolunteer');
 
-Route::get('/organization/{volunteerId}/{organizationId}/fill/{reportId}', [App\Http\Controllers\OrganizationReports::class, 'fill'])->name('organization.fill');
+Route::get('/organization/{volunteerId}/{organizationId}/fill/{reportId}', [App\Http\Controllers\OrganizationReports::class, 'fill'])->name('organization.fill')->middleware('auth')->middleware('isAdminorOrganization');
 Route::get('/organizations', [App\Http\Controllers\OrganizationReports::class, 'index'])->name('organizations')->middleware('auth')->middleware('isAdmin');
 Route::get('/organization/pdf/{reportId}', [App\Http\Controllers\OrganizationReports::class, 'downloadPDF'])->name('organization.downloadPDF')->middleware('auth')->middleware('isAdmin');
 Route::post('/organization/save/{reportId}', [App\Http\Controllers\OrganizationReports::class, 'save'])->name('organization.save')->middleware('auth')->middleware('isOrganization');
@@ -84,10 +84,7 @@ Route::get('/organization/{id}', [App\Http\Controllers\OrganizationReports::clas
 Route::get('/organization/{organizationId}/{volunteerId}', [App\Http\Controllers\OrganizationReports::class, 'show'])->name('organization.show')->middleware('auth')->middleware('isAdminorOrganization');
 Route::get('/organization/{volunteerId}/{organizationId}/generate/{type}', [App\Http\Controllers\OrganizationReports::class, 'create'])->middleware('auth')->name('organization.create')->middleware('isAdminorOrganization');
 
-Route::get('/organization/{volunteerId}/{organizationId}/fill/{reportId}', function() {
-    $user = User::where('role', 'superadmin')->first();
-    Auth::login($user);
-})->name('forcelogin');
+
 
 
 Route::get('/home', function () {

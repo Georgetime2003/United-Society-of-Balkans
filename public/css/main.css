@@ -40,6 +40,11 @@ body {
 	height: calc(100vh - 250px);
 }
 
+.form-scroll {
+	overflow-y: scroll;
+	height: calc(100vh - 250px);
+}
+
 .user-scroll {
 	overflow-y: scroll;
 	height: calc(100vh - 350px);
@@ -129,6 +134,33 @@ body {
 }
 
 .reports-scroll::-webkit-scrollbar-thumb:active {
+	background: #E68FAC;
+}
+
+.form-scroll::-webkit-scrollbar {
+	width: 7px;
+	color: #CB416B;
+	overflow-y: scroll;
+}
+
+.form-scroll::-webkit-scrollbar-track {
+	background: #fdfdfd;
+	border-radius: 10px;
+	box-shadow: inset 0px 0px 5px rgb(210, 210, 210);
+	margin-bottom: 5px;
+}
+
+.form-scroll::-webkit-scrollbar-thumb {
+	background: #CB416B;
+	border-radius: 10px;
+}
+
+.form-scroll::-webkit-scrollbar-thumb:hover {
+	background: #E68FAC;
+	
+}
+
+.form-scroll::-webkit-scrollbar-thumb:active {
 	background: #E68FAC;
 }
 
