@@ -10,7 +10,7 @@
 				<br/>
                 <h2 data-header="h1" class="title my-4 fade-up">{{$forum->title}}</h3>
                 <div class="row content-animated">
-                    <div class="card border-1 forum-scroll shadow rounded-3">
+                    <div class="card border-1 shadow-sm rounded-3">
                         <div class="card-body p-3">
                             <div class="row">
 								<div class="col-4">
@@ -31,8 +31,19 @@
 										@endif
 									</select>
 								</div>
-								<div class="mb-2"></div>
+							</div>
+							<hr class="my-1">
+							<div class = "row forum-scroll">
+								<div class="col-12">
 								@php $i = 0; @endphp
+								@if ($posts->isEmpty())
+									<div class="mb-4"></div>
+									<div class="card border-1 shadow rounded-3 fade-down-forum">
+										<div class="card-body p-4">
+											<p style="text-align: center;text-font: bold; font-size: 20px;">It looks like it's empty here, post something 😁</p>
+										</div>
+									</div>
+								@endif
 								@foreach ($posts as $post)
 									<div class="mb-2"></div>
 									<div class="card border-1 shadow rounded-3">
@@ -60,7 +71,8 @@
 																<i class="fas fa-ellipsis-v" style="height: 20px; width: 20px; align-items: center;"></i>
 															</button>
 															<ul class="dropdown-menu">
-																<li><a class="dropdown-item" href="/forum/{{$forum->id}}/delete">Delete</a></li>
+																<li><a class="dropdown-item" id="delete"
+																	href="#" data-post-id="{{$post->id}}" data-forum-id="{{$forum->id}}">Delete</a></li>
 															</ul>
 														</div>
 														</div>
@@ -96,6 +108,7 @@
 										</div>
 									</div>
 									@php $i++; @endphp
+									<div class="mb-3"></div>
 								@endforeach
 							</div>
 						</div>

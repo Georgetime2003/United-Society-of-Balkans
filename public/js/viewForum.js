@@ -1,3 +1,9 @@
+window.onload = function () {
+	document.getElementById("delete").addEventListener("click", function () {
+		deletePost(this);
+	});
+}
+
 function upvote(post_id, user_id, i){
 	$.ajaxSetup({
 		headers: {
@@ -60,4 +66,32 @@ function delupvote(post_id, user_id, i){
 			}
 		}
 	});
+}
+
+function deletePost(button) {
+	if (confirm("Are you sure you want to delete the post?")){
+		var postId = button.getAttribute("data-post-id");
+		var forumId = button.getAttribute("data-forum-id");
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+			}
+		});
+		$.ajax({
+			type: "POST",
+			url: "/post/delete",
+			data: {
+				"post_id": postId,
+				"forum_id": forumId
+			},
+			success: function (response) {
+				if (response.success) {
+					alert(response.success);
+					location.href = "/forum/" + forumId;
+				} else {
+					alert(response.error);
+				}
+			}
+		});
+	}
 }
