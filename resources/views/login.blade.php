@@ -73,7 +73,11 @@
                                 <form action="{{route('login')}}" method="POST" class="form-signin">
                                     @csrf
                                     <div class="form-floating mb-3">
-                                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="
+                                        @if (session('email'))
+                                            {{session('email')}}
+                                        @endif
+                                        ">
                                         <label for="floatingInput">Email</label>
                                     </div>
                                     <div class="form-floating mb-3">

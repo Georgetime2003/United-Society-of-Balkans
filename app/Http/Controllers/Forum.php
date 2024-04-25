@@ -101,9 +101,10 @@ class Forum extends Controller
             $post->content = $request->content;
             //Check if inside the content there's a data:image/png;base64, or data:image/jpeg;base64, and if it is, save the image in the database
                 $post->content = preg_replace_callback('<img src="data:image\/(png|jpeg);base64,([^"]+)">', function ($matches) {
+                    static $index = 0;
                     $image = base64_decode($matches[2]);
                     $source = imagecreatefromstring($image);
-                    $imageName = time() . '.jpg';
+                    $imageName = time() . '_' . $index++ . '.jpg';
                     $imageSave = imagejpeg($source, public_path('/images/forum/' . $imageName), 70);
                     imagedestroy($source);
                     //add class img-fluid to the image

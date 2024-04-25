@@ -70,7 +70,7 @@ class login extends Controller
                 return redirect()->route('login')->with('error', 'Wrong Credentials');
             }
         }else{
-            return redirect()->route('login')->with('error', 'You are not registered, try another account or contact with USB');
+            return redirect()->route('login')->with('error', 'You are not registered, try another account or contact with USB')->with('email', $email);
         }
     }
 }
