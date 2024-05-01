@@ -9,6 +9,20 @@
     <script src="{{ asset ('js/jquery.min.js')}}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    <style>
+        .dialeg {
+            position: absolute;
+            margin: 0;
+            padding: 2rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32.5rem;
+            background-color: white;
+            border-radius: 1.5rem;
+            box-shadow: 8px 8px 24px 0 rgba(0, 0, 0, 0.5);
+        }
+    </style>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
     const currentUser = "{{ auth()->id() }}"; // Obtener el ID del usuario actual
@@ -89,9 +103,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div id="calendar"></div>
                 <button id="openCreateEventForm">Crear Nueva Cita</button>
+                <a href="https://esidis.balkanhotspot.org/home">Retornar</a>
 
+                <div id="calendar"></div>
                 <dialog id="createEventDialog" class="dialeg">
                     <form action="{{ route('crear-cita') }}" method="POST">
                         @csrf
@@ -121,18 +136,4 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
     </div>
-    <style>
-        .dialeg {
-            position: absolute;
-            margin: 0;
-            padding: 2rem;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 32.5rem;
-            background-color: white;
-            border-radius: 1.5rem;
-            box-shadow: 8px 8px 24px 0 rgba(0, 0, 0, 0.5);
-        }
-    </style>
 </body>
