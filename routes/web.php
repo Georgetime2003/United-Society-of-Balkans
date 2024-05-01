@@ -108,7 +108,7 @@ Route::patch('/fcm-token', [App\Http\Controllers\TokenUpdater::class, 'updateTok
 
 Route::get('/calendar', function () {
     return view('calendar');
-})
+});
 
 Route::post('/crear-cita', [CitaController::class, 'crear'])->name('crear-cita');
 Route::delete('/delete-event', [DeleteEvent::class, 'destroy'])->name('delete-event');
