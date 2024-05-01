@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Calendar;
+use App\Http\Controllers\CitaController;
+use App\Http\Controllers\DeleteEvent;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,6 +108,9 @@ Route::post('/post/upvote', [App\Http\Controllers\Forum::class, 'upvote'])->name
 Route::post('/post/delupvote', [App\Http\Controllers\Forum::class, 'deleteUpvote'])->name('forum.downvotePost')->middleware('auth');
 Route::patch('/fcm-token', [App\Http\Controllers\TokenUpdater::class, 'updateToken'])->name('fcmToken');
 
-Route::get('/calendar', function () {
-    return view('calendar');
-})->name('calendar');
+Route::get('/calendar', [Calendar::class, 'index'])
+    ->name('calendar');
+
+Route::post('/crear-cita', [CitaController::class, 'crear'])->name('crear-cita');
+Route::delete('/delete-event', [DeleteEvent::class, 'destroy'])->name('delete-event');
+
