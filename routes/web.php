@@ -105,3 +105,6 @@ Route::post('/post/upvote', [App\Http\Controllers\Forum::class, 'upvote'])->name
 Route::post('/post/delupvote', [App\Http\Controllers\Forum::class, 'deleteUpvote'])->name('forum.downvotePost')->middleware('auth');
 Route::patch('/fcm-token', [App\Http\Controllers\TokenUpdater::class, 'updateToken'])->name('fcmToken');
 
+Route::get('/calendar', function () {
+    return view('calendar');
+})->name('calendar');
