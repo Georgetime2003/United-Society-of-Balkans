@@ -1,58 +1,13 @@
-<div>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div id="calendar"></div>
-                <button id="openCreateEventForm">Crear Nueva Cita</button>
-
-                <dialog id="createEventDialog" class="dialeg">
-                    <form action="{{ route('crear-cita') }}" method="POST">
-                        @csrf
-                        <label for="event">Nombre de la cita:</label>
-                        <input type="text" name="event" required><br>
-                        <label for="start_date">Fecha y hora de inicio:</label>
-                        <input type="datetime-local" name="start_date" required><br>
-                        <label for="end_date">Fecha y hora de finalización:</label>
-                        <input type="datetime-local" name="end_date" required><br>
-                        <button type="submit">Crear Cita</button>
-                    </form>
-                    <button id="closeCreateEventDialog">Cerrar</button>
-                </dialog>
-                <dialog id="eventDetailsDialog" class="dialeg">
-                    <h2>Detalles de la cita</h2>
-                    <p id="eventDetails"></p>
-                    <form id="deleteEventForm" action="{{ route('delete-event') }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <!-- Input para almacenar el ID del evento -->
-                        <input type="hidden" name="eventId" id="eventIdInput" value="">
-                        <button type="submit">Eliminar Cita</button>
-                    </form>
-                    <button id="closeEventDetailsDialog">Cerrar</button>
-                </dialog>
-                
-            </div>
-        </div>
-    </div>
-
-    @push('styles')
-    <style>
-        .dialeg {
-            position: absolute;
-            margin: 0;
-            padding: 2rem;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 32.5rem;
-            background-color: white;
-            border-radius: 1.5rem;
-            box-shadow: 8px 8px 24px 0 rgba(0, 0, 0, 0.5);
-        }
-    </style>
-    @endpush
-
-    @push('scripts')
+<!DOCTYPE html>
+<html lang="ca-es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>USB</title>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
+    <script src="{{ asset ('js/jquery.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap/bootstrap.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -127,7 +82,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
         });
     </script>
-    
-        
-    @endpush
-</div>
+</head>
+<body>
+
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div id="calendar"></div>
+                <button id="openCreateEventForm">Crear Nueva Cita</button>
+
+                <dialog id="createEventDialog" class="dialeg">
+                    <form action="{{ route('crear-cita') }}" method="POST">
+                        @csrf
+                        <label for="event">Nombre de la cita:</label>
+                        <input type="text" name="event" required><br>
+                        <label for="start_date">Fecha y hora de inicio:</label>
+                        <input type="datetime-local" name="start_date" required><br>
+                        <label for="end_date">Fecha y hora de finalización:</label>
+                        <input type="datetime-local" name="end_date" required><br>
+                        <button type="submit">Crear Cita</button>
+                    </form>
+                    <button id="closeCreateEventDialog">Cerrar</button>
+                </dialog>
+                <dialog id="eventDetailsDialog" class="dialeg">
+                    <h2>Detalles de la cita</h2>
+                    <p id="eventDetails"></p>
+                    <form id="deleteEventForm" action="{{ route('delete-event') }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <!-- Input para almacenar el ID del evento -->
+                        <input type="hidden" name="eventId" id="eventIdInput" value="">
+                        <button type="submit">Eliminar Cita</button>
+                    </form>
+                    <button id="closeEventDetailsDialog">Cerrar</button>
+                </dialog>
+                
+            </div>
+        </div>
+    </div>
+    <style>
+        .dialeg {
+            position: absolute;
+            margin: 0;
+            padding: 2rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32.5rem;
+            background-color: white;
+            border-radius: 1.5rem;
+            box-shadow: 8px 8px 24px 0 rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</body>
