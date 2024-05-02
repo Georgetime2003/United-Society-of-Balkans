@@ -93,8 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 @endsection
 @section('site_content')
-    <div class="background">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="background-fixed">
+        <div class="container my-2">
+            <div class="max-w-7xl mx-auto px-10" >
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <button id="openCreateEventForm">Create New Event</button>
                     <div id="calendar"></div>
@@ -126,5 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                 </div>
             </div>
+        </div>
     </div>
 @endsection
