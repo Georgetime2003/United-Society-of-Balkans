@@ -27,6 +27,16 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 2%">
                                         <div class="card card-selector border-1 shadow rouded-3">
+                                            <a href="{{ route('calendar') }}" class="linkmenu">
+                                                <div class="card-body">
+                                                    <i class="fas fa-users start-icons fa-2x"></i>
+                                                    <span class="offset-1">Calendar</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 2%">
+                                        <div class="card card-selector border-1 shadow rouded-3">
                                             <a href="{{ route('reports') }}" class="linkmenu">
                                                 <div class="card-body">
                                                     <i class="fas fa-file-alt start-icons fa-2x"></i>
@@ -62,6 +72,16 @@
                                                 <div class="card-body">
                                                     <i class="fas fa-file-alt start-icons fa-2x"></i>
                                                     <span class="offset-1">My Reports</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 col-12" style="margin-bottom: 2%">
+                                        <div class="card card-selector border-1 shadow rouded-3">
+                                            <a href="{{ route('calendar') }}" class="linkmenu">
+                                                <div class="card-body">
+                                                    <i class="fas fa-users start-icons fa-2x"></i>
+                                                    <span class="offset-1">Calendar</span>
                                                 </div>
                                             </a>
                                         </div>
