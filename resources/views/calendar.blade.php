@@ -41,17 +41,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Verificar si el evento pertenece al usuario actual
             console.log(currentUser, creatorId);
-            if (currentUser == creatorId) {
-            const eventDetailsDialog = document.getElementById('eventDetailsDialog');
-            const eventDetails = document.getElementById('eventDetails');
-            const eventIdInput = document.getElementById('eventIdInput'); // Obtener el input hidden del ID del evento
+                // Verificar si el usuario actual es administrador
+    const isAdmin = "{{ Auth::check() && (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin') }}";
+    
+    if (isAdmin || currentUser == creatorId) {
+        const eventDetailsDialog = document.getElementById('eventDetailsDialog');
+        const eventDetails = document.getElementById('eventDetails');
+        const eventIdInput = document.getElementById('eventIdInput'); // Obtener el input hidden del ID del evento
 
-            eventIdInput.value = event.id; // Asignar el ID del evento al input hidden
+        eventIdInput.value = event.id; // Asignar el ID del evento al input hidden
 
-            eventDetails.textContent = `Nombre: ${event.title}\nFecha de inicio: ${event.start}\nFecha de fin: ${event.end}`;
+        eventDetails.textContent = `Nombre: ${event.title}\nFecha de inicio: ${event.start}\nFecha de fin: ${event.end}`;
 
-            eventDetailsDialog.showModal();
-        }
+        eventDetailsDialog.showModal();
+    }
         },
         select: function(info) {
             // Cuando se selecciona un rango de tiempo en el calendario
