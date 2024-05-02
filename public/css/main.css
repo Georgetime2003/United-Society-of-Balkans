@@ -2,6 +2,17 @@ body {
 	background-color: #fdfdfd;
 }
 
+.ps{
+	padding-left: 35%;
+	padding-top: 5%;
+}
+@media screen and (max-width: 768px) {
+	.ps{
+		padding-left: 0%;
+		padding-top: 5%;
+	}
+}
+
 .background {
 	background-image: url("/images/border-topleft.png"), url("/images/border-topright.png"), url("/images/border-bottomleft.png"), url("/images/border-bottomright.png");
 	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;

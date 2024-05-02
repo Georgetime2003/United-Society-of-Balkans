@@ -137,6 +137,10 @@ class Forum extends Controller
     public function deletePost(Request $request){
         $post = DBForum_posts::where('id', $request->post_id)->first();
         if ($post){
+            $upvotes = DBUpvotes::where('post_id', $request->post_id)->get();
+            foreach ($upvotes as $upvote){
+                $upvote->delete();
+            }
             $comments = DBForum_comments::where('post_id', $request->post_id)->get();
             foreach ($comments as $comment){
                 $comment->delete();
