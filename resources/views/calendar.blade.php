@@ -93,40 +93,38 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 @endsection
 @section('site_content')
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <button id="openCreateEventForm">Crear Nueva Cita</button>
-                <a href="https://esidis.balkanhotspot.org/home">Retornar</a>
-
-                <div id="calendar"></div>
-                <dialog id="createEventDialog" class="dialeg">
-                    <form action="{{ route('crear-cita') }}" method="POST">
-                        @csrf
-                        <label for="event">Nombre de la cita:</label>
-                        <input type="text" name="event" required><br>
-                        <label for="start_date">Fecha y hora de inicio:</label>
-                        <input type="datetime-local" name="start_date" required><br>
-                        <label for="end_date">Fecha y hora de finalización:</label>
-                        <input type="datetime-local" name="end_date" required><br>
-                        <button type="submit">Crear Cita</button>
-                    </form>
-                    <button id="closeCreateEventDialog">Cerrar</button>
-                </dialog>
-                <dialog id="eventDetailsDialog" class="dialeg">
-                    <h2>Detalles de la cita</h2>
-                    <p id="eventDetails"></p>
-                    <form id="deleteEventForm" action="{{ route('delete-event') }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <!-- Input para almacenar el ID del evento -->
-                        <input type="hidden" name="eventId" id="eventIdInput" value="">
-                        <button type="submit">Eliminar Cita</button>
-                    </form>
-                    <button id="closeEventDetailsDialog">Cerrar</button>
-                </dialog>
-                
+    <div class="background">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <button id="openCreateEventForm">Create New Event</button>
+                    <div id="calendar"></div>
+                    <dialog id="createEventDialog" class="dialeg">
+                        <form action="{{ route('crear-cita') }}" method="POST">
+                            @csrf
+                            <label for="event">Event Name:</label>
+                            <input type="text" name="event" required><br>
+                            <label for="start_date">Start Time:</label>
+                            <input type="datetime-local" name="start_date" required><br>
+                            <label for="end_date">End Time:</label>
+                            <input type="datetime-local" name="end_date" required><br>
+                            <button type="submit">Create Event</button>
+                        </form>
+                        <button id="closeCreateEventDialog">Cerrar</button>
+                    </dialog>
+                    <dialog id="eventDetailsDialog" class="dialeg">
+                        <h2>Event Details</h2>
+                        <p id="eventDetails"></p>
+                        <form id="deleteEventForm" action="{{ route('delete-event') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <!-- Input para almacenar el ID del evento -->
+                            <input type="hidden" name="eventId" id="eventIdInput" value="">
+                            <button type="submit">Delete Event</button>
+                        </form>
+                        <button id="closeEventDetailsDialog">Close</button>
+                    </dialog>
+                    
+                </div>
             </div>
-        </div>
     </div>
 @endsection
