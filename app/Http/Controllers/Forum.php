@@ -110,6 +110,16 @@ class Forum extends Controller
                     //add class img-fluid to the image
                     return 'img src="/images/forum/' . $imageName . '" class="img-fluid"';
                 }, $post->content);
+                $post->content = preg_replace_callback('<img src="data:image\/(gif);base64,([^"]+)">', function ($matches) {
+                    static $index = 0;
+                    $image = base64_decode($matches[2]);
+                    $source = imagecreatefromstring($image);
+                    $imageName = time() . '_' . $index++ . '.gif';
+                    $imageSave = imagegif($source, public_path('/images/forum/' . $imageName));
+                    imagedestroy($source);
+                    //add class img-fluid to the image
+                    return 'img src="/images/forum/' . $imageName . '" class="img-fluid"';
+                }, $post->content);
             $post->forum_id = $request->forum_id;
             $post->user_id = Auth::id();
             $post->save();
