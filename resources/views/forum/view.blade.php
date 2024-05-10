@@ -52,10 +52,10 @@
 												<div class="col-9">
 													<a href="/forum/{{$forum->id}}/{{$post->id}}" class="text-decoration-none title-forum"><h5>@if($post->isPinned)📌@endif @if($post->isLocked)🔒@endif {{$post->title}}</h5></a>
 												</div>
-												<div class="col-1 offset-lg-2 offset-md-1">
+												<div class="col-1 @if($forum->upvotes) offset-lg-1 @else offset-lg-2 @endif offset-md-1">
 													<div class="btn-group" role="group">
 														@if ($forum->upvotes)
-														<span id="upvotes{{$i}}">{{$post->upvotes}}</span>
+														<span id="upvotes{{$i}}" class="ps">{{$post->upvotes}}</span>
 														@if($post->upvoted)
 															<button type="button" class="btn" id="noupvote{{$i}}" onclick="delupvote({{$post->id}}, {{Auth::id()}}, {{$i}})" style="display: block"><img src="{{ asset('images/upvoted.svg') }}" alt="Upvote" width="20" height="20"></button>
 															<button type="button" class="btn" id="yesupvote{{$i}}" onclick="upvote({{$post->id}}, {{Auth::id()}}, {{$i}})" style="display: none"><img src="{{ asset('images/upvote.svg') }}" alt="Upvote" width="20" height="20"></button>
