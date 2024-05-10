@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Event;
+use App\Models\Event_2;
 
 class Calendar_2 extends Controller
 {
     public function index()
     {
         // Obtener todos los eventos
-        $all_events = Event::all();
+        $all_events = Event_2::all();
 
         // Inicializar un array para almacenar los eventos
         $events = [];

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Event;
+use App\Models\Event_3;
 
 class CitaController_3 extends Controller
 {
@@ -17,7 +17,7 @@ class CitaController_3 extends Controller
                 ]);
         
                 // Crea una nueva instancia de la cita
-                $cita = new Event();
+                $cita = new Event_3();
                 $cita->event = $request->event;
                 $cita->start_date = $request->start_date;
                 $cita->end_date = $request->end_date;
