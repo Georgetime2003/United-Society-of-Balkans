@@ -28,7 +28,7 @@ class CitaController extends Controller
                 $cita->save();
         
                 // Redirecciona a una página de éxito o cualquier otra página que desees
-                return redirect()->route('calendar')->with('success', 'Cita creada exitosamente');
+                return redirect()->route('calendar_1')->with('success', 'Cita creada exitosamente');
     }
 
 }

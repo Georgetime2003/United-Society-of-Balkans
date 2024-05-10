@@ -30,6 +30,6 @@ class Calendar extends Controller
 
 
         // Pasar la lista de eventos a la vista 'dashboard'
-        return view('calendar', compact('events'));
+        return view('calendar_1', compact('events'));
     }
 }

@@ -108,8 +108,8 @@ Route::post('/post/upvote', [App\Http\Controllers\Forum::class, 'upvote'])->name
 Route::post('/post/delupvote', [App\Http\Controllers\Forum::class, 'deleteUpvote'])->name('forum.downvotePost')->middleware('auth');
 Route::patch('/fcm-token', [App\Http\Controllers\TokenUpdater::class, 'updateToken'])->name('fcmToken');
 
-Route::get('/calendar', [Calendar::class, 'index'])
-    ->name('calendar');
+Route::get('/calendar_1', [Calendar::class, 'index'])
+    ->name('calendar_1');
 
 Route::post('/crear-cita', [CitaController::class, 'crear'])->name('crear-cita');
 Route::delete('/delete-event', [DeleteEvent::class, 'destroy'])->name('delete-event');
