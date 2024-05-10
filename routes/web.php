@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Calendar;
+use App\Http\Controllers\Calendar_2;
+use App\Http\Controllers\Calendar_3;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\CitaController_2;
+use App\Http\Controllers\CitaController_3;
 use App\Http\Controllers\DeleteEvent;
 
 /*
@@ -111,6 +115,15 @@ Route::patch('/fcm-token', [App\Http\Controllers\TokenUpdater::class, 'updateTok
 Route::get('/calendar_1', [Calendar::class, 'index'])
     ->name('calendar_1');
 
+    Route::get('/calendar_2', [Calendar_2::class, 'index'])
+    ->name('calendar_2');
+
+    Route::get('/calendar_3', [Calendar_3::class, 'index'])
+    ->name('calendar_3');
+
 Route::post('/crear-cita', [CitaController::class, 'crear'])->name('crear-cita');
+Route::post('/crear-cita_2', [CitaController_2::class, 'crear'])->name('crear-cita_2');
+Route::post('/crear-cita_3', [CitaController_3::class, 'crear'])->name('crear-cita_3');
+
 Route::delete('/delete-event', [DeleteEvent::class, 'destroy'])->name('delete-event');
 
