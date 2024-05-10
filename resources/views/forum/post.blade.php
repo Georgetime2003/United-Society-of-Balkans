@@ -16,12 +16,6 @@
 									<a class="btn btn-success" href="/forum/{{$forum->id}}/new" data-bs-toggle="modal" data-bs-target="#modalCreatePost">
 										<i class="fas fa-plus"></i>  Create Post
 									</a>
-									<a href="{{ route('calendar') }}" class="linkmenu">
-                                        <div class="card-body">
-                                            <i class="fas fa-users start-icons fa-2x"></i>
-                                            <span class="offset-1">Calendar</span>
-                                        </div>
-                                    </a>
 								</div>
 								<div class="col-1 offset-3">
 									<label for="orderby" class="form-label">Order By:</label>
