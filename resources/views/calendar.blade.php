@@ -109,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="datetime-local" name="start_date" required><br>
                             <label for="end_date">End Time:</label>
                             <input type="datetime-local" name="end_date" required><br>
+                            <label for="end_date">Color:</label>
+                            <input type="color" name="color" required><br>
                             <button type="submit">Create Event</button>
                         </form>
                         <button id="closeCreateEventDialog">Cerrar</button>

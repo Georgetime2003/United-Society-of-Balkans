@@ -22,7 +22,7 @@ class CitaController extends Controller
                 $cita->start_date = $request->start_date;
                 $cita->end_date = $request->end_date;
                 $cita->user_id = auth()->id();
-                $cita->color = "#FFFF00";
+                $cita->color = $request->color;
                 
                 // Guarda la cita en la base de datos
                 $cita->save();
