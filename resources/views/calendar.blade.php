@@ -68,7 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 end: end,
                 extendedProps: {
                     creator_id: currentUser // Asignar el ID del usuario como creador del evento
-                }
+                },
+                color: color,
             };
 
             // Agregar el nuevo evento al calendario

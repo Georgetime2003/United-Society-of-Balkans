@@ -24,6 +24,7 @@ class Calendar extends Controller
                 'start' => $event->start_date,
                 'end' => $event->end_date,
                 'creator_id' => $event->user_id, // Obtener el ID del usuario que creó el evento de la tabla 'events'
+                'color' => $event->color, // Obtener el ID del usuario que creó el evento de la tabla 'events'
             ];
         }
 
