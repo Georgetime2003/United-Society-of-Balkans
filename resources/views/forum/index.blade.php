@@ -17,6 +17,12 @@
                                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCreateForum">
                                         Create Forum
                                     </button>
+                                    <a href="{{ route('calendar') }}" class="linkmenu">
+                                        <div class="card-body">
+                                            <i class="fas fa-users start-icons fa-2x"></i>
+                                            <span class="offset-1">Calendar</span>
+                                        </div>
+                                    </a>
                                     <div class="mb-2"></div>
                                 </div>
                                 @endif
