@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <dialog id="eventDetailsDialog" class="dialeg">
                         <h2>Event Details</h2>
                         <p id="eventDetails"></p>
-                        <form id="deleteEventForm" action="{{ route('delete-event') }}" method="POST">
+                        <form id="deleteEventForm" action="{{ route('delete-event_2') }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <!-- Input para almacenar el ID del evento -->
