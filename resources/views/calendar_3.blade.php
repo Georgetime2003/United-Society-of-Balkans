@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const event = info.event;
             const creatorId = event.extendedProps.creator_id;
             console.log("ID del creador del evento:", creatorId);
-    // Acceder a la descripción del evento correctamente
-    const description = event.description;
+            // Acceder a la descripción del evento correctamente
+            const description = event.description;
             // Verificar si el evento pertenece al usuario actual
             console.log(currentUser, creatorId);
                 // Verificar si el usuario actual es administrador
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         eventIdInput.value = event.id; // Asignar el ID del evento al input hidden
 
-        eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${event.description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
+        eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
 console.log("Descripción del evento:", event.description);
 
 
