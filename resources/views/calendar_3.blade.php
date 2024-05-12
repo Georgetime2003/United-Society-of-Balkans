@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const event = info.event;
             const creatorId = event.extendedProps.creator_id;
             console.log("ID del creador del evento:", creatorId);
-
+    // Acceder a la descripción del evento correctamente
+    const description = event.description;
             // Verificar si el evento pertenece al usuario actual
             console.log(currentUser, creatorId);
                 // Verificar si el usuario actual es administrador
