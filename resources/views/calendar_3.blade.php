@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const creatorId = event.extendedProps.creator_id;
             console.log("ID del creador del evento:", creatorId);
             // Acceder a la descripción del evento correctamente
-            const description = info.event.extendedProps.description;
+            const description = info.event.description;
                        console.log("ID del description del description:", description);
 
             console.log(currentUser, creatorId);
