@@ -111,6 +111,8 @@
                             @csrf
                             <label for="event">Event Name:</label>
                             <input type="text" name="event" required><br>
+                            <label for="description">Description:</label>
+                            <textarea id="description" name="description" required></textarea>
                             <label for="start_date">Start Time:</label>
                             <input type="datetime-local" name="start_date" required><br>
                             <label for="end_date">End Time:</label>
