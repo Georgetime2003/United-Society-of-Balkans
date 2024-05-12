@@ -55,28 +55,32 @@ console.log("Descripción del evento:", event.description);
     }
         },
         select: function(info) {
-            // Cuando se selecciona un rango de tiempo en el calendario
-            const start = info.startStr; // Fecha y hora de inicio del evento
-            const end = info.endStr; // Fecha y hora de fin del evento
+    // Cuando se selecciona un rango de tiempo en el calendario
+    const start = info.startStr; // Fecha y hora de inicio del evento
+    const end = info.endStr; // Fecha y hora de fin del evento
 
-            // Crear un nuevo evento con el ID de usuario actual
-            const newEvent = {
-                title: 'Nuevo evento',
-                description: description,
-                start: start,
-                end: end,
-                extendedProps: {
-                    creator_id: currentUser // Asignar el ID del usuario como creador del evento
-                },
-                color: color,
-            };
+    // Acceder a la descripción del evento correctamente dentro de la función select
+    const description = info.event.description;
 
-            // Agregar el nuevo evento al calendario
-            calendar.addEvent(newEvent);
+    // Crear un nuevo evento con el ID de usuario actual
+    const newEvent = {
+        title: 'Nuevo evento',
+        description: description, // Asignar la descripción del evento
+        start: start,
+        end: end,
+        extendedProps: {
+            creator_id: currentUser // Asignar el ID del usuario como creador del evento
+        },
+        color: color,
+    };
 
-            // Guardar el nuevo evento en la base de datos
-            saveEventToDatabase(newEvent); // Esta función deberá enviar el nuevo evento al backend para su almacenamiento en la base de datos
-        }
+    // Agregar el nuevo evento al calendario
+    calendar.addEvent(newEvent);
+
+    // Guardar el nuevo evento en la base de datos
+    saveEventToDatabase(newEvent); // Esta función deberá enviar el nuevo evento al backend para su almacenamiento en la base de datos
+}
+
     });
     calendar.render();
     
