@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         eventIdInput.value = event.id; // Asignar el ID del evento al input hidden
 
-        eventDetails.innerHTML = `Name: ${event.title}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
+        eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${event.description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
 
 
 
@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Crear un nuevo evento con el ID de usuario actual
             const newEvent = {
                 title: 'Nuevo evento',
+                description: description,
                 start: start,
                 end: end,
                 extendedProps: {
@@ -107,6 +108,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             @csrf
                             <label for="event">Event Name:</label>
                             <input type="text" name="event" required><br>
+                            <label for="description">Description:</label>
+                            <textarea id="description" name="description" required></textarea>
                             <label for="start_date">Start Time:</label>
                             <input type="datetime-local" name="start_date" required><br>
                             <label for="end_date">End Time:</label>
