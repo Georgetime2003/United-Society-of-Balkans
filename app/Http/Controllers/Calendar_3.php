@@ -14,7 +14,6 @@ class Calendar_3 extends Controller
 
         // Inicializar un array para almacenar los eventos
         $events = [];
-
         // Recorrer todos los eventos y construir la lista de eventos con sus propiedades
         foreach ($all_events as $event) {
             // Agregar el evento a la lista con todas sus propiedades, incluido el ID de la tabla 'events'

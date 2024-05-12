@@ -16,94 +16,89 @@
         }
     </style>
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const currentUser = "{{ auth()->id() }}"; // Obtener el ID del usuario actual
-    console.log("Usuario actual:", currentUser);
-
-    const calendarEl = document.getElementById('calendar');
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'timeGridWeek',
-        slotMinTime: '10:00',
-        slotMaxTime: '21:00',
-        events: @json($events),
-        eventClick: function(info) {
-            const event = info.event;
-            const creatorId = event.extendedProps.creator_id;
-            console.log("ID del creador del evento:", creatorId);
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = "{{ auth()->id() }}"; // Obtener el ID del usuario actual
+            console.log("Usuario actual:", currentUser);
+        
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                slotMinTime: '10:00',
+                slotMaxTime: '21:00',
+                events: @json($events),
+                eventClick: function(info) {
+                    const event = info.event;
             // Acceder a la descripción del evento correctamente
-            const description = info.event.description;
-                       console.log("ID del description del description:", info.event.description);
-
-            console.log(currentUser, creatorId);
-                // Verificar si el usuario actual es administrador
-    const isAdmin = "{{ Auth::check() && (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin') }}";
-    
-    if (isAdmin || currentUser == creatorId) {
-        const eventDetailsDialog = document.getElementById('eventDetailsDialog');
-        const eventDetails = document.getElementById('eventDetails');
-        const eventIdInput = document.getElementById('eventIdInput'); // Obtener el input hidden del ID del evento
-
-        eventIdInput.value = event.id; // Asignar el ID del evento al input hidden
-
-        eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${event.description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
-console.log("Descripción del evento:", event.description);
-
-
-
-
-        eventDetailsDialog.showModal();
-    }
-        },
-        select: function(info) {
-    // Cuando se selecciona un rango de tiempo en el calendario
-    const start = info.startStr; // Fecha y hora de inicio del evento
-    const end = info.endStr; // Fecha y hora de fin del evento
-
-    // Acceder a la descripción del evento correctamente dentro de la función select
-    const description = info.event.description;
-
-    // Crear un nuevo evento con el ID de usuario actual
-    const newEvent = {
-        title: 'Nuevo evento',
-        description: description, // Asignar la descripción del evento
-        start: start,
-        end: end,
-        extendedProps: {
-            creator_id: currentUser // Asignar el ID del usuario como creador del evento
-        },
-        color: color,
-    };
-
-    // Agregar el nuevo evento al calendario
-    calendar.addEvent(newEvent);
-
-    // Guardar el nuevo evento en la base de datos
-    saveEventToDatabase(newEvent); // Esta función deberá enviar el nuevo evento al backend para su almacenamiento en la base de datos
-}
-
-    });
-    calendar.render();
-    
-            const createEventDialog = document.getElementById('createEventDialog');
-            const openCreateEventFormButton = document.getElementById('openCreateEventForm');
-            const closeCreateEventDialogButton = document.getElementById('closeCreateEventDialog');
-            const closeEventDetailsDialogButton = document.getElementById('closeEventDetailsDialog');
-    
-            openCreateEventFormButton.addEventListener('click', function() {
-                createEventDialog.showModal();
+            const description = event.extendedProps.description;
+            console.log("description:", description);
+        
+                    const creatorId = event.extendedProps.creator_id;
+                    console.log("ID del creador del evento:", creatorId);
+        
+                    // Verificar si el evento pertenece al usuario actual
+                    console.log(currentUser, creatorId);
+                        // Verificar si el usuario actual es administrador
+            const isAdmin = "{{ Auth::check() && (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin') }}";
+            
+            if (isAdmin || currentUser == creatorId) {
+                const eventDetailsDialog = document.getElementById('eventDetailsDialog');
+                const eventDetails = document.getElementById('eventDetails');
+                const eventIdInput = document.getElementById('eventIdInput'); // Obtener el input hidden del ID del evento
+        
+                eventIdInput.value = event.id; // Asignar el ID del evento al input hidden
+        
+                eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
+        
+        
+        
+                eventDetailsDialog.showModal();
+            }
+                },
+                select: function(info) {
+                    // Cuando se selecciona un rango de tiempo en el calendario
+                    const start = info.startStr; // Fecha y hora de inicio del evento
+                    const end = info.endStr; // Fecha y hora de fin del evento
+        
+                    // Crear un nuevo evento con el ID de usuario actual
+                    const newEvent = {
+                        title: 'Nuevo evento',
+                        start: start,
+                        end: end,
+                        extendedProps: {
+                            creator_id: currentUser // Asignar el ID del usuario como creador del evento
+                        },
+                        color: color,
+                    };
+        
+                    // Agregar el nuevo evento al calendario
+                    calendar.addEvent(newEvent);
+        
+                    // Guardar el nuevo evento en la base de datos
+                    saveEventToDatabase(newEvent); // Esta función deberá enviar el nuevo evento al backend para su almacenamiento en la base de datos
+                }
             });
-    
-            closeCreateEventDialogButton.addEventListener('click', function() {
-                createEventDialog.close();
-            });
-    
-            closeEventDetailsDialogButton.addEventListener('click', function() {
-                eventDetailsDialog.close();
-            });
-
-        });
-    </script>
-@endsection
+            calendar.render();
+            
+                    const createEventDialog = document.getElementById('createEventDialog');
+                    const openCreateEventFormButton = document.getElementById('openCreateEventForm');
+                    const closeCreateEventDialogButton = document.getElementById('closeCreateEventDialog');
+                    const closeEventDetailsDialogButton = document.getElementById('closeEventDetailsDialog');
+            
+                    openCreateEventFormButton.addEventListener('click', function() {
+                        createEventDialog.showModal();
+                    });
+            
+                    closeCreateEventDialogButton.addEventListener('click', function() {
+                        createEventDialog.close();
+                    });
+            
+                    closeEventDetailsDialogButton.addEventListener('click', function() {
+                        eventDetailsDialog.close();
+                    });
+        
+                });
+            </script>
+            @endsection
 @section('site_content')
     <div class="background-fixed">
         <div class="container my-2">
