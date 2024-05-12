@@ -61,6 +61,7 @@ console.log("Descripción del evento:", event.description);
             // Crear un nuevo evento con el ID de usuario actual
             const newEvent = {
                 title: 'Nuevo evento',
+                description: description,
                 start: start,
                 end: end,
                 extendedProps: {
