@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
         eventClick: function(info) {
             const event = info.event;
     // Acceder a la descripción del evento correctamente
-    const description = event.description;
+    const description = event.extendedProps.description;
+    console.log("description:", description);
+
             const creatorId = event.extendedProps.creator_id;
             console.log("ID del creador del evento:", creatorId);
 
