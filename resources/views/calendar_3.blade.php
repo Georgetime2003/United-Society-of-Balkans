@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const creatorId = event.extendedProps.creator_id;
             console.log("ID del creador del evento:", creatorId);
             // Acceder a la descripción del evento correctamente
-            console.log("ID del description del description:", description);
             const description = info.event.extendedProps.description;
-            // Verificar si el evento pertenece al usuario actual
+                       console.log("ID del description del description:", description);
+
             console.log(currentUser, creatorId);
                 // Verificar si el usuario actual es administrador
     const isAdmin = "{{ Auth::check() && (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin') }}";
