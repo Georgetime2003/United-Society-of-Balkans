@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Crear un nuevo evento con el ID de usuario actual
             const newEvent = {
                 title: 'Nuevo evento',
-                description: description,
                 start: start,
                 end: end,
                 extendedProps: {

@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         events: @json($events),
         eventClick: function(info) {
             const event = info.event;
+            const event = info.description;
             const creatorId = event.extendedProps.creator_id;
             console.log("ID del creador del evento:", creatorId);
 
@@ -43,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         eventIdInput.value = event.id; // Asignar el ID del evento al input hidden
 
-        eventDetails.innerHTML = `Name: ${event.title}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
+        eventDetails.innerHTML = `Name: ${event.description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
 
 
 
@@ -107,6 +108,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             @csrf
                             <label for="event">Event Name:</label>
                             <input type="text" name="event" required><br>
+                            <label for="description">Event Name:</label>
+                            <input type="text" name="description" required><br>
                             <label for="start_date">Start Time:</label>
                             <input type="datetime-local" name="start_date" required><br>
                             <label for="end_date">End Time:</label>
