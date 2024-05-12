@@ -19,7 +19,7 @@ class CitaController_3 extends Controller
                 // Crea una nueva instancia de la cita
                 $cita = new Event_3();
                 $cita->event = $request->event;
-                $cita->description_event = $request->description_event;
+                $cita->description = $request->description;
                 $cita->start_date = $request->start_date;
                 $cita->end_date = $request->end_date;
                 $cita->user_id = auth()->id();
