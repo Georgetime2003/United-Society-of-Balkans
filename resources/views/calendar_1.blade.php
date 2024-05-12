@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         eventIdInput.value = event.id; // Asignar el ID del evento al input hidden
 
-        eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${event.description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
+        eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
 
 
 
