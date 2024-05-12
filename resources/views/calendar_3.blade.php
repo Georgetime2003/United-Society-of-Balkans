@@ -98,7 +98,7 @@
         
                 });
             </script>
-            @endsection
+@endsection
 @section('site_content')
     <div class="background-fixed">
         <div class="container my-2">
