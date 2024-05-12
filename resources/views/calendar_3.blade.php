@@ -110,8 +110,8 @@ console.log("Descripción del evento:", event.description);
                             @csrf
                             <label for="event">Event Name:</label>
                             <input type="text" name="event" required><br>
-                            <label for="description">Description:</label>
-                            <input type="text" name="description" required><br>
+                            <label for="description_event">Description:</label>
+                            <input type="text" name="description_event" required><br>
                                                         <label for="start_date">Start Time:</label>
                             <input type="datetime-local" name="start_date" required><br>
                             <label for="end_date">End Time:</label>

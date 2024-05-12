@@ -21,7 +21,7 @@ class Calendar_3 extends Controller
             $events[] = [
                 'id' => $event->id, // Agregar el ID del evento
                 'title' => $event->event,
-                'description' => $event->description,
+                'description' => $event->description_event,
                 'start' => $event->start_date,
                 'end' => $event->end_date,
                 'creator_id' => $event->user_id, // Obtener el ID del usuario que creó el evento de la tabla 'events'
