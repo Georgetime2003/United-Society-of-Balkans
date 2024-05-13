@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Verificar si el usuario actual es administrador
     const isAdmin = "{{ Auth::check() && (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin') }}";
     
-    if (isAdmin || currentUser == creatorId) {
+   // if (isAdmin || currentUser == creatorId) {
         const eventDetailsDialog = document.getElementById('eventDetailsDialog');
         const eventDetails = document.getElementById('eventDetails');
         const eventIdInput = document.getElementById('eventIdInput'); // Obtener el input hidden del ID del evento
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         eventDetailsDialog.showModal();
-    }
+  //  }
         },
         select: function(info) {
             // Cuando se selecciona un rango de tiempo en el calendario
@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     calendar.render();
-    
             const createEventDialog = document.getElementById('createEventDialog');
             const openCreateEventFormButton = document.getElementById('openCreateEventForm');
             const closeCreateEventDialogButton = document.getElementById('closeCreateEventDialog');
@@ -95,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
             closeEventDetailsDialogButton.addEventListener('click', function() {
                 eventDetailsDialog.close();
             });
-
         });
     </script>
 @endsection
@@ -112,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <label for="event">Event Name:</label>
                             <input type="text" name="event" required><br>
                             <label for="description">Description:</label>
-                            <textarea id="description" name="description" required></textarea>
+                            <textarea id="description" name="description" required></textarea><br
                             <label for="start_date">Start Time:</label>
                             <input type="datetime-local" name="start_date" required><br>
                             <label for="end_date">End Time:</label>
