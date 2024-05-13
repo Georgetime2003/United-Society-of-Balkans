@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const event = info.event;
     const description = event.extendedProps.description;
     const creatorId = event.extendedProps.creator_id;
-
+    const isAdmin = "{{ Auth::check() && (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin') }}";
     // Verificar si el evento pertenece al usuario actual o si es administrador
     if (currentUser == creatorId || isAdmin) {
         const eventDetailsDialog = document.getElementById('eventDetailsDialog');
