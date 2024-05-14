@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const event = info.event;
             const description = event.extendedProps.description;
             const creatorId = event.extendedProps.creator_id;
+            const creatorName = event.extendedProps.creator_name; // Obtener el nombre del creador del evento
             const isAdmin = "{{ Auth::check() && (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin') }}";
             // Verificar si el evento pertenece al usuario actual o si es administrador
             if (currentUser == creatorId || isAdmin) {
@@ -38,8 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const eventIdInput = document.getElementById('eventIdInput');
 
                 eventIdInput.value = event.id;
-                eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
-
+                eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}<br>Creator: ${creatorName}`;
                 eventDetailsDialog.showModal();
                 
                 // Mostrar el botón de eliminar solo si es el mismo usuario o es admin
@@ -52,8 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const eventIdInput = document.getElementById('eventIdInput');
 
                 eventIdInput.value = event.id;
-                eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
-
+                eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}<br>Creator: ${creatorName}`;
                 eventDetailsDialog.showModal();
                 
                 // Ocultar el botón de eliminar
