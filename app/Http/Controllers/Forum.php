@@ -43,14 +43,23 @@ class Forum extends Controller
             'title' => 'required|max:100',
             'category' => 'required|max:100'
         ]);
+    
         $forum = new DBForum;
         $forum->title = $request->title;
         $forum->category = $request->category;
         $forum->upvotes = $request->upvote == null ? 0 : 1;
         $forum->user_id = DBUser::where('id', $request->admin)->first()->id;
+        
+        // Verificar si el foro debe ser exclusivo para administradores
+        if ($request->has('adminOnly')) {
+            $forum->admin_only = true; // Marcar como exclusivo para administradores
+        }
+    
         $forum->save();
+    
         return redirect()->route('forum');
     }
+    
 
     /**
      * It shows the forum.

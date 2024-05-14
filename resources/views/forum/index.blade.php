@@ -23,6 +23,7 @@
                                 <div class="mb-2"></div>
                                 <div class="col-12 top-3">
                                     @foreach ($forums as $forum)
+                                    @if(!$forum->admin_only || $admin)
 										<div class="card border-1 shadow rounded-3">
 											<div class="card-body p-4">
 												<a href="/forum/{{$forum->id}}" class="text-decoration-none title-forum"><h4>{{$forum->title}}</h4></a>
@@ -48,6 +49,7 @@
 											</div>
 										</div>
                                         <div class="mb-2"></div>
+                                        @endif
 									@endforeach
                                 </div>
                             </div>
@@ -79,6 +81,10 @@
                         <input type="text" class="form-control" id="category" name="category" placeholder="Forum Category" required>
                         <label for="category" class="form-label">Forum Category</label>
                         <div class="emoji-picker" id="pickerKeyboard" aria-labelledby="popoverEmoji"></div>
+                    </div>
+                    <div class="form-check form-switch mb-3">
+                        <input type="checkbox" class="form-check-input" id="adminOnly" name="adminOnly" value="1">
+                        <label for="adminOnly" class="form-label">Visible solo para administradores</label>
                     </div>
                     <div class="form-check form-switch mb-3">
                         <input type="checkbox" class="form-check-input" role="switch" id="upvote" name="upvote" value="1">

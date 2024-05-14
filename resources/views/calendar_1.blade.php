@@ -27,40 +27,40 @@ document.addEventListener('DOMContentLoaded', function() {
         slotMaxTime: '21:00',
         events: @json($events),
         eventClick: function(info) {
-    const event = info.event;
-    const description = event.extendedProps.description;
-    const creatorId = event.extendedProps.creator_id;
-    const isAdmin = "{{ Auth::check() && (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin') }}";
-    // Verificar si el evento pertenece al usuario actual o si es administrador
-    if (currentUser == creatorId || isAdmin) {
-        const eventDetailsDialog = document.getElementById('eventDetailsDialog');
-        const eventDetails = document.getElementById('eventDetails');
-        const eventIdInput = document.getElementById('eventIdInput');
+            const event = info.event;
+            const description = event.extendedProps.description;
+            const creatorId = event.extendedProps.creator_id;
+            const isAdmin = "{{ Auth::check() && (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin') }}";
+            // Verificar si el evento pertenece al usuario actual o si es administrador
+            if (currentUser == creatorId || isAdmin) {
+                const eventDetailsDialog = document.getElementById('eventDetailsDialog');
+                const eventDetails = document.getElementById('eventDetails');
+                const eventIdInput = document.getElementById('eventIdInput');
 
-        eventIdInput.value = event.id;
-        eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
+                eventIdInput.value = event.id;
+                eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
 
-        eventDetailsDialog.showModal();
-        
-        // Mostrar el botón de eliminar solo si es el mismo usuario o es admin
-        const deleteEventForm = document.getElementById('deleteEventForm');
-        deleteEventForm.style.display = "block";
-    } else {
-        // Si el usuario no es el creador ni admin, simplemente muestra los detalles sin opción de eliminar
-        const eventDetailsDialog = document.getElementById('eventDetailsDialog');
-        const eventDetails = document.getElementById('eventDetails');
-        const eventIdInput = document.getElementById('eventIdInput');
+                eventDetailsDialog.showModal();
+                
+                // Mostrar el botón de eliminar solo si es el mismo usuario o es admin
+                const deleteEventForm = document.getElementById('deleteEventForm');
+                deleteEventForm.style.display = "block";
+            } else {
+                // Si el usuario no es el creador ni admin, simplemente muestra los detalles sin opción de eliminar
+                const eventDetailsDialog = document.getElementById('eventDetailsDialog');
+                const eventDetails = document.getElementById('eventDetails');
+                const eventIdInput = document.getElementById('eventIdInput');
 
-        eventIdInput.value = event.id;
-        eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
+                eventIdInput.value = event.id;
+                eventDetails.innerHTML = `Name: ${event.title}<br>Description: ${description}<br>Start date: ${event.start}<br>Final date: ${event.end}`;
 
-        eventDetailsDialog.showModal();
-        
-        // Ocultar el botón de eliminar
-        const deleteEventForm = document.getElementById('deleteEventForm');
-        deleteEventForm.style.display = "none";
-    }
-},
+                eventDetailsDialog.showModal();
+                
+                // Ocultar el botón de eliminar
+                const deleteEventForm = document.getElementById('deleteEventForm');
+                deleteEventForm.style.display = "none";
+            }
+        },
         select: function(info) {
             // Cuando se selecciona un rango de tiempo en el calendario
             const start = info.startStr; // Fecha y hora de inicio del evento
