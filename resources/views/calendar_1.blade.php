@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         headerToolbar: {
-            right: 'dayGridDay,dayGridMonth,dayGridWeek,dayGridYear'
+            center: 'dayGridDay,dayGridMonth,dayGridWeek,dayGridYear',
+            right: 'prev,today,next'
         },
         select: function(info) {
             // Cuando se selecciona un rango de tiempo en el calendario
