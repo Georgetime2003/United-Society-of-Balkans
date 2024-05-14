@@ -60,6 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 deleteEventForm.style.display = "none";
             }
         },
+        headerToolbar: {
+            left: 'dayGridDay,dayGridMonth,dayGridWeek,dayGridYear'
+        },
         select: function(info) {
             // Cuando se selecciona un rango de tiempo en el calendario
             const start = info.startStr; // Fecha y hora de inicio del evento
