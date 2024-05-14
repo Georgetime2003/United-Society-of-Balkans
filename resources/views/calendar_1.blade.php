@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         headerToolbar: {
-            center: 'dayGridDay,dayGridMonth,dayGridWeek,dayGridYear',
+            center: 'dayGridDay,timeGridMonth,timeGridWeek,dayGridYear',
             right: 'prev,today,next'
         },
         select: function(info) {
