@@ -34,11 +34,13 @@ class CitaController extends Controller
 
     public function update(Request $request) 
     {
+            // Agregar esta línea para verificar los datos recibidos
+    dd($request->all());
     $event = Event::findOrFail($request->eventId);
 
     $event->update([
         'event' => $request->eventName,
-        'description' => $request->eventDescription, // Verifica que estés accediendo correctamente a la descripción del evento aquí
+        'description' => $request->eventDescription,
         'start_date' => $request->eventStartDate,
         'end_date' => $request->eventEndDate,
     ]);
