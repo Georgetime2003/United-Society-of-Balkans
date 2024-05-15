@@ -180,7 +180,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         </form>
                         <button id="closeModifyEventDialog">Cancel</button>
                     </dialog>
-                    
                 </div>
             </div>
         </div>
