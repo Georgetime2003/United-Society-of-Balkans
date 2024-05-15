@@ -9,7 +9,7 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['event', 'start_date', 'end_date'];
+    protected $fillable = ['event', 'description', 'start_date', 'end_date'];
 
     /**
      * Define la relación entre Event y User.

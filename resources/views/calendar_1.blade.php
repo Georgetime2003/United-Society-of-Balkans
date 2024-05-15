@@ -111,7 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const openCreateEventFormButton = document.getElementById('openCreateEventForm');
             const closeCreateEventDialogButton = document.getElementById('closeCreateEventDialog');
             const closeEventDetailsDialogButton = document.getElementById('closeEventDetailsDialog');
-    
+            const modifyButtonClose = document.getElementById('closeModifyEventDialog');
+            const eventModifyDialog = document.getElementById('eventModifyDialog');
+
             openCreateEventFormButton.addEventListener('click', function() {
                 createEventDialog.showModal();
             });
@@ -122,6 +124,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
             closeEventDetailsDialogButton.addEventListener('click', function() {
                 eventDetailsDialog.close();
+            });
+
+            modifyButtonClose.addEventListener('click', function() {
+                eventModifyDialog.close();
             });
         });
     </script>
