@@ -88,6 +88,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     calendar.render();
+
+    document.getElementById('modifyEventButton').addEventListener('click', function() {
+    const eventDetailsDialog = document.getElementById('eventDetailsDialog');
+    const eventModifyDialog = document.getElementById('eventModifyDialog');
+
+    // Oculta el diálogo de detalles del evento
+    eventDetailsDialog.close();
+
+    // Llena el formulario de modificación con los detalles del evento actual
+    document.getElementById('modifyEventId').value = eventIdInput.value;
+    document.getElementById('modifyEventName').value = eventName.textContent;
+    document.getElementById('modifyEventDescription').value = eventDescription.textContent;
+    document.getElementById('modifyEventStartDate').value = eventStart.textContent;
+    document.getElementById('modifyEventEndDate').value = eventEnd.textContent;
+
+    // Muestra el diálogo de modificación de evento
+    eventModifyDialog.showModal();
+});
+
+
             const createEventDialog = document.getElementById('createEventDialog');
             const openCreateEventFormButton = document.getElementById('openCreateEventForm');
             const closeCreateEventDialogButton = document.getElementById('closeCreateEventDialog');
@@ -134,6 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <dialog id="eventDetailsDialog" class="dialeg">
                         <h2>Event Details</h2>
                         <p id="eventDetails"></p>
+                        <button id="modifyEventButton">Modify Event</button>
                         <form id="deleteEventForm" action="{{ route('delete-event') }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -142,6 +163,23 @@ document.addEventListener('DOMContentLoaded', function() {
                             <button type="submit">Delete Event</button>
                         </form>
                         <button id="closeEventDetailsDialog">Close</button>
+                    </dialog>
+                    <dialog id="eventModifyDialog" class="dialeg" style="display: none;">
+                        <h2>Modify Event</h2>
+                        <form id="modifyEventForm" action="{{ route('update-event') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="eventId" id="modifyEventId" value="">
+                            <label for="eventName">Event Name:</label>
+                            <input type="text" id="modifyEventName" name="eventName" required><br>
+                            <label for="eventDescription">Description:</label>
+                            <textarea id="modifyEventDescription" name="eventDescription" required></textarea><br>
+                            <label for="eventStartDate">Start Time:</label>
+                            <input type="datetime-local" id="modifyEventStartDate" name="eventStartDate" required><br>
+                            <label for="eventEndDate">End Time:</label>
+                            <input type="datetime-local" id="modifyEventEndDate" name="eventEndDate" required><br>
+                            <button type="submit">Update Event</button>
+                        </form>
+                        <button id="closeModifyEventDialog">Cancel</button>
                     </dialog>
                     
                 </div>
