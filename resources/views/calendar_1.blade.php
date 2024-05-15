@@ -52,9 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // Oculta el diálogo de detalles del evento
                     eventDetailsDialog.close();
-
-                                        // Muestra el diálogo de modificación de evento
-                                        eventModifyDialog.showModal();
+                    // Muestra el diálogo de modificación de evento
+                    eventModifyDialog.showModal();
                     // Llena el formulario de modificación con los detalles del evento actual
                     document.getElementById('modifyEventId').value = eventIdInput.value;
                     document.getElementById('modifyEventName').value = event.title;
@@ -164,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </form>
                         <button id="closeEventDetailsDialog">Close</button>
                     </dialog>
-                    <dialog id="eventModifyDialog" class="dialeg" style="display: none;">
+                    <dialog id="eventModifyDialog" class="dialeg">
                         <h2>Modify Event</h2>
                         <form id="modifyEventForm" action="{{ route('update-event') }}" method="POST">
                             @csrf
