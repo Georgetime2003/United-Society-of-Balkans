@@ -125,6 +125,8 @@ Route::get('/calendar_1', [Calendar::class, 'index'])
     ->name('calendar_3');
 
 Route::post('/crear-cita', [CitaController::class, 'crear'])->name('crear-cita');
+Route::post('/update-event', [CitaController::class, 'update'])->name('update-event');
+
 Route::post('/crear-cita_2', [CitaController_2::class, 'crear'])->name('crear-cita_2');
 Route::post('/crear-cita_3', [CitaController_3::class, 'crear'])->name('crear-cita_3');
 
