@@ -32,15 +32,16 @@ class CitaController extends Controller
                 return redirect()->route('calendar_1')->with('success', 'Cita creada exitosamente');
     }
 
-    public function update(Request $request) {
+    public function update(Request $request) 
+    {
     $event = Event::findOrFail($request->eventId);
 
-    $event->update([
-        'name' => $request->eventName,
-        'description' => $request->eventDescription,
-        'start_date' => $request->eventStartDate,
-        'end_date' => $request->eventEndDate,
-    ]);
+            $event->update([
+                'event' => $request->eventName,
+                'description' => $request->eventDescription,
+                'start_date' => $request->eventStartDate,
+                'end_date' => $request->eventEndDate,
+            ]);
 
     return redirect()->back()->with('success', 'Event updated successfully.');
 }
