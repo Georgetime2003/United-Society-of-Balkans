@@ -45,6 +45,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Mostrar el botón de eliminar solo si es el mismo usuario o es admin
                 const deleteEventForm = document.getElementById('deleteEventForm');
                 deleteEventForm.style.display = "block";
+
+                                // Agregar evento para abrir diálogo de modificación al hacer clic en "Modificar Evento"
+                                document.getElementById('modifyEventButton').addEventListener('click', function() {
+                    const eventDetailsDialog = document.getElementById('eventDetailsDialog');
+                    const eventModifyDialog = document.getElementById('eventModifyDialog');
+
+                    // Oculta el diálogo de detalles del evento
+                    eventDetailsDialog.close();
+
+                    // Llena el formulario de modificación con los detalles del evento actual
+                    document.getElementById('modifyEventId').value = eventIdInput.value;
+                    document.getElementById('modifyEventName').value = event.title;
+                    document.getElementById('modifyEventDescription').value = description;
+                    document.getElementById('modifyEventStartDate').value = event.start.toISOString().slice(0, 16);
+                    document.getElementById('modifyEventEndDate').value = event.end.toISOString().slice(0, 16);
+
+                    // Muestra el diálogo de modificación de evento
+                    eventModifyDialog.showModal();
+                });
             } else {
                 // Si el usuario no es el creador ni admin, simplemente muestra los detalles sin opción de eliminar
                 const eventDetailsDialog = document.getElementById('eventDetailsDialog');
@@ -88,25 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     calendar.render();
-
-    document.getElementById('modifyEventButton').addEventListener('click', function() {
-    const eventDetailsDialog = document.getElementById('eventDetailsDialog');
-    const eventModifyDialog = document.getElementById('eventModifyDialog');
-
-    // Oculta el diálogo de detalles del evento
-    eventDetailsDialog.close();
-
-    // Llena el formulario de modificación con los detalles del evento actual
-    document.getElementById('modifyEventId').value = eventIdInput.value;
-    document.getElementById('modifyEventName').value = eventName.textContent;
-    document.getElementById('modifyEventDescription').value = eventDescription.textContent;
-    document.getElementById('modifyEventStartDate').value = eventStart.textContent;
-    document.getElementById('modifyEventEndDate').value = eventEnd.textContent;
-
-    // Muestra el diálogo de modificación de evento
-    eventModifyDialog.showModal();
-});
-
 
             const createEventDialog = document.getElementById('createEventDialog');
             const openCreateEventFormButton = document.getElementById('openCreateEventForm');
