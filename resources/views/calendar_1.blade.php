@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('modifyEventId').value = eventIdInput.value;
                     document.getElementById('modifyEventName').value = event.title;
                     document.getElementById('modifyEventDescription').value = description;
-                    document.getElementById('modifyEventStartDate').value = event.start.toISOString().slice(0, 16);
-                    document.getElementById('modifyEventEndDate').value = event.end.toISOString().slice(0, 16);
+                    document.getElementById('modifyEventStartDate').value = event.start;
+                    document.getElementById('modifyEventEndDate').value = event.end;
 
 
                 });
