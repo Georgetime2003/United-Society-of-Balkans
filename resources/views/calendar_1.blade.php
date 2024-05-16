@@ -65,7 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 const allDayCheckbox = document.getElementById('allDay');
     const timeInputs = document.getElementById('timeInputs');
+    console.log("Checkbox encontrado:", allDayCheckbox); // Verificar si el checkbox se encuentra en el DOM
+    console.log("Inputs de tiempo encontrado:", timeInputs); // Verificar si los inputs de tiempo se encuentran en el DOM
     allDayCheckbox.addEventListener('change', function() {
+        console.log("Evento change detectado en el checkbox"); // Verificar si el evento change se detecta correctamente
         if (allDayCheckbox.checked) {
             // Si se activa "All Day", ocultar los campos de selección de hora
             timeInputs.style.display = 'none';
