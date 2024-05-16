@@ -52,8 +52,6 @@ class Forum extends Controller
         
         if ($request->has('adminOnly')) {
             $forum->admin_only = true; 
-        } else {
-            $forum->admin_only = false; 
         }
     
         $forum->save();
