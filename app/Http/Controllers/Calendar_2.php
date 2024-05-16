@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event_2;
-<<<<<<< HEAD
-use App\Models\User;
-=======
->>>>>>> parent of e8e271e (Set the all day event to the other calendars)
 
+use App\Models\User;
 class Calendar_2 extends Controller
 {
     public function index()

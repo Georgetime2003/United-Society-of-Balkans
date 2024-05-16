@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event_3;
-<<<<<<< HEAD
+
 use App\Models\User;
-=======
->>>>>>> parent of e8e271e (Set the all day event to the other calendars)
+
 
 class Calendar_3 extends Controller
 {
