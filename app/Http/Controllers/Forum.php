@@ -50,11 +50,10 @@ class Forum extends Controller
         $forum->upvotes = $request->upvote == null ? 0 : 1;
         $forum->user_id = DBUser::where('id', $request->admin)->first()->id;
         
-        // Verificar si el foro debe ser exclusivo para administradores
         if ($request->has('adminOnly')) {
-            $forum->admin_only = true; // Marcar como exclusivo para administradores
+            $forum->admin_only = true; 
         } else {
-            $forum->admin_only = false; // Marcar como exclusivo para administradores
+            $forum->admin_only = false; 
         }
     
         $forum->save();

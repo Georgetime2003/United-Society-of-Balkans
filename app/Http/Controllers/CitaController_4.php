@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Event_3;
+use App\Models\Event_4;
 
-class CitaController_3 extends Controller
+class CitaController_4 extends Controller
 {
     public function crear(Request $request)
     {
@@ -21,7 +21,7 @@ class CitaController_3 extends Controller
             $end_date = $request->input('end_date');
         }
     
-        $cita = new Event_3();
+        $cita = new Event_4();
         $cita->event = $request->input('event');
         $cita->description = $request->input('description');
         $cita->start_date = $start_date;
@@ -31,13 +31,13 @@ class CitaController_3 extends Controller
     
         $cita->save();
     
-        return redirect()->route('calendar_3')->with('success', 'Cita creada exitosamente');
+        return redirect()->route('calendar_4')->with('success', 'Cita creada exitosamente');
     }
     
 
     public function update(Request $request) 
     {
-    $event = Event_3::findOrFail($request->eventId);
+    $event = Event_4::findOrFail($request->eventId);
 
     $event->update([
         'event' => $request->eventName,
