@@ -63,6 +63,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
                 });
+                const allDayCheckbox = document.getElementById('allDay');
+    const timeInputs = document.getElementById('timeInputs');
+    allDayCheckbox.addEventListener('change', function() {
+        if (allDayCheckbox.checked) {
+            // Si se activa "All Day", ocultar los campos de selección de hora
+            timeInputs.style.display = 'none';
+        } else {
+            // Si se desactiva "All Day", mostrar los campos de selección de hora
+            timeInputs.style.display = 'block';
+        }
+    });
             } else {
                 // Si el usuario no es el creador ni admin, simplemente muestra los detalles sin opción de eliminar
                 const eventDetailsDialog = document.getElementById('eventDetailsDialog');
@@ -76,6 +87,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Ocultar el botón de eliminar
                 const deleteEventForm = document.getElementById('deleteEventForm');
                 deleteEventForm.style.display = "none";
+
+                const allDayCheckbox = document.getElementById('allDay');
+    const timeInputs = document.getElementById('timeInputs');
+    allDayCheckbox.addEventListener('change', function() {
+        if (allDayCheckbox.checked) {
+            // Si se activa "All Day", ocultar los campos de selección de hora
+            timeInputs.style.display = 'none';
+        } else {
+            // Si se desactiva "All Day", mostrar los campos de selección de hora
+            timeInputs.style.display = 'block';
+        }
+    });
             }
         },
         headerToolbar: {
@@ -146,16 +169,22 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="text" name="event" required><br>
                             <label for="description">Description:</label>
                             <textarea id="description" name="description" required></textarea><br>
-                            <label for="start_date">Start Time:</label>
-                            <input type="datetime-local" name="start_date" required><br>
-                            <label for="end_date">End Time:</label>
-                            <input type="datetime-local" name="end_date" required><br>
-                            <label for="end_date">Color:</label>
+                            <!-- Campo de selección de fecha única para todo el día -->
+                            <label for="allDay">All Day:</label>
+                            <input type="checkbox" id="allDay" name="allDay"><br>
+                            <div id="timeInputs">
+                                <label for="start_date">Start Time:</label>
+                                <input type="datetime-local" name="start_date" required><br>
+                                <label for="end_date">End Time:</label>
+                                <input type="datetime-local" name="end_date" required><br>
+                            </div>
+                            <label for="color">Color:</label>
                             <input type="color" name="color" required><br>
                             <button type="submit">Create Event</button>
                         </form>
                         <button id="closeCreateEventDialog">Cerrar</button>
                     </dialog>
+                    
                     <dialog id="eventDetailsDialog" class="dialeg">
                         <h2>Event Details</h2>
                         <p id="eventDetails"></p>
