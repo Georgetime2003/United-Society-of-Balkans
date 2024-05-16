@@ -16,8 +16,8 @@ class CitaController extends Controller
     
         // Agregar las horas automáticamente si es para todo el día
         if ($request->has('date')) {
-            $start_date = $request->input('date') . ' 10:10:00'; // 
-            $end_date = $request->input('date') . ' 12:12:59'; // Añade la hora de fin (antes de medianoche)
+            $start_date = $request->input('date') . ' 10:10'; // 
+            $end_date = $request->input('date') . ' 12:12'; // Añade la hora de fin (antes de medianoche)
         } else {
             $start_date = $request->input('start_date');
             $end_date = $request->input('end_date');
