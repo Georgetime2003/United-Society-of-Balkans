@@ -6,9 +6,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Calendar;
 use App\Http\Controllers\Calendar_2;
 use App\Http\Controllers\Calendar_3;
+
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CitaController_2;
 use App\Http\Controllers\CitaController_3;
+
 use App\Http\Controllers\DeleteEvent;
 use App\Http\Controllers\DeleteEvent_2;
 use App\Http\Controllers\DeleteEvent_3;
@@ -128,7 +130,10 @@ Route::post('/crear-cita', [CitaController::class, 'crear'])->name('crear-cita')
 Route::post('/update-event', [CitaController::class, 'update'])->name('update-event');
 
 Route::post('/crear-cita_2', [CitaController_2::class, 'crear'])->name('crear-cita_2');
+Route::post('/update-event_2', [CitaController_2::class, 'update'])->name('update-event_2');
+
 Route::post('/crear-cita_3', [CitaController_3::class, 'crear'])->name('crear-cita_3');
+Route::post('/update-event_3', [CitaController_3::class, 'update'])->name('update-event_3');
 
 Route::delete('/delete-event', [DeleteEvent::class, 'destroy'])->name('delete-event');
 Route::delete('/delete-event_2', [DeleteEvent_2::class, 'destroy'])->name('delete-event_2');
