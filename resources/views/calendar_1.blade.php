@@ -171,9 +171,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div id="dateTimeInputs">
                                 <!-- Campo de fecha y hora -->
                                 <label for="start_date">Start Date and Time:</label>
-                                <input type="datetime-local" id="start_date" name="start_date" required><br>
+                                <input type="datetime-local" id="start_date" name="start_date"><br>
                                 <label for="end_date">End Date and Time:</label>
-                                <input type="datetime-local" id="end_date" name="end_date" required><br>
+                                <input type="datetime-local" id="end_date" name="end_date"><br>
                             </div>
                             <!-- Campo adicional para la fecha si es "Todo el día" -->
                             <div id="dateInput">
@@ -186,6 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </form>
                         <button id="closeCreateEventDialog">Cerrar</button>
                     </dialog>
+                    
                     
                     
 
