@@ -37,7 +37,7 @@ class CitaController_3 extends Controller
 
     public function update(Request $request) 
     {
-    $event = Event::findOrFail($request->eventId);
+    $event = Event_3::findOrFail($request->eventId);
 
     $event->update([
         'event' => $request->eventName,
