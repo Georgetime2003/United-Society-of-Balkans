@@ -108,15 +108,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     const allDayCheckbox = document.getElementById('allDay');
-    const timeInputs = document.getElementById('timeInputs');
+    const dateTimeInputs = document.getElementById('dateTimeInputs');
     
     allDayCheckbox.addEventListener('change', function() {
         if (allDayCheckbox.checked) {
-            // Si se activa "Todo el día", ocultar los inputs de hora
-            timeInputs.style.display = 'none';
+            // Si se activa "Todo el día", ocultar los campos de fecha y hora
+            dateTimeInputs.style.display = 'none';
         } else {
-            // Si se desactiva "Todo el día", mostrar los inputs de hora
-            timeInputs.style.display = 'block';
+            // Si se desactiva "Todo el día", mostrar los campos de fecha y hora
+            dateTimeInputs.style.display = 'block';
         }
     });
     
@@ -155,28 +155,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <button id="openCreateEventForm">Create New Event</button>
                     <div id="calendar"></div>
-<dialog id="createEventDialog" class="dialeg">
-    <form action="{{ route('crear-cita') }}" method="POST">
-        @csrf
-        <label for="event">Event Name:</label>
-        <input type="text" name="event" required><br>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea><br>
-        <!-- Checkbox para "Todo el día" -->
-        <label for="allDay">All Day:</label>
-        <input type="checkbox" id="allDay" name="allDay"><br>
-        <div id="timeInputs">
-            <label for="start_date">Start Time:</label>
-            <input type="datetime-local" name="start_date" required><br>
-            <label for="end_date">End Time:</label>
-            <input type="datetime-local" name="end_date" required><br>
-        </div>
-        <label for="color">Color:</label>
-        <input type="color" name="color" required><br>
-        <button type="submit">Create Event</button>
-    </form>
-    <button id="closeCreateEventDialog">Cerrar</button>
-</dialog>
+                    <dialog id="createEventDialog" class="dialeg">
+                        <form action="{{ route('crear-cita') }}" method="POST">
+                            @csrf
+                            <label for="event">Event Name:</label>
+                            <input type="text" name="event" required><br>
+                            <label for="description">Description:</label>
+                            <textarea id="description" name="description" required></textarea><br>
+                            <!-- Checkbox para "Todo el día" -->
+                            <label for="allDay">All Day:</label>
+                            <input type="checkbox" id="allDay" name="allDay"><br>
+                            <div id="dateTimeInputs">
+                                <!-- Campo de fecha y hora -->
+                                <label for="start_date">Start Date and Time:</label>
+                                <input type="datetime-local" id="start_date" name="start_date" required><br>
+                                <label for="end_date">End Date and Time:</label>
+                                <input type="datetime-local" id="end_date" name="end_date" required><br>
+                            </div>
+                            <label for="color">Color:</label>
+                            <input type="color" name="color" required><br>
+                            <button type="submit">Create Event</button>
+                        </form>
+                        <button id="closeCreateEventDialog">Cerrar</button>
+                    </dialog>
+                    
 
                     <dialog id="eventDetailsDialog" class="dialeg">
                         <h2>Event Details</h2>

@@ -9,28 +9,37 @@ class CitaController extends Controller
 {
     public function crear(Request $request)
     {
-                // Valida los datos del formulario
-                $request->validate([
-                    'event' => 'required|string|max:255',
-                    'start_date' => 'required|date',
-                    'end_date' => 'required|date|after_or_equal:start_date',
-                ]);
-        
-                // Crea una nueva instancia de la cita
-                $cita = new Event();
-                $cita->event = $request->event;
-                $cita->description = $request->description;
-                $cita->start_date = $request->start_date;
-                $cita->end_date = $request->end_date;
-                $cita->user_id = auth()->id();
-                $cita->color = $request->color;
-                
-                // Guarda la cita en la base de datos
-                $cita->save();
-        
-                // Redirecciona a una página de éxito o cualquier otra página que desees
-                return redirect()->route('calendar_1')->with('success', 'Cita creada exitosamente');
+        // Valida los datos del formulario
+        $request->validate([
+            'event' => 'required|string|max:255',
+            'start_date' => 'required|date',
+        ]);
+    
+        // Agregar las horas automáticamente si es para todo el día
+        if ($request->has('allDay')) {
+            $start_date = $request->input('start_date') . ' 00:00:00'; // Añade la hora de inicio (medianoche)
+            $end_date = $request->input('start_date') . ' 23:59:59'; // Añade la hora de fin (antes de medianoche)
+        } else {
+            $start_date = $request->input('start_date');
+            $end_date = $request->input('end_date');
+        }
+    
+        // Crea una nueva instancia de la cita
+        $cita = new Event();
+        $cita->event = $request->input('event');
+        $cita->description = $request->input('description');
+        $cita->start_date = $start_date;
+        $cita->end_date = $end_date;
+        $cita->user_id = auth()->id();
+        $cita->color = $request->input('color');
+    
+        // Guarda la cita en la base de datos
+        $cita->save();
+    
+        // Redirecciona a una página de éxito o cualquier otra página que desees
+        return redirect()->route('calendar_1')->with('success', 'Cita creada exitosamente');
     }
+    
 
     public function update(Request $request) 
     {
