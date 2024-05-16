@@ -186,10 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         </form>
                         <button id="closeCreateEventDialog">Cerrar</button>
                     </dialog>
-                    
-                    
-                    
-
                     <dialog id="eventDetailsDialog" class="dialeg">
                         <h2>Event Details</h2>
                         <p id="eventDetails"></p>
