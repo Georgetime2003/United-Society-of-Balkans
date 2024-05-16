@@ -5,7 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Calendar;
 use App\Http\Controllers\Calendar_2;
-use App\Http\Controllers\Calendar_3;
+use App\Http\Controllers\Calendar_3
 
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\CitaController_2;
