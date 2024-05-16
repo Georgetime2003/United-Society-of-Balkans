@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Event_3;
 use App\Models\User;
+
 class Calendar_3 extends Controller
 {
     public function index()
     {
-        // Obtener todos los eventos
         $all_events = Event_3::all();
 
         $events = [];
@@ -28,8 +28,6 @@ class Calendar_3 extends Controller
             ];
         }
 
-
-        // Pasar la lista de eventos a la vista 'dashboard'
         return view('calendar_3', compact('events'));
     }
 }

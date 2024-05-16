@@ -31,7 +31,7 @@ class CitaController_3 extends Controller
     
         $cita->save();
     
-        return redirect()->route('calendar_3')->with('success', 'Cita creada exitosamente');
+        return redirect()->route('calendar_1')->with('success', 'Cita creada exitosamente');
     }
     
 
