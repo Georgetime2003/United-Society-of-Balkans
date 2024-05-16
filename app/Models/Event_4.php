@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event_4 extends Model
 {
     use HasFactory;
-
+    protected $table = 'events_4'; // Nombre de la tabla en la base de datos
     protected $fillable = ['event', 'description', 'start_date', 'end_date'];
 
     /**
