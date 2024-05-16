@@ -109,14 +109,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     const allDayCheckbox = document.getElementById('allDay');
     const dateTimeInputs = document.getElementById('dateTimeInputs');
+    const dateInput = document.getElementById('dateInput');
     
     allDayCheckbox.addEventListener('change', function() {
         if (allDayCheckbox.checked) {
             // Si se activa "Todo el día", ocultar los campos de fecha y hora
             dateTimeInputs.style.display = 'none';
+            dateInput.style.display = 'block'; // Mostrar el campo de fecha adicional
         } else {
             // Si se desactiva "Todo el día", mostrar los campos de fecha y hora
             dateTimeInputs.style.display = 'block';
+            dateInput.style.display = 'none'; // Ocultar el campo de fecha adicional
         }
     });
     
@@ -172,12 +175,18 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <label for="end_date">End Date and Time:</label>
                                 <input type="datetime-local" id="end_date" name="end_date" required><br>
                             </div>
+                            <!-- Campo adicional para la fecha si es "Todo el día" -->
+                            <div id="dateInput">
+                                <label for="date">Date:</label>
+                                <input type="date" id="date" name="date"><br>
+                            </div>
                             <label for="color">Color:</label>
                             <input type="color" name="color" required><br>
                             <button type="submit">Create Event</button>
                         </form>
                         <button id="closeCreateEventDialog">Cerrar</button>
                     </dialog>
+                    
                     
 
                     <dialog id="eventDetailsDialog" class="dialeg">
