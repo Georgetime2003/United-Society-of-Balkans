@@ -13,6 +13,7 @@ class CitaController extends Controller
         $request->validate([
             'event' => 'required|string|max:255',
             'start_date' => 'required|date',
+            'date' => 'required',
         ]);
     
         // Agregar las horas automáticamente si es para todo el día
