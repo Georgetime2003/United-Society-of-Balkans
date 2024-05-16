@@ -53,6 +53,8 @@ class Forum extends Controller
         // Verificar si el foro debe ser exclusivo para administradores
         if ($request->has('adminOnly')) {
             $forum->admin_only = true; // Marcar como exclusivo para administradores
+        } else {
+            $forum->admin_only = false; // Marcar como exclusivo para administradores
         }
     
         $forum->save();
