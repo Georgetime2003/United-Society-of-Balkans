@@ -12,12 +12,10 @@ class CitaController extends Controller
         // Valida los datos del formulario
         $request->validate([
             'event' => 'required|string|max:255',
-            'start_date' => 'required|date',
-            'date' => 'required',
         ]);
     
         // Agregar las horas automáticamente si es para todo el día
-        if ($request->input('date')) {
+        if ($request->has('date')) {
             $start_date = $request->input('date') . ' 10:10:00'; // 
             $end_date = $request->input('date') . ' 12:12:59'; // Añade la hora de fin (antes de medianoche)
         } else {
