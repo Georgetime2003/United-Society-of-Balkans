@@ -17,6 +17,8 @@
     </style>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
+    
+    
     const currentUser = "{{ auth()->id() }}"; // Obtener el ID del usuario actual
     console.log("Usuario actual:", currentUser);
 
@@ -63,20 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
                 });
-                const allDayCheckbox = document.getElementById('allDay');
-    const timeInputs = document.getElementById('timeInputs');
-    console.log("Checkbox encontrado:", allDayCheckbox); // Verificar si el checkbox se encuentra en el DOM
-    console.log("Inputs de tiempo encontrado:", timeInputs); // Verificar si los inputs de tiempo se encuentran en el DOM
-    allDayCheckbox.addEventListener('change', function() {
-        console.log("Evento change detectado en el checkbox"); // Verificar si el evento change se detecta correctamente
-        if (allDayCheckbox.checked) {
-            // Si se activa "All Day", ocultar los campos de selección de hora
-            timeInputs.style.display = 'none';
-        } else {
-            // Si se desactiva "All Day", mostrar los campos de selección de hora
-            timeInputs.style.display = 'block';
-        }
-    });
             } else {
                 // Si el usuario no es el creador ni admin, simplemente muestra los detalles sin opción de eliminar
                 const eventDetailsDialog = document.getElementById('eventDetailsDialog');
@@ -90,18 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Ocultar el botón de eliminar
                 const deleteEventForm = document.getElementById('deleteEventForm');
                 deleteEventForm.style.display = "none";
-
-                const allDayCheckbox = document.getElementById('allDay');
-    const timeInputs = document.getElementById('timeInputs');
-    allDayCheckbox.addEventListener('change', function() {
-        if (allDayCheckbox.checked) {
-            // Si se activa "All Day", ocultar los campos de selección de hora
-            timeInputs.style.display = 'none';
-        } else {
-            // Si se desactiva "All Day", mostrar los campos de selección de hora
-            timeInputs.style.display = 'block';
-        }
-    });
             }
         },
         headerToolbar: {
@@ -129,6 +105,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Guardar el nuevo evento en la base de datos
             saveEventToDatabase(newEvent); // Esta función deberá enviar el nuevo evento al backend para su almacenamiento en la base de datos
+        }
+    });
+    const allDayCheckbox = document.getElementById('allDay');
+    const timeInputs = document.getElementById('timeInputs');
+    
+    allDayCheckbox.addEventListener('change', function() {
+        if (allDayCheckbox.checked) {
+            // Si se activa "Todo el día", deshabilitar los inputs de hora
+            timeInputs.style.display = 'none';
+            
+            // Establecer la hora de inicio y fin del evento para todo el día
+            const selectedDate = document.getElementById('start_date').value;
+            const startDate = new Date(selectedDate);
+            startDate.setHours(0, 0, 0, 0); // Establecer a medianoche
+            const endDate = new Date(selectedDate);
+            endDate.setHours(23, 59, 59, 999); // Establecer a un segundo antes de medianoche
+            
+            // Actualizar los valores de los inputs de fecha y hora
+            document.getElementById('start_date').value = startDate.toISOString().slice(0, 16); // Formato: YYYY-MM-DDTHH:mm
+            document.getElementById('end_date').value = endDate.toISOString().slice(0, 16); // Formato: YYYY-MM-DDTHH:mm
+        } else {
+            // Si se desactiva "Todo el día", mostrar los inputs de hora
+            timeInputs.style.display = 'block';
         }
     });
     calendar.render();
@@ -172,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="text" name="event" required><br>
                             <label for="description">Description:</label>
                             <textarea id="description" name="description" required></textarea><br>
-                            <!-- Campo de selección de fecha única para todo el día -->
+                            <!-- Checkbox para "Todo el día" -->
                             <label for="allDay">All Day:</label>
                             <input type="checkbox" id="allDay" name="allDay"><br>
                             <div id="timeInputs">
