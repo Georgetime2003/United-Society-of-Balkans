@@ -131,7 +131,9 @@ Route::post('/update-event', [CitaController::class, 'update'])->name('update-ev
 
 Route::post('/crear-cita_2', [CitaController_2::class, 'crear'])->name('crear-cita_2');
 Route::post('/update-event_2', [CitaController_2::class, 'update'])->name('update-event_2');
-//Route::post('/crear-cita_3', [CitaController_3::class, 'crear'])->name('crear-cita_3');
+
+Route::post('/crear-cita_3', [CitaController_3::class, 'crear'])->name('crear-cita_3');
+Route::post('/update-event_3', [CitaController_3::class, 'update'])->name('update-event_3');
 
 Route::delete('/delete-event', [DeleteEvent::class, 'destroy'])->name('delete-event');
 Route::delete('/delete-event_2', [DeleteEvent_2::class, 'destroy'])->name('delete-event_2');

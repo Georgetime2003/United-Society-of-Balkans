@@ -17,14 +17,14 @@
 									<a class="btn btn-success" href="/forum/{{$forum->id}}/post">
 										<i class="fas fa-plus"></i>  Create Post
 									</a>
-
+									@if ($forum->id <= 4)
 									<a href="{{ route('calendar_' . $forum->id) }}">
 										<div class="card-body">
 											<i class="fas fa-users start-icons fa-2x"></i>
 											<span class="offset-1">Calendar</span>
 										</div>
 									</a>
-		
+									@endif
 								
 									
 								</div>
