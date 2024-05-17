@@ -84,7 +84,7 @@
                     </div>
                     <div class="form-check form-switch mb-3">
                         <input type="checkbox" class="form-check-input" id="adminOnly" name="adminOnly" value="1">
-                        <label for="adminOnly" class="form-label">Visible solo para administradores</label>
+                        <label for="adminOnly" class="form-label">Only for admins</label>
                     </div>
                     <div class="form-check form-switch mb-3">
                         <input type="checkbox" class="form-check-input" role="switch" id="upvote" name="upvote" value="1">
