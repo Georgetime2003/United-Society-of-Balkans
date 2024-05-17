@@ -16,13 +16,13 @@
         }
         .button-container {
     display: flex;
-    gap: 10px; 
+    justify-content: flex-end;
+    gap: 10px; /* Espacio entre los botones */
 }
 
 #deleteEventForm {
-    margin: 0; 
+    margin: 0; /* Eliminar el margen del formulario */
 }
-
     </style>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('modifyEventDescription').value = description;
                     document.getElementById('modifyEventStartDate').value = event.start;
                     document.getElementById('modifyEventEndDate').value = event.end;
-
+                    document.getElementById('modifyEventColor').value = event.color;
 
                 });
             } else {
@@ -182,10 +182,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                             <label for="color">Color:</label>
                             <input type="color" name="color" required><br>
-                            <button type="submit">Create Event</button>
+                            <div class="button-container">
+                                <button type="submit">Create Event</button>
+                                <button id="closeCreateEventDialog" type="button">Cerrar</button>
+                            </div>
                         </form>
-                        <button id="closeCreateEventDialog">Cerrar</button>
                     </dialog>
+                    
                     <dialog id="eventDetailsDialog" class="dialeg">
                         <h2>Event Details</h2>
                         <p id="eventDetails"></p>
@@ -212,6 +215,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="datetime-local" id="modifyEventStartDate" name="eventStartDate" required><br>
                             <label for="eventEndDate">End Time:</label>
                             <input type="datetime-local" id="modifyEventEndDate" name="eventEndDate" required><br>
+                            <label for="eventEndDate">Color:</label>
+                            <input type="color" id="modifyEventColor" name="eventEndDate" required><br>
                             <button type="submit">Update Event</button>
                         </form>
                         <button id="closeModifyEventDialog">Cancel</button>
