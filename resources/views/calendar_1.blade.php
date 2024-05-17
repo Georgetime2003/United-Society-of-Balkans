@@ -15,14 +15,14 @@
             box-shadow: 8px 8px 24px 0 rgba(0, 0, 0, 0.5);
         }
         .button-container {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px; /* Espacio entre los botones */
-}
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px; /* Espacio entre los botones */
+        }
 
-#deleteEventForm {
-    margin: 0; /* Eliminar el margen del formulario */
-}
+        #deleteEventForm {
+            margin: 0; /* Eliminar el margen del formulario */
+        }
     </style>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -198,9 +198,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="eventId" id="eventIdInput" value="">
-                            <button type="submit">Delete Event</button>
+                            <div class="button-container">
+                                <button type="submit">Delete Event</button>
+                            </div>
                         </form>
-                        <button id="closeEventDetailsDialog">Close</button>
+                        <div class="button-container">
+                            <button id="closeEventDetailsDialog">Close</button>
+                        </div>
                     </dialog>
                     <dialog id="eventModifyDialog" class="dialeg">
                         <h2>Modify Event</h2>
@@ -217,9 +221,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="datetime-local" id="modifyEventEndDate" name="eventEndDate" required><br>
                             {{-- <label for="eventColor">Color:</label>
                             <input type="color" id="modifyEventColor" name="eventColor" required><br> --}}
-                            <button type="submit">Update Event</button>
-                        </form>
+                            <div class="button-container">
+                                <button type="submit">Update Event</button>
+                            </div>
+                            </form>
+                            <div class="button-container">
                         <button id="closeModifyEventDialog">Cancel</button>
+                        </div>
                     </dialog>
                 </div>
             </div>
