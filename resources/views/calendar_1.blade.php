@@ -215,8 +215,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="datetime-local" id="modifyEventStartDate" name="eventStartDate" required><br>
                             <label for="eventEndDate">End Time:</label>
                             <input type="datetime-local" id="modifyEventEndDate" name="eventEndDate" required><br>
-                            <label for="eventColor">Color:</label>
-                            <input type="color" id="modifyEventColor" name="eventColor" required><br>
+                            {{-- <label for="eventColor">Color:</label>
+                            <input type="color" id="modifyEventColor" name="eventColor" required><br> --}}
                             <button type="submit">Update Event</button>
                         </form>
                         <button id="closeModifyEventDialog">Cancel</button>

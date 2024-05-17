@@ -44,7 +44,7 @@ class CitaController extends Controller
         'description' => $request->eventDescription,
         'start_date' => $request->eventStartDate,
         'end_date' => $request->eventEndDate,
-        'color' => $request->eventColor,
+        //'color' => $request->eventColor
     ]);
     
 
