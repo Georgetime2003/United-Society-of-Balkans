@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="color" name="color" required><br>
                             <div class="button-container">
                                 <button type="submit">Create Event</button>
-                                <button id="closeCreateEventDialog" type="button">Cerrar</button>
+                                <button id="closeCreateEventDialog" type="button">Cancel</button>
                             </div>
                         </form>
                     </dialog>
@@ -192,17 +192,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     <dialog id="eventDetailsDialog" class="dialeg">
                         <h2>Event Details</h2>
                         <p id="eventDetails"></p>
+                        <div class="button-container">
                         <button id="modifyEventButton">Modify Event</button>
-                        <br>
+                        
                         <form id="deleteEventForm" action="{{ route('delete-event') }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="eventId" id="eventIdInput" value="">
-                            <div class="button-container">
                                 <button type="submit">Delete Event</button>
-                            </div>
                         </form>
-                        <div class="button-container">
                             <button id="closeEventDetailsDialog">Close</button>
                         </div>
                     </dialog>
