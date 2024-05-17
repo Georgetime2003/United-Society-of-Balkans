@@ -18,13 +18,31 @@
             display: flex;
             justify-content: flex-end;
             gap: 10px;
-            color: darkcyan;
         }
-
+    
         #deleteEventForm {
-            margin: 0; /* Eliminar el margen del formulario */
+            margin: 0;
+        }
+    
+        .custom-button {
+            background-color: #4CAF50;
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px; 
+            margin: 4px 2px;
+            cursor: pointer; 
+            border-radius: 12px;
+        }
+    
+        .custom-button:hover {
+            background-color: #45a049;
         }
     </style>
+    
     <script>
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -160,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="container my-2">
             <div class="max-w-7xl mx-auto px-10" >
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <button id="openCreateEventForm">Create New Event</button>
+                    <button id="openCreateEventForm" class="custom-button">Create New Event</button>
                     <div id="calendar"></div>
                     <dialog id="createEventDialog" class="dialeg">
                         <form action="{{ route('crear-cita') }}" method="POST">
@@ -184,8 +202,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <label for="color">Color:</label>
                             <input type="color" name="color" required><br>
                             <div class="button-container">
-                                <button type="submit">Create Event</button>
-                                <button id="closeCreateEventDialog" type="button">Cancel</button>
+                                <button type="submit" class="custom-button">Create Event</button>
+                                <button id="closeCreateEventDialog" type="button" class="custom-button">Cancel</button>
                             </div>
                         </form>
                     </dialog>
@@ -194,15 +212,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         <h2>Event Details</h2>
                         <p id="eventDetails"></p>
                         <div class="button-container">
-                        <button id="modifyEventButton">Modify Event</button>
+                        <button id="modifyEventButton" class="custom-button">Modify Event</button>
                         
                         <form id="deleteEventForm" action="{{ route('delete-event') }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="eventId" id="eventIdInput" value="">
-                                <button type="submit">Delete Event</button>
+                                <button type="submit" class="custom-button">Delete Event</button>
                         </form>
-                            <button id="closeEventDetailsDialog">Close</button>
+                            <button id="closeEventDetailsDialog" class="custom-button">Close</button>
                         </div>
                     </dialog>
                     <dialog id="eventModifyDialog" class="dialeg">
@@ -221,11 +239,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             {{-- <label for="eventColor">Color:</label>
                             <input type="color" id="modifyEventColor" name="eventColor" required><br> --}}
                             <div class="button-container">
-                                <button type="submit">Update Event</button>
+                                <button type="submit" class="custom-button">Update Event</button>
                             </div>
                             </form>
                             <div class="button-container">
-                        <button id="closeModifyEventDialog">Cancel</button>
+                        <button id="closeModifyEventDialog" class="custom-button">Cancel</button>
                         </div>
                     </dialog>
                 </div>
