@@ -17,7 +17,8 @@
         .button-container {
             display: flex;
             justify-content: flex-end;
-            gap: 10px; /* Espacio entre los botones */
+            gap: 10px;
+            background-color: darkcyan;
         }
 
         #deleteEventForm {
