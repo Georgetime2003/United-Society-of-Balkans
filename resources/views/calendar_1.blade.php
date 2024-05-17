@@ -18,7 +18,7 @@
             display: flex;
             justify-content: flex-end;
             gap: 10px;
-            background-color: darkcyan;
+            color: darkcyan;
         }
 
         #deleteEventForm {
