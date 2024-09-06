@@ -33,12 +33,12 @@ return [
     'google' => [ 
         'client_id' => env("GOOGLE_CLIENT_ID"),
         'client_secret' => env("GOOGLE_CLIENT_SECRET"),
-        'redirect' => "http://localhost/callback/google"
+        'redirect' => "https://esidis.balkanhotspot.org/callback/google"
     ],
     "facebook"=> [
         'client_id' => env("FACEBOOK_CLIENT_ID"),
         'client_secret' => env("FACEBOOK_CLIENT_SECRET"),
-        'redirect' => "http://usb.com/callback/facebook"
+        'redirect' => "http://esidis.balkanhotspot.org/callback/facebook"
     ],
     "microsoft"=> [
         'client_id' => env("MICROSOFT_CLIENT_ID"),
