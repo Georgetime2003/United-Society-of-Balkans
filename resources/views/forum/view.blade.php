@@ -11,22 +11,17 @@
                 <h2 data-header="h1" class="title my-4 fade-up">{{$forum->title}}</h3>
                 <div class="row content-animated">
                     <div class="card border-1 shadow-sm rounded-3">
-                        <div class="card-body p-3">
+                        <div class="card-body p-1">
                             <div class="row">
 								<div class="col-4">
 									<a class="btn btn-success" href="/forum/{{$forum->id}}/post">
 										<i class="fas fa-plus"></i>  Create Post
 									</a>
 									@if ($forum->id <= 4)
-									<a href="{{ route('calendar_' . $forum->id) }}">
-										<div class="card-body">
-											<i class="fas fa-users start-icons fa-2x"></i>
-											<span class="offset-1">Calendar</span>
-										</div>
+									<a class="btn btn-success" href="{{ route('calendar_' . $forum->id) }}">
+										<i class="fas fa-users start-icons"></i> Calendar
 									</a>
 									@endif
-								
-									
 								</div>
 								<div class="col-1 offset-3">
 									<label for="orderby" class="form-label">Order By:</label>
