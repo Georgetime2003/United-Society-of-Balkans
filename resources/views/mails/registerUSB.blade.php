@@ -47,7 +47,7 @@
 					font-weight: bold;
 					border: 2px solid rgb(244, 251, 145);
 					text-align: center; 
-					"href="http://localhost">USB Platform</a>
+					"href="https://esidis.balkanhotspot.org/">USB Platform</a>
 			</div>
 		</div>
 		<br>
