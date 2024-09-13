@@ -26,6 +26,35 @@ var fadeDownOrganization = organization.classList.remove("fade-up-users");
 
 
 window.onload = function() {
+	document.getElementById("updatePassword").addEventListener("click", function() {
+		document.getElementById("updatePassword").disabled = true;
+		document.getElementById("updatePassword").innerHTML = "Updating ...";
+		$.ajaxSetup({
+			headers: {
+				"X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+			}
+		});
+		$.ajax({
+			url: "/user/updatePassword",
+			type: "POST",
+			data: {
+				id: $("#id").val(),
+				password: $("#password").val(),
+				password_confirmation: $("#password_confirmation").val()
+			},
+			success: function(result) {
+				toast.show();
+				setTimeout(function() {
+					window.location.reload();
+				}, 1500);
+			},
+			error: function(result) {
+				toastError.show();
+				document.getElementById("updatePassword").disabled = false;
+				document.getElementById("updatePassword").innerHTML = "Update";
+			}
+		});
+	});
 	/**
 	 * Function to save the user through ajax
 	 * 

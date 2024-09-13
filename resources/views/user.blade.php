@@ -64,13 +64,13 @@
 						@if (Auth::user()->id == $user->id)
 						<div class="col-md-6 col-12">
 							<div class="form-floating mb-3">
-								<input type="password" class="form-control" id="password" name="password" {{$admin ? '' : 'disabled'}}>
+								<input type="password" class="form-control" id="password" name="password">
 								<label for="password" class="form-label">Password:</label>
 							</div>
 						</div>
 						<div class="col-md-6 col-12">
 							<div class="form-floating mb-3">
-								<input type="password" class="form-control" id="password_confirmation" name="password_confirmation" {{$admin ? '' : 'disabled'}}>
+								<input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
 								<label for="password_confirmation" class="form-label">Confirm password:</label>
 							</div>
 						</div>
@@ -139,6 +139,7 @@
 					</div>
 				</div>
 				<div class="card-footer text-muted">
+					<button type="button" id="updatePassword" class="btn btn-primary" {{Auth::user()->id == $user->id ? '' : 'hidden'}}>Update Password</button>
 					<button type="submit" id="save" class="btn btn-primary" {{$admin ? '' : 'hidden'}}>Save</button>
 					<a href="{{route('user.regenerate', ['userId' => $user->id])}}" class="btn btn-primary"{{$user->email == "" ? 'hidden' : ''}} {{Auth::user()->role == 'superadmin' ? '' : 'hidden'}}>Regenerate User's Password</a>
 				</div>

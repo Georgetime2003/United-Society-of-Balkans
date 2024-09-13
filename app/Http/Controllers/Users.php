@@ -133,6 +133,24 @@ class Users extends Controller
         }
     
     }
+    /**
+     * Update the user password.
+     * @param Request $request The request with the new password
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector It returns the user configuration page
+     */
+    public function updatePassword(Request $request){
+        $user = User::find($request->id);
+        if (!$user){
+            return response()->json(['error' => 'User not found']);
+        } else if ($user->id != Auth::user()->id){
+            return response()->json(['error' => 'You can\'t change the password of another user']);
+        } else if ($request->password != $request->password_confirmation){
+            return response()->json(['error' => 'Passwords don\'t match' + $request->password + $request->password_confirmation]);
+        }
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return response()->json(['success' => 'Password updated successfully']);
+    }
 
     /**
      * Delete the user.
