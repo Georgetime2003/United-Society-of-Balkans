@@ -45,7 +45,7 @@ jobs:
     - name: Install Dependencies
       run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
     - name: Build Project
-      run: npm install && npm run build
+      run: npm install && php artisan migrate && php artisan build
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
