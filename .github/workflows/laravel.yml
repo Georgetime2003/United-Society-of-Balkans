@@ -52,6 +52,11 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
     - name: Build Project
       run: npm install
+    - name: Wait for MySQL
+      run: |
+        while ! mysqladmin ping -h"127.0.0.1" --silent; do
+          sleep 1
+        done
     - name: Migrate Database
       env:
         DB_CONNECTION: mysql
