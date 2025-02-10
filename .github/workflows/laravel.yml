@@ -78,6 +78,8 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Build Project
       run: npm run production
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
