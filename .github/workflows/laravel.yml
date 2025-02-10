@@ -78,8 +78,8 @@ jobs:
       run: php artisan key:generate
     - name: Set Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
-    - name: Build Project
-      run: npm run production
+    - name: Serve
+      run: php artisan serve --port=8000
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
