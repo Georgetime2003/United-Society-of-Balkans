@@ -44,7 +44,15 @@ jobs:
   deploy:
     needs: laravel-tests
     runs-on: ubuntu-latest
-
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: 'your_password'
+          MYSQL_DATABASE: test_db
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
     - name: Check out code
       uses: actions/checkout@v2
