@@ -29,10 +29,10 @@ jobs:
       run: sudo mysql -e 'CREATE DATABASE IF NOT EXISTS test_db;'
     - name: Run Tests
       env:
-      DB_CONNECTION: mysql
-      DB_DATABASE: test_db
-      DB_USERNAME: root
-      DB_PASSWORD: ''
+        DB_CONNECTION: mysql
+        DB_DATABASE: test_db
+        DB_USERNAME: root
+        DB_PASSWORD: ''
       run: php artisan test
 
   deploy:
