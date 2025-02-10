@@ -64,7 +64,6 @@ jobs:
     - name: Set Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Build Project
-    - name: Build Project
       run: npm run production
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
