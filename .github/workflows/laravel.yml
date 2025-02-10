@@ -25,6 +25,8 @@ jobs:
       run: php artisan key:generate
     - name: Set Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
+    - name: Start MySQL Service
+      run: sudo service mysql start
     - name: Create Database
       run: sudo mysql -e 'CREATE DATABASE IF NOT EXISTS test_db;'
     - name: Run Tests
