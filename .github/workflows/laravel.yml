@@ -27,14 +27,16 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Start MySQL Service
       run: sudo service mysql start
+    - name: Set MySQL Root Password
+      run: sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password'; FLUSH PRIVILEGES;"
     - name: Create Database
-      run: sudo mysql -e 'CREATE DATABASE IF NOT EXISTS test_db;'
+      run: sudo mysql -u root -pyour_password -e 'CREATE DATABASE IF NOT EXISTS test_db;'
     - name: Run Tests
       env:
         DB_CONNECTION: mysql
         DB_DATABASE: test_db
         DB_USERNAME: root
-        DB_PASSWORD: ''
+        DB_PASSWORD: 'your_password'
       run: php artisan test
 
   deploy:
